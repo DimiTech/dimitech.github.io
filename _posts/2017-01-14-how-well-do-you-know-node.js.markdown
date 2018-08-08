@@ -277,7 +277,7 @@ Instead of explaining the event loop myself in a blog post, I will point you to 
 
 ## List of questions
 
-1. [How come when you declare a global variable in any Node.js file it’s not really global to all modules?](#how-come-when-you-declare-a-global-variable-in-any-node.js-file-its-not-really-global-to-all-modules?)
+1. [How come when you declare a global variable in any Node.js file it’s not really global to all modules?](#1-how-come-when-you-declare-a-global-variable-in-any-nodejs-file-its-not-really-global-to-all-modules)
 
 1. How come when you declare a global variable in any Node.js file it’s not really global to all modules?
 2. When exporting the API of a Node module, why can we sometimes use exports and other times we have to use module.exports?
