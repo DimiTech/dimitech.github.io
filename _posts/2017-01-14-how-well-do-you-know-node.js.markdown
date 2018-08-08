@@ -98,9 +98,7 @@ If you explicitly need to declare a global variable, attach the value to the `gl
 
 *Helpful resources:*
 
-- Eloquent JavaScript - Modules chapter explains how the CommonJS require function works on a basic level:
-
-[http://eloquentjavascript.net/10_modules.html](http://eloquentjavascript.net/10_modules.html){:target="_blank"}
+- Eloquent JavaScript - Modules chapter explains how the CommonJS require function works on a basic level: [http://eloquentjavascript.net/10_modules.html](http://eloquentjavascript.net/10_modules.html){:target="_blank"}
 
 
 ## 2. When exporting the API of a Node module, why can we sometimes use `exports` and other times we have to use `module.exports`?
@@ -259,9 +257,12 @@ It could be probably made to work on SpiderMonkey or some other JS engine but cu
 
 Instead of explaining the event loop myself in a blog post, I will point you to a couple of much better learning resources.
 
+
 <iframe width="560" height="315" src="https://www.youtube.com/embed/ztspvPYybIY" frameborder="0" allowfullscreen></iframe>
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/8aGhZQkoFbQ" frameborder="0" allowfullscreen></iframe>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/cCOL7MC4Pl0" frameborder="0" allowfullscreen></iframe>
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/PNa9OMajw9w" frameborder="0" allowfullscreen></iframe>
 
