@@ -77,10 +77,10 @@ This example illustrates that behavior:
 
 {% highlight javascript %}
 /* Run this code in your browser console. */
-var globalVar = 'global variable';
+var globalVar = 'global variable'
 
-console.log(globalVar);        // Output: 'global variable'.
-console.log(window.globalVar); // Output: 'global variable'.
+console.log(globalVar)        // Output: 'global variable'.
+console.log(window.globalVar) // Output: 'global variable'.
 {% endhighlight %}
 
 ### Node.js JavaScript:
@@ -91,10 +91,10 @@ You can think of the `global` object in the same way you think about `window`. I
 
 {% highlight javascript %}
 /* Run this code in your Node.js REPL terminal. */
-var globalVar = 'global variable';
+var globalVar = 'global variable'
 
-console.log(globalVar);        // Output: 'global variable'.
-console.log(global.globalVar); // Output: 'global variable'.
+console.log(globalVar)        // Output: 'global variable'.
+console.log(global.globalVar) // Output: 'global variable'.
 {% endhighlight %}
 
 Where it gets tricky is when you declare a global variable inside a *.js* file.
@@ -112,12 +112,12 @@ Put the follwing code inside those files:
  * file1.js
  */
  
-var globalVar = 'global variable';
+var globalVar = 'global variable'
 
-console.log(globalVar);                      // Output: 'global variable'.
-console.log(global.globalVar === undefined); // Output: true.
+console.log(globalVar)                      // Output: 'global variable'.
+console.log(global.globalVar === undefined) // Output: true.
 
-require('./file2');
+require('./file2')
 {% endhighlight %}
 
 {% highlight javascript %}
@@ -126,12 +126,12 @@ require('./file2');
  */
  
 try {
-    console.log(globalVar); // Throws an exception since `globalVar` is not defined.
+    console.log(globalVar) // Throws an exception since `globalVar` is not defined.
 } catch(err) {
-    console.dir(err.name === 'ReferenceError'); // Output: true.
+    console.dir(err.name === 'ReferenceError') // Output: true.
 }
 
-console.log(global.globalVar === undefined); // Output: true.
+console.log(global.globalVar === undefined) // Output: true.
 {% endhighlight %}
 
 `cd` into your project folder and run the first file: `node file1`.
@@ -158,16 +158,16 @@ Open up your Node REPL and try accessing the following variables:
 {% highlight javascript %}
 /* Type this code in your Node.js REPL terminal line by line 
    and observe the output. */
-global; // Enter.
+global // Enter.
 
-process;                    // Enter.
-global.process === process; // Output: true.
+process                    // Enter.
+global.process === process // Output: true.
 
-module;                   // Enter.
-global.module === module; // Output: true.
+module                   // Enter.
+global.module === module // Output: true.
 
-module.exports;                           // Enter.
-global.module.exports === module.exports; // Output: true.
+module.exports                           // Enter.
+global.module.exports === module.exports // Output: true.
 {% endhighlight %}
 
 The `global` object is the Node's global variable and all of the variables below it are its properties.
@@ -178,10 +178,10 @@ But what happens inside files? Let's figure it out, create and run the following
 /** 
  *  module_test.js - Node module API test.
  */
-console.dir(this);    // Output: {}
-console.dir(exports); // Output: {}
-console.dir(module.exports === exports); // Output: true
-console.dir(module.exports === this);    // Output: true
+console.dir(this)    // Output: {}
+console.dir(exports) // Output: {}
+console.dir(module.exports === exports) // Output: true
+console.dir(module.exports === this)    // Output: true
 {% endhighlight %}
 
 Interesting. We come to a conclusion that, inside of a file, `this`, `exports` and `module.exports` are pointing to the same memory address. They are the same object!
@@ -201,45 +201,45 @@ We could achieve that in multiple ways (there's probably even more than this):
 /** 
  *  module_test2.js - Node module API test 2.
  */ 
-module.exports.methodOne   = () => { console.log('whatever 1'); }
-module.exports.methodTwo   = () => { console.log('whatever 2'); }
-module.exports.methodThree = () => { console.log('whatever 3'); }
+module.exports.methodOne   = () => { console.log('whatever 1') }
+module.exports.methodTwo   = () => { console.log('whatever 2') }
+module.exports.methodThree = () => { console.log('whatever 3') }
 
 // or:
 
-exports.methodTwo   = () => { console.log('whatever 2'); }
-exports.methodOne   = () => { console.log('whatever 1'); }
-exports.methodThree = () => { console.log('whatever 3'); }
+exports.methodTwo   = () => { console.log('whatever 2') }
+exports.methodOne   = () => { console.log('whatever 1') }
+exports.methodThree = () => { console.log('whatever 3') }
 
 // or:
 
-this.methodTwo   = () => { console.log('whatever 2'); }
-this.methodOne   = () => { console.log('whatever 1'); }
-this.methodThree = () => { console.log('whatever 3'); }
+this.methodTwo   = () => { console.log('whatever 2') }
+this.methodOne   = () => { console.log('whatever 1') }
+this.methodThree = () => { console.log('whatever 3') }
 
 // or:
 
 module.exports = {
-    methodOne()   { console.log('whatever 1'); },
-    methodTwo()   { console.log('whatever 2'); },
-    methodThree() { console.log('whatever 3'); }
-};
+    methodOne()   { console.log('whatever 1') },
+    methodTwo()   { console.log('whatever 2') },
+    methodThree() { console.log('whatever 3') }
+}
 
 // These two API definitions fail to get exported.
 
 // Fails.
 exports = {
-    methodOne()   { console.log('whatever 1'); },
-    methodTwo()   { console.log('whatever 2'); },
-    methodThree() { console.log('whatever 3'); }
-};
+    methodOne()   { console.log('whatever 1') },
+    methodTwo()   { console.log('whatever 2') },
+    methodThree() { console.log('whatever 3') }
+}
 
 // Fails.
 this = {
-    methodOne()   { console.log('whatever 1'); },
-    methodTwo()   { console.log('whatever 2'); },
-    methodThree() { console.log('whatever 3'); }
-};
+    methodOne()   { console.log('whatever 1') },
+    methodTwo()   { console.log('whatever 2') },
+    methodThree() { console.log('whatever 3') }
+}
 
 // etc. etc... 
 {% endhighlight %}
@@ -254,11 +254,11 @@ Imagine your every Node file (module) being a function and having these invisibl
 
 {% highlight javascript %}
 function testModule() {
-    var exports = module.exports = {};
+    var exports = module.exports = {}
     // ...
     // Your module code...
     // ...
-    return module.exports;
+    return module.exports
 }
 {% endhighlight %}
 
@@ -274,10 +274,10 @@ There are two ways (that I'm familiar with) to `require` local files:
 
 {% highlight javascript %}
 // `require`-ing a module using the relative path.
-let testModule = require('./test-module.js');
+let testModule = require('./test-module.js')
 
 // `require`-ing a module using the absolute path.
-let testModuleAgain = require('/home/dusan/Desktop/test-module.js');
+let testModuleAgain = require('/home/dusan/Desktop/test-module.js')
 {% endhighlight %}
 
 Relative paths are way more clean and readable but we also have the absolute path option if it's necessary.
@@ -285,8 +285,8 @@ Relative paths are way more clean and readable but we also have the absolute pat
 The cleaner way to use absolute paths is:
 {% highlight javascript %}
 // `require`-ing a module using the absolute path and the `path` native module.
-let path       = require('path');
-let testModule = require(path.join(__dirname, 'test-module.js'));
+let path       = require('path')
+let testModule = require(path.join(__dirname, 'test-module.js'))
 {% endhighlight %}
 
 *Can we require local files without using relative paths?* - the answer is **YES.**
