@@ -15,7 +15,7 @@ post can review or upgrade their Node chops.
 In order to get most out of these answers - try out all of the examples and see
 the behaviour yourself.
 
-*Notice:* The article is prone to changes so I've copied the list of questions
+**Notice:** The article is prone to changes so I've copied the list of questions
 at the time of writing this post. The list of questions is [here](#list-of-questions).
 
 Let's get on with it:
