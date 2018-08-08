@@ -23,7 +23,7 @@ Let's get on with it:
 ## Questions
 
 1. [How come when you declare a global variable in any Node.js file it’s not really global to all modules?](#1-how-come-when-you-declare-a-global-variable-in-any-nodejs-file-its-not-really-global-to-all-modules)
-2. [When exporting the API of a Node module, why can we sometimes use exports and other times we have to use module.exports?](#2-when-exporting-the-api-of-a-node-module-why-can-we-sometimes-use-exports-and-other-times-we-have-to-use-module-exports)
+2. [When exporting the API of a Node module, why can we sometimes use exports and other times we have to use module.exports?](#2-when-exporting-the-api-of-a-node-module-why-can-we-sometimes-use-exports-and-other-times-we-have-to-use-moduleexports)
 3. [Can we require local files without using relative paths?](#3-can-we-require-local-files-without-using-relative-paths)
 4. [What is the Event Loop? Is it part of V8?](#4-what-is-the-event-loop-is-it-part-of-v8)
 5. What is the Call Stack? Is it part of V8?
