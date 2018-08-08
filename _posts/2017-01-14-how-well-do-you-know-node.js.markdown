@@ -16,7 +16,7 @@ In order to get most out of these answers - try out all of the examples and see
 the behaviour yourself.
 
 **Notice:** The article is prone to changes so I've copied the list of questions
-at the time of writing this post. The list of questions is [here](#list-of-questions).
+that were in the blog post at the time of writing this article.
 
 Let's get on with it:
 
