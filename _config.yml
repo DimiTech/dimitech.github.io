@@ -2,8 +2,8 @@ name: Diving Deeper
 description: >
   Going deeper into the more arcane technical topics of present and past
 about: >
-  Dušan Dimitrić
-  Hit me up at - dusan_dimitric@yahoo.com
+  "Currently working on an IoT project.
+  Feel free to hit me up at: dusan_dimitric@yahoo.com"
 master_repo: false
 url: "https://dusandimitric.github.io/blog"
 markdown: kramdown
@@ -18,7 +18,7 @@ disqus_shortname:
 
 rtl: false
 owner:
-  name:           whitepaper
+  name:           Dušan Dimitrić
   avatar:         "https://avatars0.githubusercontent.com/u/14316093?s=200&v=4"
   email:          "dusan_dimitric@yahoo.com"
   # twitter: vinitkme
