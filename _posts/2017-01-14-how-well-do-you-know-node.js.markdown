@@ -5,17 +5,20 @@ description: "Answers to 40 questions that every Node.js developer needs to know
 tags: [Node.js, JavaScript]
 
 ---
-So, the other day I ran across a blog post by this guy Samer Buna called [How well do you know Node.js?](https://edgecoders.com/how-well-do-you-know-node-js-36b1473c01c8){:target="_blank"}
-It's basically a content marketing piece with a purpose of selling his Node.js course (which is perfectly fine of course). 
+So, the other day I ran across a blog post called [How well do you know Node.js?](https://edgecoders.com/how-well-do-you-know-node-js-36b1473c01c8){:target="_blank"}
+It's basically a content marketing piece with a purpose of selling a Node.js course (which is perfectly fine of course). 
 It still offers value to the reader in form of 40 questions that put your Node knowledge to the test.
 
-I've made a commitment to answer 2 of these questions every day so that people who read this can review or upgrade their Node chops.
+I've gone ahead and answered these questions here so that people who read this
+post can review or upgrade their Node chops.
+
+In order to get most out of these answers - try out all of the examples and see
+the behaviour yourself.
 
 *Notice:* The article is prone to changes so I've copied the list of questions
 at the time of writing this post. The list of questions is [here](#list-of-questions).
 
 Let's get on with it:
-
 
 ## 1. How come when you declare a global variable in any Node.js file it’s not really global to all modules?
 
@@ -273,6 +276,8 @@ Instead of explaining the event loop myself in a blog post, I will point you to 
 
 
 ## List of questions
+
+1. [How come when you declare a global variable in any Node.js file it’s not really global to all modules?](#how-come-when-you-declare-a-global-variable-in-any-node.js-file-it’s-not-really-global-to-all-modules?)
 
 1. How come when you declare a global variable in any Node.js file it’s not really global to all modules?
 2. When exporting the API of a Node module, why can we sometimes use exports and other times we have to use module.exports?
