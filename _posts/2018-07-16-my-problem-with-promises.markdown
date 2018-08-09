@@ -62,8 +62,8 @@ from the **UserService**.
 
 This obviously produces unnecessary boilerplate and mental overhead.
 
-> Unnecessary mental overhead is harmful, no matter how insignificant it might
-  seem at the moment. Keep code simple, clean and lean!
+> **Unnecessary mental overhead is harmful, no matter how insignificant it might
+  seem at the moment. Keep code simple, clean and lean!**
 
 Another problem with this approach is - you have to come up with different names
 for the variable outside the promise chain and the variable that's returned from
@@ -72,6 +72,30 @@ the **UserService** in order to be able to assign one to another.
 All in all - it's just ugly. All the parenthesis, curly braces and excess
 characters are just bogging down the reader.
 
-## Solution:
+Also keep in mind that this is an *extremely simple* example. IRL, you will very
+often face promise chains that have 5, 10 and more links in the chain (I'm
+sticking with the chain metaphor).
 
-At first glance the async/await example is more readable and fits better in your mind
+## Solution: async/await
+
+Luckily we don't have to use bare Promises anymore - **async/await** to the
+rescue:
+
+```javascript
+async function createOrder(userId) {
+  try {
+    const userData  = await UserService.getUserData(userId)
+    const cartItems = await ItemService.getItemsFromCart(userData.cart)
+    await OrderService.createOrder(userData, cartItems)
+  } catch (e) {
+    console.error(e)
+  }
+}
+
+createOrder(1)
+```
+
+Even at first glance, the async/await example is more readable and fits better
+in the reader's mind.
+
+*redux-saga* is also a great alternative.
