@@ -105,6 +105,6 @@ same scope level.
 [redux-saga](https://redux-saga.js.org/) is a great alternative as well.
 Be aware that redux-saga is a library, which of course introduces additional
 learning, maintenance and project-size/performance overhead.
-It's one of the best, nonetheless.
+It's one of the best nonetheless.
 
 # To be continued...
