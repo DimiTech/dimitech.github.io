@@ -9,7 +9,7 @@ I don't particularly fancy JavaScript's **Promises**. Here are some of the
 problems I have with them as well as solutions to those problems which you can
 use to write better asynchronous code, today!
 
-## Problem 1: Promise chains often force variable declarations in their surrounding scope
+# Problem 1: Promise chains often force variable declarations in their surrounding scope
 
 Promises are not really great for long-running chains of *inter-dependent* async
 operations. By *inter-dependent* I mean some async calls needing the return
@@ -19,7 +19,7 @@ One of the ugly patterns that emerge when dealing with this is - declaring
 variables in the surrounding scope, above the promise chain itself, so that
 you can assign return values to them and use them down the Promise chain.
 
-### Example:
+## Example:
 
 Let's say that you are working in a *microservice-ridden* architecture and that
 you need to juggle multiple services in order to process an **order**.
