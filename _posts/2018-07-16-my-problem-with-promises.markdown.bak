@@ -5,16 +5,15 @@ tags: [Node.js, JavaScript, Promises, Async, async/await]
 
 ---
 
-I don't particularly fancy **Promises**. Here are some of the problems I have
-with them as well as solutions to those problems which you can use to write
-better asynchronous code, now!
+I don't particularly fancy Promises, and here are some problems I have with
+them as well as solutions to those problems.
 
 ## Problem 1: Promise chains often force "global" variables in their surrounding scope
 
 Promises are not really great for long-running chains of inter-dependent async
 operations.
 
-Let's say we have to make a bunch of async calls.
+Let's say we have to make a buch of async calls.
 
 The ugliness can emerge:
 
@@ -38,5 +37,3 @@ getUserInfo(userId)
     }
   })
 ```
-
-## Solution:
