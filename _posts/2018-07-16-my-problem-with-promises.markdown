@@ -1,42 +1,77 @@
 ---
 layout: post
-title:  "My issues with Promises"
-tags: [Node.js, JavaScript, Promises, Async, async/await]
+title:  "My Problems with JavaScript Promises"
+tags: [Node.js, JavaScript, Promises, Async, async/await, MicroServices]
 
 ---
 
-I don't particularly fancy **Promises**. Here are some of the problems I have
-with them as well as solutions to those problems which you can use to write
-better asynchronous code, now!
+I don't particularly fancy JavaScript's **Promises**. Here are some of the
+problems I have with them as well as solutions to those problems which you can
+use to write better asynchronous code, today!
 
-## Problem 1: Promise chains often force "global" variables in their surrounding scope
+## Problem 1: Promise chains often force variable declarations in their surrounding scope
 
-Promises are not really great for long-running chains of inter-dependent async
-operations.
+Promises are not really great for long-running chains of *inter-dependent* async
+operations. By *inter-dependent* I mean some async calls needing the return
+values of some of the previous async calls in order to perform their job.
 
-Let's say we have to make a bunch of async calls.
+One of the ugly patterns that emerge when dealing with this is - declaring
+variables in the surrounding scope, above the promise chain itself, so that
+you can assign return values to them and use them down the line in the chain.
 
-The ugliness can emerge:
+#### Example:
 
-- When some of the async calls need data that is being produced by previous
-  promise calls.
+Let's say that you are working in a *microservice-ridden* architecture and that
+you need to juggle multiple services in order to process an order.
 
-Splitting the declaration and assignment of variables like this is just
-annoying.
-  
-This means we have to capture that data and make it available downstream. Example:
+This problem doesn't only come up when using the *microservices* pattern, it
+comes up all the time in bigger Promise chains.
+
+For this example, let's keep it really simple and say you need to perform the
+following steps:
+
+1. Get the particular user's data
+2. Get details on items in that user's shopping cart
+3. Create order
+
+*Ignore the code style and "architectural decisions" in this post, the code
+serves to illustrate an example.*
 
 ```javascript
-getUserInfo(userId)
-  .then(userInfo => {
-    const { shoppingCartId, shoppingCartItems } = userInfo
-    return Promise.all(shoppingCartItems.forEach(item => checkIfItemsInStock(item)))
-  })
-  .then(itemsAvailable => {
-    if (itemsAvailable.every(item => item.isAvailable)) {
-    
-    }
-  })
+function createOrder(userId) {
+  let userData
+
+  return UserService.getUserData(userId)
+    .then(fullUserData => {
+      userData = fullUserData
+      return ItemService.getItemsFromCart(userData.cart)
+    })
+    .then(cartItems => OrderService.createOrder(userData, cartItems))
+    .catch(console.error)
+}
+
+createOrder(1)
 ```
 
+As you can see, the `3. Create order` step needs both the **user data** and
+**shopping cart items** in order to be executed.
+
+The natural solution to this is to declare a variable outside (above) the
+Promise chain and store the intermediary **user data** in it when it arrives
+from the **UserService**.
+
+This obviously produces unnecessary boilerplate and mental overhead.
+
+> Unnecessary mental overhead is harmful, no matter how insignificant it might
+  seem at the moment. Keep code simple, clean and lean!
+
+Another problem with this approach is - you have to come up with different names
+for the variable outside the promise chain and the variable that's returned from
+the **UserService** in order to be able to assign one to another.
+
+All in all - it's just ugly. All the parenthesis, curly braces and excess
+characters are just bogging down the reader.
+
 ## Solution:
+
+At first glance the async/await example is more readable and fits better in your mind
