@@ -6,8 +6,8 @@ tags: [Node.js, JavaScript, Promises, Async, async/await, MicroServices]
 ---
 
 I don't particularly fancy JavaScript's **Promises**. Here are some of the
-problems I have with them as well as solutions to those problems which you can
-use to write better asynchronous code, today!
+problems I have with using them as well as solutions to those problems which you
+can use to write better asynchronous code, today!
 
 # Problem 1: Promise chains often force variable declarations in their surrounding scope
 
