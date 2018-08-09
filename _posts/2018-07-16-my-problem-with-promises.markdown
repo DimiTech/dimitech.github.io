@@ -81,7 +81,7 @@ pre-declared variables in the outer scope, as well as a big, ugly chain.
 
 ## Solution: async/await
 
-Luckily we don't have to use *bare* Promises anymore - **async/await** to the
+Luckily you don't have to use *bare* Promises anymore - **async/await** to the
 rescue:
 
 ```javascript
@@ -99,6 +99,7 @@ createOrder(1)
 ```
 
 Even at first glance, the async/await example is more readable and fits better
-in the reader's mind.
+in the reader's mind. Boilerplate is minimal and all the variables are at the
+same scope level.
 
 [redux-saga](https://redux-saga.js.org/) is a great alternative as well.
