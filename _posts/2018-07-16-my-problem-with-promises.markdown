@@ -102,9 +102,9 @@ Even at first glance, the async/await example is more readable and fits better
 in the reader's mind. Boilerplate is minimal and all the variables are at the
 same scope level.
 
-[redux-saga](https://redux-saga.js.org/) is a great alternative as well.
-Be aware that redux-saga is a library, which of course introduces additional
-learning, maintenance and project-size/performance overhead.
-It's one of the best nonetheless.
+For projects based on Redux - [redux-saga](https://redux-saga.js.org/) offers a
+great **Generator** based alternative as well. Be aware that redux-saga is a
+library, which of course introduces additional learning, maintenance and
+project-size/performance overhead. It's one of the best nonetheless.
 
-# To be continued...
+# Problem 2:
