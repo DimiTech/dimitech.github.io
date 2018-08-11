@@ -134,7 +134,7 @@ events/streams of data.
 First, and most obvious solution would be to simply go back to callback based
 event handling. But callbacks leave much to be desired.
 
-For a full-fledged, robust way to deal with events/streams would be to use the
+A full-fledged, robust way to deal with events/streams would be to use the
 ubiquitous Reactive Extensions Library for JavaScript - [RxJS](https://rxjs-dev.firebaseapp.com/).
 
 Eventually, ECMAScript standardization of [Observables](https://github.com/tc39/proposal-observable)
