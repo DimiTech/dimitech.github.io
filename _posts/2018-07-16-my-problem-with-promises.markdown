@@ -124,6 +124,23 @@ This is not a hard and fast rule though, as with many things in programming.
 Use good judgement and create the proper level of abstraction for your specific
 situation.
 
-# Problem 2: Promises can't handle streams of events
+# Problem 2: Promises can't handle events/streams of data
+
+Promises are resolved only once, hence they have an inherent inability deal with
+events/streams of data.
+
+## Solutions:
+
+First, and most obvious solution would be to simply go back to callback based
+event handling. But callbacks leave much to be desired.
+
+For a full-fledged, robust way to deal with events/streams would be to use the
+ubiquitous Reactive Extensions Library for JavaScript - [RxJS](https://rxjs-dev.firebaseapp.com/).
+
+Eventually, ECMAScript standardization of [Observables](https://github.com/tc39/proposal-observable)
+will (most likely) come and with the implementations that will follow you can
+make use of **Observables** direcly in the language itself.
+
+
 
 
