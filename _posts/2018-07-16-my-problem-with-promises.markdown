@@ -260,7 +260,7 @@ By using new JavaScript language features and Reactive Programming libraries
 we can cover the use cases where Promises are not an ideal/viable choice.
 
 Also, I would higly recommend exploring Reactive Programming and there is
-not a better place to start than here: https://gist.github.com/staltz/868e7e9bc2a7b8c1f754
+not a better place to start than [here](https://gist.github.com/staltz/868e7e9bc2a7b8c1f754).
 
 Angular developers might be more comfortable with RP and FRP (Functional
 Reactive Programming) concepts but, if you are a React or a Node.js
