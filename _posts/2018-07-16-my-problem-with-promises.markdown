@@ -107,4 +107,23 @@ great **Generator** based alternative as well. Be aware that redux-saga is a
 library, which of course introduces additional learning, maintenance and
 project-size/performance overhead. It's one of the best nonetheless.
 
-# Problem 2:
+## Final advice:
+
+Now, **async/await** is based on **Promises** and that means that you cannot
+(and should not) avoid Promises completely. Promises expose the extremely useful
+`all()` and `race()` utilities, while async/await cleans up the long-running
+sequences of inter-dependent async calls.
+
+One **very important** thing to do is abstract the **Promise** details away from
+the **async/await** code.
+
+> **async/await** is used to express higher-level tasks, **Promises** are used
+  for the _plumbing_ underneath
+
+This is not a hard and fast rule though, as with many things in programming.
+Use good judgement and create the proper level of abstraction for your specific
+situation.
+
+# Problem 2: Promises can't handle streams of events
+
+
