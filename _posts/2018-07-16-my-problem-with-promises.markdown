@@ -139,7 +139,7 @@ ubiquitous Reactive Extensions Library for JavaScript - [RxJS](https://rxjs-dev.
 
 Eventually, ECMAScript standardization of [Observables](https://github.com/tc39/proposal-observable)
 will (most likely) come and with the implementations that will follow you can
-make use of **Observables** direcly in the language itself.
+make use of **Observables** directly in the language itself.
 
 # Problem 3: Promises are not cancellable
 
@@ -259,7 +259,7 @@ kinds of problems.
 By using new JavaScript language features and Reactive Programming libraries
 we can cover the use cases where Promises are not an ideal/viable choice.
 
-Also, I would higly recommend exploring Reactive Programming and there is
+Also, I would highly recommend exploring Reactive Programming and there is
 not a better place to start than [here](https://gist.github.com/staltz/868e7e9bc2a7b8c1f754).
 
 Angular developers might be more comfortable with RP and FRP (Functional
