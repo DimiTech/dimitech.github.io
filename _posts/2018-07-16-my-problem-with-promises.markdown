@@ -141,6 +141,127 @@ Eventually, ECMAScript standardization of [Observables](https://github.com/tc39/
 will (most likely) come and with the implementations that will follow you can
 make use of **Observables** direcly in the language itself.
 
+# Problem 3: Promises are not cancellable
 
+## Example:
 
+Let's say we want to process a payment. Payment processing is an asynchronous
+action that takes a certain amount of time. We want to cancel that payment
+processing if it takes too long and that will be implemented using the **Timeout
+Race** pattern.
+(Payments wouldn't be handled like this but bear with me, it's just for example
+purposes).  
 
+```javascript
+const processPayment = () => new Promise((resolve, reject) => {
+  preparePayment(() => {
+    chargeCreditCard().then(resolve)
+  })
+})
+function preparePayment(callback) {
+  setTimeout(callback, 2 * 1000)
+}
+function chargeCreditCard() {
+  console.log('Credit card is charged $XXX')
+  return Promise.resolve()
+}
+
+const rejectAfter = timeout => new Promise((resolve, reject) => {
+  setTimeout(() => reject('Request timed out!'), timeout)
+})
+
+Promise.race([
+    processPayment(),
+    rejectAfter(1000)
+  ])
+  .then(() => {
+    console.log('Payment processed')
+  })
+  .catch(console.error)
+```
+
+In the example above, payment processing takes ~2000ms, and our timeout is set
+to 1000ms. The `Promise.race()` will reject after those 1000ms. What happens to
+our `processPayment()` promise that lost the race? **Its code executes
+nonetheless!**
+
+This is the example program's output:
+
+```
+Request timed out!
+Credit card is charged $XXX
+```
+
+We accidentally charged the customer!
+
+## Solution:
+
+One ugly solution would be to create a flag and use it to indicate whether
+the `processPayment()` is should continue executing or not:
+
+```javascript
+const processPayment = () => new Promise((resolve, reject) => {
+  preparePayment(() => {
+    chargeCreditCard()
+      .then(resolve)
+      .catch(e => {
+        console.error(e)
+        reject()
+      })
+  })
+})
+
+function preparePayment(callback) {
+  setTimeout(callback, 2 * 1000)
+}
+
+function chargeCreditCard() {
+  if (SHOULD_CHARGE_CUSTOMER) {
+    console.log('Credit card is charged $XXX')
+    return Promise.resolve()
+  }
+  return Promise.reject('Cancelled!')
+}
+
+const rejectAfter = timeout => new Promise((resolve, reject) => {
+  setTimeout(() => reject('Request timed out!'), timeout)
+})
+
+let SHOULD_CHARGE_CUSTOMER = true
+
+Promise.race([
+    processPayment(),
+    rejectAfter(1000)
+  ])
+  .then(() => {
+    console.log('Payment processed')
+  })
+  .catch(e => {
+    SHOULD_CHARGE_CUSTOMER = false
+    console.error(e)
+  })
+```
+
+This is ugly and contrived.
+
+TC39 won't be helping us with [Promise cancellation](https://github.com/tc39/proposal-cancelable-promises)
+anytime soon either.
+
+The proper solution again is to use Observables ([RxJS](https://rxjs-dev.firebaseapp.com/) for example).
+
+Observables support cancellation along with custom teardown logic you can add.
+
+# Final takeaways:
+
+Promises have deficiencies that pretty much rule them out for solving certain
+kinds of problems.
+
+By using new JavaScript language features and Reactive Programming libraries
+we can cover the use cases where Promises are not an ideal/viable choice.
+
+Also, I would higly recommend exploring Reactive Programming and there is
+not a better place to start than here: https://gist.github.com/staltz/868e7e9bc2a7b8c1f754
+
+Angular developers might be more comfortable with RP and FRP (Functional
+Reactive Programming) concepts but, if you are a React or a Node.js developer
+- give it a go, it will prove invaluable in certain situations.
