@@ -264,4 +264,4 @@ not a better place to start than here: https://gist.github.com/staltz/868e7e9bc2
 
 Angular developers might be more comfortable with RP and FRP (Functional
 Reactive Programming) concepts but, if you are a React or a Node.js developer
-- give it a go, it will prove invaluable in certain situations.
+- give (F)RP a try, it will prove invaluable in a large number of situations.
