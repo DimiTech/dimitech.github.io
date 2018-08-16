@@ -365,7 +365,7 @@ If you're good with C++ you can dive into the v8 source code and see the
 implementation for yourself: [https://github.com/v8/v8](https://github.com/v8/v8)
 
 Links:
-[https://developer.mozilla.org/en-US/docs/Glossary/Call_stack](https://developer.mozilla.org/en-US/docs/Glossary/Call_stack)
+* [https://developer.mozilla.org/en-US/docs/Glossary/Call_stack](https://developer.mozilla.org/en-US/docs/Glossary/Call_stack)
 
 ## 6. What is the difference between setImmediate and process.nextTick?
 
@@ -376,12 +376,11 @@ answer.
 *The simplistic answer would be:*
 
 `process.nextTick()` will fire "immediately", while `setImmediate()` will fire
-after it, most likely in the next event loop iteration (even though their names
-suggest otherwise).
+after it (even though their names suggest otherwise).
 
-It is also helpful to read the official Node.js documentation regarding these
-topics:
+It is extremely helpful to read the official Node.js documentation regarding
+these topics:
 
-[https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick/](https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick/)
+[https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick/#process-nexttick-vs-setimmediate](https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick/#process-nexttick-vs-setimmediate)
 
 ## 7. How do you make an asynchronous function return a value?
