@@ -28,7 +28,7 @@ Let's get on with it:
 4. [What is the Event Loop? Is it part of V8?](#4-what-is-the-event-loop-is-it-part-of-v8)
 5. [What is the Call Stack? Is it part of V8?](#5-what-is-the-call-stack-is-it-part-of-v8)
 6. [What is the difference between setImmediate and process.nextTick?](#6-what-is-the-difference-between-setimmediate-and-processnexttick)
-7. How do you make an asynchronous function return a value?
+7. [How do you make an asynchronous function return a value?](#7-how-do-you-make-an-asynchronous-function-return-a-value)
 8. Can callbacks be used with promises or is it one way or the other?
 9. What are the major differences between spawn, exec, and fork?
 10. How does the cluster module work? How is it different than using a load balancer?
@@ -379,4 +379,4 @@ topics:
 
 [https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick/](https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick/)
 
-7. 
+7. How do you make an asynchronous function return a value?
