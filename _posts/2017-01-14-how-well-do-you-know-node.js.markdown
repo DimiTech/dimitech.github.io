@@ -29,8 +29,8 @@ Let's get on with it:
 5. [What is the Call Stack? Is it part of V8?](#5-what-is-the-call-stack-is-it-part-of-v8)
 6. [What is the difference between setImmediate and process.nextTick?](#6-what-is-the-difference-between-setimmediate-and-processnexttick)
 7. [How do you make an asynchronous function return a value?](#7-how-do-you-make-an-asynchronous-function-return-a-value)
-8. Can callbacks be used with promises or is it one way or the other?
-9. What are the major differences between spawn, exec, and fork?
+8. [Can callbacks be used with promises or is it one way or the other?](#8-can-callbacks-be-used-with-promises-or-is-it-one-way-or-the-other)
+9. [What are the major differences between spawn, exec, and fork?](#9-what-are-the-major-differences-between-spawn-exec-and-fork)
 10. How does the cluster module work? How is it different than using a load balancer?
 11. What are the --harmony-* flags?
 12. How can you read and inspect the memory usage of a Node.js process?
@@ -383,3 +383,17 @@ I strongly recommend reading this official Node.js documentation piece:
 [https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick/#process-nexttick-vs-setimmediate](https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick/#process-nexttick-vs-setimmediate)
 
 ## 7. How do you make an asynchronous function return a value?
+
+Through Callback arguments or Promise return values. Those are the only 2
+building blocks available in the language itself.
+
+## 8. Can callbacks be used with promises or is it one way or the other?
+
+Callbacks are lower level abstractions than Promises. You can certainly use them
+together but I would advise against doing so if at all possible.
+
+Node 8 introduced `util.promisify()` which can be handy for converting a
+Callback based function into a Promise based one.
+
+## 9. What are the major differences between spawn, exec, and fork?
+
