@@ -378,8 +378,7 @@ answer.
 `process.nextTick()` will fire "immediately", while `setImmediate()` will fire
 after it (even though their names suggest otherwise).
 
-It is extremely helpful to read the official Node.js documentation regarding
-these topics:
+I strongly recommend reading this official Node.js documentation piece:
 
 [https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick/#process-nexttick-vs-setimmediate](https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick/#process-nexttick-vs-setimmediate)
 
