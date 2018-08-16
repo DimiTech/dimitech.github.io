@@ -27,7 +27,7 @@ Let's get on with it:
 3. [Can we require local files without using relative paths?](#3-can-we-require-local-files-without-using-relative-paths)
 4. [What is the Event Loop? Is it part of V8?](#4-what-is-the-event-loop-is-it-part-of-v8)
 5. [What is the Call Stack? Is it part of V8?](#5-what-is-the-call-stack-is-it-part-of-v8)
-6. What is the difference between setImmediate and process.nextTick?
+6. [What is the difference between setImmediate and process.nextTick?](#6-what-is-the-difference-between-setimmediate-and-processnexttick)
 7. How do you make an asynchronous function return a value?
 8. Can callbacks be used with promises or is it one way or the other?
 9. What are the major differences between spawn, exec, and fork?
@@ -315,6 +315,8 @@ Instead of explaining the event loop myself in a blog post, I will point you to 
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/zphcsoSJMvM" frameborder="0" allowfullscreen></iframe>
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/sGTRmPiXD4Y" frameborder="0" allowfullscreen></iframe>
+
 
 ## 5. What is the Call Stack? Is it part of V8?
 
@@ -360,3 +362,16 @@ implementation for yourself: [https://github.com/v8/v8](https://github.com/v8/v8
 Links:
 [https://developer.mozilla.org/en-US/docs/Glossary/Call_stack](https://developer.mozilla.org/en-US/docs/Glossary/Call_stack)
 
+6. What is the difference between setImmediate and process.nextTick?
+
+The answer is somewhat contrived so I recommend watching all of the videos
+listed at the end of the [What is the Event Loop? Is it part of V8?](#4-what-is-the-event-loop-is-it-part-of-v8)
+answer.
+
+*The simplistic answer would be:*
+
+`process.nextTick()` will fire "immediately", while `setImmediate()` will fire
+after it, most likely in the next event loop iteration (even though their names
+suggest otherwise).
+
+7. 
