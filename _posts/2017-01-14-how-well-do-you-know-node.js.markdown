@@ -26,7 +26,7 @@ Let's get on with it:
 2. [When exporting the API of a Node module, why can we sometimes use exports and other times we have to use module.exports?](#2-when-exporting-the-api-of-a-node-module-why-can-we-sometimes-use-exports-and-other-times-we-have-to-use-moduleexports)
 3. [Can we require local files without using relative paths?](#3-can-we-require-local-files-without-using-relative-paths)
 4. [What is the Event Loop? Is it part of V8?](#4-what-is-the-event-loop-is-it-part-of-v8)
-5. What is the Call Stack? Is it part of V8?
+5. [What is the Call Stack? Is it part of V8?](#what-is-the-call-stack-is-it-part-of-v8)
 6. What is the difference between setImmediate and process.nextTick?
 7. How do you make an asynchronous function return a value?
 8. Can callbacks be used with promises or is it one way or the other?
@@ -283,11 +283,11 @@ let testModuleAgain = require('/home/dusan/Desktop/test-module.js')
 Relative paths are way more clean and readable but we also have the absolute path option if it's necessary.
 
 The cleaner way to use absolute paths is:
-{% highlight javascript %}
+```javascript
 // `require`-ing a module using the absolute path and the `path` native module.
 let path       = require('path')
 let testModule = require(path.join(__dirname, 'test-module.js'))
-{% endhighlight %}
+```
 
 *Can we require local files without using relative paths?* - the answer is **YES.**
 
@@ -295,11 +295,12 @@ let testModule = require(path.join(__dirname, 'test-module.js'))
 ## 4. What is the Event Loop? Is it part of V8?
 
 Node.js is built on top of Google's V8 JavaScript engine.
-The event loop is **NOT** a part of the V8 engine. The event loop is provided to Node.js by it's C dependency called `libuv`:
+The event loop is **NOT** a part of the V8 engine. The event loop is provided to Node.js by its C dependency called `libuv`:
 
 It could be probably made to work on SpiderMonkey or some other JS engine but currently, as far as I know, it only works on V8.
 
-[https://github.com/nodejs/node/tree/master/deps/uv](https://github.com/nodejs/node/tree/master/deps/uv){:target="_blank"}
+[https://github.com/nodejs/node/tree/master/deps/uv](https://github.com/nodejs/node/tree/master/deps/uv)
+[https://nikhilm.github.io/uvbook/](https://nikhilm.github.io/uvbook/)
 
 Instead of explaining the event loop myself in a blog post, I will point you to a couple of much better learning resources.
 
@@ -315,4 +316,49 @@ Instead of explaining the event loop myself in a blog post, I will point you to 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/P9csgxBgaZ8" frameborder="0" allowfullscreen></iframe>
 
 
-### **2 questions and their answers are added every day...**
+## 5. What is the Call Stack? Is it part of V8?
+
+JavaScript's call stack is no different than any different than the call stack
+in any other popular programming language. It's just a LIFO (Last In, First Out)
+stack data structure onto which we push function calls, which get popped off the
+stack after they return.
+
+Having too many "frames" on the stack causes the infamous **Stack Overflow**:
+
+```javascript
+(function overflow() {
+  overflow()
+})()
+
+// RangeError: Maximum call stack size exceeded
+```
+
+The important thing to know is that Node.js is "async-first", meaning that most
+of the Node.js interfaces will be asynchronous in nature. We pass some sort of
+callback functions into these async calls, and those functions are not pushed to
+the stack immediately. Only after the callbacks are ready to be fired - they get
+added to the message queue. The event loop will take the callbacks from the
+message queue and push then onto the stack when it sees that the stack is free
+(empty).
+
+To answer the second question - is the Call Stack a part of the V8 engine? **YES**.
+
+How do you know?
+
+**Proof #1** - if you run:
+
+```bash
+node --v8-options
+```
+
+... you will see quite a bit of options available, including the stack-related
+ones such as `--stack_size`, `--stack_trace_limit`, etc...
+
+**Proof #2** - [https://github.com/v8/v8/wiki/Stack-Trace-API](https://github.com/v8/v8/wiki/Stack-Trace-API)
+
+If you're good with C++ you can dive into the v8 source code and see the
+implementation for yourself: [https://github.com/v8/v8](https://github.com/v8/v8)
+
+Links:
+[https://developer.mozilla.org/en-US/docs/Glossary/Call_stack](https://developer.mozilla.org/en-US/docs/Glossary/Call_stack)
+
