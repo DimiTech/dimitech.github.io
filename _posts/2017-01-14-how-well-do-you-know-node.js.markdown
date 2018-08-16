@@ -26,7 +26,7 @@ Let's get on with it:
 2. [When exporting the API of a Node module, why can we sometimes use exports and other times we have to use module.exports?](#2-when-exporting-the-api-of-a-node-module-why-can-we-sometimes-use-exports-and-other-times-we-have-to-use-moduleexports)
 3. [Can we require local files without using relative paths?](#3-can-we-require-local-files-without-using-relative-paths)
 4. [What is the Event Loop? Is it part of V8?](#4-what-is-the-event-loop-is-it-part-of-v8)
-5. [What is the Call Stack? Is it part of V8?](#what-is-the-call-stack-is-it-part-of-v8)
+5. [What is the Call Stack? Is it part of V8?](#5-what-is-the-call-stack-is-it-part-of-v8)
 6. What is the difference between setImmediate and process.nextTick?
 7. How do you make an asynchronous function return a value?
 8. Can callbacks be used with promises or is it one way or the other?
@@ -307,13 +307,13 @@ Instead of explaining the event loop myself in a blog post, I will point you to 
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/ztspvPYybIY" frameborder="0" allowfullscreen></iframe>
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/8aGhZQkoFbQ" frameborder="0" allowfullscreen></iframe>
-
 <iframe width="560" height="315" src="https://www.youtube.com/embed/cCOL7MC4Pl0" frameborder="0" allowfullscreen></iframe>
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/PNa9OMajw9w" frameborder="0" allowfullscreen></iframe>
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/P9csgxBgaZ8" frameborder="0" allowfullscreen></iframe>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/zphcsoSJMvM" frameborder="0" allowfullscreen></iframe>
 
 
 ## 5. What is the Call Stack? Is it part of V8?
@@ -336,10 +336,8 @@ Having too many "frames" on the stack causes the infamous **Stack Overflow**:
 The important thing to know is that Node.js is "async-first", meaning that most
 of the Node.js interfaces will be asynchronous in nature. We pass some sort of
 callback functions into these async calls, and those functions are not pushed to
-the stack immediately. Only after the callbacks are ready to be fired - they get
-added to the message queue. The event loop will take the callbacks from the
-message queue and push then onto the stack when it sees that the stack is free
-(empty).
+the stack immediately. After the callbacks are ready to be fired - the event
+loop will push them (along with their data) onto the stack.
 
 To answer the second question - is the Call Stack a part of the V8 engine? **YES**.
 
