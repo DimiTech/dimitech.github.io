@@ -294,8 +294,13 @@ let testModule = require(path.join(__dirname, 'test-module.js'))
 
 ## 4. What is the Event Loop? Is it part of V8?
 
-Node.js is built on top of Google's V8 JavaScript engine.
-The event loop is **NOT** a part of the V8 engine. The event loop is provided to Node.js by its C dependency called `libuv`:
+To avoid copy-pasting, I'll forward you to the official documentation:
+
+[https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick/#what-is-the-event-loop](https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick/#what-is-the-event-loop)
+
+Even though Node.js is built on top of Google's V8 JavaScript engine, the event
+loop itself is **NOT** a part of the V8 engine. The event loop is provided to
+Node.js by its C dependency called `libuv`:
 
 It could be probably made to work on SpiderMonkey or some other JS engine but currently, as far as I know, it only works on V8.
 
