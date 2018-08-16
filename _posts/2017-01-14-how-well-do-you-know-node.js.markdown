@@ -374,4 +374,9 @@ answer.
 after it, most likely in the next event loop iteration (even though their names
 suggest otherwise).
 
+It is also helpful to read the official Node.js documentation regarding these
+topics:
+
+[https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick/](https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick/)
+
 7. 
