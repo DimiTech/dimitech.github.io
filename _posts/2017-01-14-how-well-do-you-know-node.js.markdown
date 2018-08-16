@@ -362,7 +362,7 @@ implementation for yourself: [https://github.com/v8/v8](https://github.com/v8/v8
 Links:
 [https://developer.mozilla.org/en-US/docs/Glossary/Call_stack](https://developer.mozilla.org/en-US/docs/Glossary/Call_stack)
 
-6. What is the difference between setImmediate and process.nextTick?
+## 6. What is the difference between setImmediate and process.nextTick?
 
 The answer is somewhat contrived so I recommend watching all of the videos
 listed at the end of the [What is the Event Loop? Is it part of V8?](#4-what-is-the-event-loop-is-it-part-of-v8)
@@ -379,4 +379,4 @@ topics:
 
 [https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick/](https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick/)
 
-7. How do you make an asynchronous function return a value?
+## 7. How do you make an asynchronous function return a value?
