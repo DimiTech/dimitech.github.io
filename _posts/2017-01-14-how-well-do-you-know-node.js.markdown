@@ -32,7 +32,7 @@ Let's get on with it:
 8. [Can callbacks be used with promises or is it one way or the other?](#8-can-callbacks-be-used-with-promises-or-is-it-one-way-or-the-other)
 9. [What are the major differences between spawn, exec, and fork?](#9-what-are-the-major-differences-between-spawn-exec-and-fork)
 10. [How does the cluster module work? How is it different than using a load balancer?](#10-how-does-the-cluster-module-work-how-is-it-different-than-using-a-load-balancer)
-11. What are the --harmony-* flags?
+11. [What are the --harmony-* flags?](#11-what-are-the-harmony-flags)
 12. How can you read and inspect the memory usage of a Node.js process?
 13. Can reverse-search in commands history be used inside Node’s REPL?
 14. What are V8 object and function templates?
@@ -466,3 +466,41 @@ Great blog post on the subject:
 - [https://medium.freecodecamp.org/node-js-child-processes-everything-you-need-to-know-e69498fe970a](https://medium.freecodecamp.org/node-js-child-processes-everything-you-need-to-know-e69498fe970a)
 
 ## 10. How does the cluster module work? How is it different than using a load balancer?
+
+By default Node.js uses a single CPU core, which is not that fast or efficient.
+The **cluster** module "spreads" a Node.js program across many CPU cores by
+creating a child process for each core. This greatly improves the capacity of
+the application running on a single machine.
+
+Here's how a Node.js cluster on an 8-core CPU looks like in the Linux process
+tree:
+```
+|-node-+-8*[nodejs-+-4*[{V8 WorkerThread}]]
+|      |           `-{nodejs}]
+|      |-4*[{V8 WorkerThread}]
+|      `-{node}
+```
+
+A **load balancer** usually runs on a separate machine and (both _Layer 4_ and
+_Layer 7_ load balancers) are slower because of this fact that they are
+communicating with the applications via the network.
+
+The main difference is that **cluster** utilizes and leverages multiple CPUs on
+a single machine while **load balancers** leverage copies of the same
+application running on multiple machines.
+
+That being said, **clustering** is a vertical scaling and **load balancing** is
+more of a horizontal scaling technique. Vertical scaling can only go as far as
+hardware allows it while horizontal scaling can go much much further. A
+combination of both can be utilized as well.
+
+In a cloud-native, Docker based infrastructure, **cluster**ing is unnecessary
+since we are most likely running each application inside a container, running on
+a single-core VM. In this case - horizontal scaling can be achieved using Docker
+Swarm or Kubernetes clustering features.
+
+Node.js Cluster documentation:
+- [https://nodejs.org/api/cluster.html](https://nodejs.org/api/cluster.html)
+
+
+## 11. What are the --harmony-* flags?
