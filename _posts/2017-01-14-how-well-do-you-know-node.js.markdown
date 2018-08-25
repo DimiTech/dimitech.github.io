@@ -33,7 +33,7 @@ Let's get on with it:
 9. [What are the major differences between spawn, exec, and fork?](#9-what-are-the-major-differences-between-spawn-exec-and-fork)
 10. [How does the cluster module work? How is it different than using a load balancer?](#10-how-does-the-cluster-module-work-how-is-it-different-than-using-a-load-balancer)
 11. [What are the --harmony-* flags?](#11-what-are-the---harmony--flags)
-12. How can you read and inspect the memory usage of a Node.js process?
+12. [How can you read and inspect the memory usage of a Node.js process?](#12-how-can-you-read-and-inspect-the-memory-usage-of-a-nodejs-process)
 13. Can reverse-search in commands history be used inside Node’s REPL?
 14. What are V8 object and function templates?
 15. What is libuv and how does Node.js use it?
@@ -504,3 +504,36 @@ Node.js Cluster documentation:
 
 
 ## 11. What are the `--harmony-*` flags?
+
+Node.js runs on modern versions of V8 by default, and new ECMAScript features
+are being brought in V8 all the time.
+
+`--harmony` is a Node.js runtime flag which enables **staged** ECMAScript
+features to be used in the Node.js application.
+
+There are a whole lot of `--harmony_*` flags as well, which enable single **in
+progress** ECMAScript features to be used in Node.js. You can get a list of
+those by running `node --v8-options | grep "in progress"`
+
+Here are the available `--harmony_*` flags at the moment of writing this blog
+post:
+
+```bash
+$ node --v8-options | grep "in progress"
+--harmony_array_prototype_values (enable "harmony Array.prototype.values" (in progress))
+--harmony_function_sent (enable "harmony function.sent" (in progress))
+--harmony_sharedarraybuffer (enable "harmony sharedarraybuffer" (in progress))
+--harmony_simd (enable "harmony simd" (in progress))
+--harmony_do_expressions (enable "harmony do-expressions" (in progress))
+--harmony_restrictive_generators (enable "harmony restrictions on generator declarations" (in progress))
+--harmony_regexp_named_captures (enable "harmony regexp named captures" (in progress))
+--harmony_regexp_property (enable "harmony unicode regexp property classes" (in progress))
+--harmony_for_in (enable "harmony for-in syntax" (in progress))
+--harmony_trailing_commas (enable "harmony trailing commas in function parameter lists" (in progress))
+--harmony_class_fields (enable "harmony public fields in class literals" (in progress))
+```
+
+The best reference regarding `--harmony` flags:
+- [https://nodejs.org/en/docs/es6/](https://nodejs.org/en/docs/es6/)
+
+## 12. How can you read and inspect the memory usage of a Node.js process?
