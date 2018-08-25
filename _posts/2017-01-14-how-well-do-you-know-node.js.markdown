@@ -515,6 +515,9 @@ There are a whole lot of `--harmony_*` flags as well, which enable single **in
 progress** ECMAScript features to be used in Node.js. You can get a list of
 those by running `node --v8-options | grep "in progress"`
 
+I would avoid using `--harmony` flags in production. They should just be used to
+play around with upcoming language features.
+
 Here are the available `--harmony_*` flags at the moment of writing this blog
 post:
 
