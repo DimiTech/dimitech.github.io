@@ -31,7 +31,7 @@ Let's get on with it:
 7. [How do you make an asynchronous function return a value?](#7-how-do-you-make-an-asynchronous-function-return-a-value)
 8. [Can callbacks be used with promises or is it one way or the other?](#8-can-callbacks-be-used-with-promises-or-is-it-one-way-or-the-other)
 9. [What are the major differences between spawn, exec, and fork?](#9-what-are-the-major-differences-between-spawn-exec-and-fork)
-10. How does the cluster module work? How is it different than using a load balancer?
+10. [How does the cluster module work? How is it different than using a load balancer?](#10-how-does-the-cluster-module-work-how-is-it-different-than-using-a-load-balancer)
 11. What are the --harmony-* flags?
 12. How can you read and inspect the memory usage of a Node.js process?
 13. Can reverse-search in commands history be used inside Node’s REPL?
@@ -396,4 +396,72 @@ Node 8 introduced `util.promisify()` which can be handy for converting a
 Callback based function into a Promise based one.
 
 ## 9. What are the major differences between spawn, exec, and fork?
+
+Each one is suitable for a different set of tasks. **exec** and **fork** are
+implemented on top of **spawn** and they exist to provide a more specialized
+interface to the user.
+
+**spawn** is the most general child-process creation mechanism in Node.js, with
+pipes for **stdin**, **stdout**, and **stderr** automatically established
+between the Node.js program and it's spawned child process. The spawned process
+can be ran in a _subshell_ but by default - it's not. Good for creating
+processes which produce streams of data.
+
+**exec** is well suited for for spawning processes in a _subshell_ which run to
+completion and return the result after the child process terminates. Good for
+invoking shell commands. There is a slight performance penalty of having to
+create a _subshell_. Also beware of the security risks of running arbitrary
+shell commands using **exec**.
+
+**fork** is used specifically to spawn new **Node.js processes**. The created
+child process will have an additional IPC (Inter-process communication) channel
+built-in that allows messages to be passed back and forth between the parent and
+child. **fork** is great for offloading data handling, heavy computation,
+"clustering", etc...
+
+Here's how processes created by **spawn**, **exec** and **fork** look like in
+the Linux process tree:
+
+**Regular** Node.js process (no child processes):
+```
+|-node-+-4*[{V8 WorkerThread}]
+|      `-{node}`
+```
+
+**spawn**
+```
+|-node-+-ping
+|      |-4*[{V8 WorkerThread}]
+|      `-{node}
+```
+The `ping` command is **spawn**ed.
+
+**exec**
+```
+|-node-+-sh---sleep
+|      |-4*[{V8 WorkerThread}]
+|      `-{node}
+```
+Here we can clearly see the _subshell_ that's created on the fly by **exec**
+(`sh`), and the command that is running inside it (`sleep`).
+
+**fork**
+```
+|-node-+-nodejs-+-4*[{V8 WorkerThread}]
+|      |        `-{nodejs}
+|      |-4*[{V8 WorkerThread}]
+|      `-{node}
+```
+Here we can clearly see how **fork** created a new Node.js child process.
+
+**Useful links**
+
+For more details I would recommend the official Node.js documentation:
+[https://nodejs.org/api/child_process.html](https://nodejs.org/api/child_process.html)
+
+More on IPC:
+[https://en.wikipedia.org/wiki/Inter-process_communication](https://en.wikipedia.org/wiki/Inter-process_communication)
+
+Great blog post on the subject:
+[https://medium.freecodecamp.org/node-js-child-processes-everything-you-need-to-know-e69498fe970a](https://medium.freecodecamp.org/node-js-child-processes-everything-you-need-to-know-e69498fe970a)
 
