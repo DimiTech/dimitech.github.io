@@ -32,7 +32,7 @@ Let's get on with it:
 8. [Can callbacks be used with promises or is it one way or the other?](#8-can-callbacks-be-used-with-promises-or-is-it-one-way-or-the-other)
 9. [What are the major differences between spawn, exec, and fork?](#9-what-are-the-major-differences-between-spawn-exec-and-fork)
 10. [How does the cluster module work? How is it different than using a load balancer?](#10-how-does-the-cluster-module-work-how-is-it-different-than-using-a-load-balancer)
-11. [What are the --harmony-* flags?](#11-what-are-the-harmony-flags)
+11. [What are the --harmony-* flags?](#11-what-are-the---harmony--flags)
 12. How can you read and inspect the memory usage of a Node.js process?
 13. Can reverse-search in commands history be used inside Node’s REPL?
 14. What are V8 object and function templates?
