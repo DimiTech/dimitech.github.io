@@ -469,8 +469,8 @@ Great blog post on the subject:
 
 By default Node.js uses a single CPU core, which is not that fast or efficient.
 The **cluster** module "spreads" a Node.js program across many CPU cores by
-creating a child process for each core. This greatly improves the capacity of
-the application running on a single machine.
+creating a child process for each core (if you choose so). This greatly improves
+the capacity of the application running on a single machine.
 
 Here's how a Node.js cluster on an 8-core CPU looks like in the Linux process
 tree:
@@ -482,7 +482,7 @@ tree:
 ```
 
 A **load balancer** usually runs on a separate machine and (both _Layer 4_ and
-_Layer 7_ load balancers) are slower because of this fact that they are
+_Layer 7_ load balancers) are slower because of the fact that they are
 communicating with the applications via the network.
 
 The main difference is that **cluster** utilizes and leverages multiple CPUs on
@@ -491,8 +491,8 @@ application running on multiple machines.
 
 That being said, **clustering** is a vertical scaling and **load balancing** is
 more of a horizontal scaling technique. Vertical scaling can only go as far as
-hardware allows it while horizontal scaling can go much much further. A
-combination of both can be utilized as well.
+hardware allows it while horizontal scaling can go much, much further. A
+combination of both can be deployed as well.
 
 In a cloud-native, Docker based infrastructure, **cluster**ing is unnecessary
 since we are most likely running each application inside a container, running on
@@ -503,4 +503,4 @@ Node.js Cluster documentation:
 - [https://nodejs.org/api/cluster.html](https://nodejs.org/api/cluster.html)
 
 
-## 11. What are the --harmony-* flags?
+## 11. What are the `--harmony-*` flags?
