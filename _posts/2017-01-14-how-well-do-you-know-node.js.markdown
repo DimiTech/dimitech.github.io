@@ -457,11 +457,12 @@ Here we can clearly see how **fork** created a new Node.js child process.
 **Useful links**
 
 For more details I would recommend the official Node.js documentation:
-[https://nodejs.org/api/child_process.html](https://nodejs.org/api/child_process.html)
+- [https://nodejs.org/api/child_process.html](https://nodejs.org/api/child_process.html)
 
 More on IPC:
-[https://en.wikipedia.org/wiki/Inter-process_communication](https://en.wikipedia.org/wiki/Inter-process_communication)
+- [https://en.wikipedia.org/wiki/Inter-process_communication](https://en.wikipedia.org/wiki/Inter-process_communication)
 
 Great blog post on the subject:
-[https://medium.freecodecamp.org/node-js-child-processes-everything-you-need-to-know-e69498fe970a](https://medium.freecodecamp.org/node-js-child-processes-everything-you-need-to-know-e69498fe970a)
+- [https://medium.freecodecamp.org/node-js-child-processes-everything-you-need-to-know-e69498fe970a](https://medium.freecodecamp.org/node-js-child-processes-everything-you-need-to-know-e69498fe970a)
 
+## 10. How does the cluster module work? How is it different than using a load balancer?
