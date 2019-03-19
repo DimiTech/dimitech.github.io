@@ -22,7 +22,7 @@ $ ls
 secret.txt
 ```
 
-## 1. Zip
+# 1. Zip
 
 `zip` is a utility that comes with most popular UNIX derivatives, so no need to
 even install anything. You can check if you have it by running:
@@ -66,7 +66,7 @@ $ rm secret.zip
 
 That's as simple as it gets.
 
-### UX and Security
+## UX and Security
 
 `zip` is extremely easy to use and in most cases requires no installation or
 setup.
@@ -91,13 +91,13 @@ keyloggers and audio surveillance (smartphones, laptop or hidden mics), so you
 should keep in mind that this is not the best way to share information that is
 a matter of life or death.
 
-#### Verdict:
+### Verdict:
 ```
 Security : 5
 UX       : 10
 ```
 
-## 2. ccrypt
+# 2. ccrypt
 
 `ccrypt` is a nice and easy tool designed for secret sharing.
 
@@ -127,7 +127,7 @@ $ ls
 secret.txt
 ```
 
-### UX and Security
+## UX and Security
 
 `ccrypt` is extremely simple and easy to set up and use.
 
@@ -137,7 +137,7 @@ the original file on disk, leaving no way to recover it afterwards.
 Aside from that - it shares the same security challenges as the previous method
 since we're again dealing with passwords.
 
-#### Verdict:
+### Verdict:
 ```
 Security : 6.5
 UX       : 10
