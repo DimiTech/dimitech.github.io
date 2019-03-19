@@ -1,5 +1,3 @@
-# Sharing Secrets Securely
-
 As a developer|sysadmin|devops or almost any other kind of IT person you are
 going to need to share some secret information with your colleagues at some
 point. Think passwords, DB credentials, AWS credentials... extremely sensitive
