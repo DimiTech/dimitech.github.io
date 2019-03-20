@@ -3,6 +3,7 @@ layout: post
 title:  ""
 description: "Brief overview of how to securely send secret files"
 tags: [UNIX, Encryption, Credentials]
+
 ---
 
 As a developer|sysadmin|devops or almost any other kind of IT person you are
