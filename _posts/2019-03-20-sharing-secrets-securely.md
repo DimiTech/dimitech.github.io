@@ -143,3 +143,151 @@ since we're again dealing with passwords.
 Security : 6.5
 UX       : 10
 ```
+
+# 3. OpenSSL/LibreSSL
+
+*OpenSSL* has recieved some pretty negative publicity in the past because of
+its shortcomings (see - [heartbleed](http://heartbleed.com/)). The programmers
+who worked on it dispersed which made the *OpenSSL* development stop. That's
+why we will use *LibreSSL* instead.
+
+As [the LibreSSL website](https://www.libressl.org/) states:
+
+> LibreSSL is a version of the TLS/crypto stack forked from OpenSSL in 2014, with
+goals of modernizing the codebase, improving security, and applying best
+practice development processes.
+
+## Installation
+
+*OpenSSL* comes with most UNIX-like derivatives, and some of them have upgraded
+to *LibreSSL*.
+
+The [LibreSSL GitHub README](https://github.com/libressl-portable/portable#compatibility-with-openssl) says:
+
+> LibreSSL is API compatible with OpenSSL 1.0.1, but does not yet include all
+new APIs from OpenSSL 1.0.2 and later. LibreSSL also includes APIs not yet
+present in OpenSSL. The current common API subset is OpenSSL 1.0.1.
+
+What this means, for the purpose of this article, is that you can use either
+*OpenSSL* or *LibreSSL*. Commands I use below are the same for both.
+
+If neither one of those are present on your system, the installation is pretty
+straight-forward for both, so pick one (*LibreSSL* if you can't decide) and
+let's get on with it.
+
+## Usage - Simple
+
+Let's start with the simplest possible example, using the AES-256 cypher.
+
+```
+$ openssl enc -aes-256-ctr -in secret.txt -out secret.txt.enc
+enter aes-256-ctr encryption password:
+Verifying - enter aes-256-ctr encryption password:
+```
+
+We now have an encrypted file that we can send to the recepient.
+```
+$ ls
+secret.txt     secret.txt.enc
+```
+
+#TODO: Add a real way to delete/overwrite files.
+Notice that the original file is still there. Let's (naively) delete it:
+```
+$ rm secret.txt
+```
+
+Use the `-d` flag to decrypt and enter the decryption password:
+```
+$ openssl enc -aes-256-ctr -d -in secret.txt.enc -out secret.txt
+enter aes-256-ctr decryption password:
+$ cat secret.txt
+USER: dusan
+PASS: password123
+```
+
+This is as simple as it gets and it's not much more secure than using `zip`.
+
+It can be made more secure by using and *AES key* and that would prevent brute
+force attacks.
+
+# TODO: Write how to do this!
+
+## Usage - Normal
+
+### Generating an asymmetric key pair
+
+*Up until now we have been dealing with `symmetric` encryption - meaning that
+both parties share a same key, which is used both for encryption and decryption.*
+
+*From this point forward, we are going to use `asymmetric` encryption, meaning
+that there are 2 keys involved - one for encryption (public key) and the other one
+for decryption (private key).*
+
+Let's start by generating the *private/public* key pair.
+
+I'll generate an *RSA 4096 bit* private key first:
+```
+$ openssl genrsa -out privkey.pem 4096
+```
+
+*NOTICE:* The private key should be kept in a very safe place! Never share it
+with anyone. It should absolutely always stay only on your machine. I will go
+one step forward and encrypt the private key itself with a password:
+```
+$ openssl rsa -in privkey.pem -aes-256-ctr -out privkey.pem.enc
+```
+
+#TODO: Add a real way to delete/overwrite files.
+
+Delete the unencrypted private key (naively):
+```
+$ rm privkey.pem
+```
+
+Now, for the second part, I derive the *public key* from the previously created
+and encrypted *private key*:
+```
+$ openssl rsa -in privkey.pem.enc -pubout -out pubkey.pem
+```
+
+### Encryption/Decryption
+
+If you want someone to send you an encrypted file, you need to give them your
+public key. Use a "secure" channel transfer it to them.
+
+Now, the other person (who also has *LibreSSL* or *OpenSSL* installed) can use
+your public key to encrypt a file and send it to you:
+```
+$ openssl rsautl -encrypt -in secret.txt -pubin -inkey pubkey.pem -out secret.txt.enc
+```
+
+After you receive the encrypted file, use your encrypted private key to decrypt
+it:
+```
+$ openssl rsautl -decrypt -in secret.txt.enc -out secret.txt -inkey privkey.pem.enc
+Enter pass phrase for privkey.pem.enc:
+```
+
+Enter the password for decrypting your private key and you're done!
+
+```
+$ cat secret.txt
+USER: dusan
+PASS: password123
+```
+
+## Verdict:
+
+*Normal usage:*
+```
+Security : 5.5
+UX       : 8
+```
+
+*Simple usage:*
+```
+Security : 9
+UX       : 7
+```
+
