@@ -30,11 +30,11 @@ $ ls
 secret.txt
 ```
 
-Content:
-1. [Zip](#1-zip)
-2. [ccrypt](#2-ccrypt)
-3. [OpenSSL/LibreSSL](#3-openssllibressl)
-4. [GnuPG](#4-gnupg)
+## Content:
+## 1. [Zip](#1-zip)
+## 2. [ccrypt](#2-ccrypt)
+## 3. [OpenSSL/LibreSSL](#3-openssllibressl)
+## 4. [GnuPG](#4-gnupg)
 
 
 # 1. Zip
