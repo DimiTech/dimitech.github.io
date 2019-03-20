@@ -153,10 +153,10 @@ UX       : 10
 
 # 3. OpenSSL/LibreSSL
 
-_OpenSSL_ has recieved some pretty negative publicity in the past because of
+**OpenSSL** has recieved some pretty negative publicity in the past because of
 its shortcomings (see - [heartbleed](http://heartbleed.com/)). The programmers
-who worked on it dispersed which made the _OpenSSL_ development stop. That's
-why we will use _LibreSSL_ instead.
+who worked on it dispersed which made the **OpenSSL** development stop. That's
+why we will use **LibreSSL** instead.
 
 As [the LibreSSL website](https://www.libressl.org/) states:
 
@@ -166,8 +166,8 @@ practice development processes.
 
 ## Installation
 
-_OpenSSL_ comes with most UNIX-like derivatives, and some of them have upgraded
-to _LibreSSL_.
+**OpenSSL** comes with most UNIX-like derivatives, and some of them have upgraded
+to **LibreSSL**.
 
 The [LibreSSL GitHub README](https://github.com/libressl-portable/portable#compatibility-with-openssl) says:
 
@@ -176,10 +176,10 @@ new APIs from OpenSSL 1.0.2 and later. LibreSSL also includes APIs not yet
 present in OpenSSL. The current common API subset is OpenSSL 1.0.1.
 
 What this means, for the purpose of this article, is that you can use either
-_OpenSSL_ or _LibreSSL_. Commands I use below are the same for both.
+**OpenSSL** or **LibreSSL**. Commands I use below are the same for both.
 
 If neither one of those are present on your system, the installation is pretty
-straight-forward for both, so pick one (_LibreSSL_ if you can't decide) and
+straight-forward for both, so pick one (**LibreSSL** if you can't decide) and
 let's get on with it.
 
 ## Usage - Simple
@@ -215,7 +215,7 @@ PASS: password123
 
 This is as simple as it gets and it's not much more secure than using `zip`.
 
-It can be made more secure by using and _AES key_ and that would prevent brute
+It can be made more secure by using and **AES key** and that would prevent brute
 force attacks.
 
 # TODO: Write how to do this!
@@ -224,21 +224,21 @@ force attacks.
 
 ### Generating an asymmetric key pair
 
-_Up until now we have been dealing with `symmetric` encryption - meaning that
-both parties share a same key, which is used both for encryption and decryption._
+**Up until now we have been dealing with `symmetric` encryption - meaning that
+both parties share a same key, which is used both for encryption and decryption.**
 
-_From this point forward, we are going to use `asymmetric` encryption, meaning
+**From this point forward, we are going to use `asymmetric` encryption, meaning
 that there are 2 keys involved - one for encryption (public key) and the other one
-for decryption (private key)._
+for decryption (private key).**
 
-Let's start by generating the _private/public_ key pair.
+Let's start by generating the **private/public** key pair.
 
-I'll generate an _RSA 4096 bit_ private key first:
+I'll generate an **RSA 4096 bit** private key first:
 ```
 $ openssl genrsa -out privkey.pem 4096
 ```
 
-_NOTICE:_ The private key should be kept in a very safe place! Never share it
+**NOTICE:** The private key should be kept in a very safe place! Never share it
 with anyone. It should absolutely always stay only on your machine. I will go
 one step forward and encrypt the private key itself with a password:
 ```
@@ -252,8 +252,8 @@ Delete the unencrypted private key (naively):
 $ rm privkey.pem
 ```
 
-Now, for the second part, I derive the _public key_ from the previously created
-and encrypted _private key_:
+Now, for the second part, I derive the **public key** from the previously created
+and encrypted **private key**:
 ```
 $ openssl rsa -in privkey.pem.enc -pubout -out pubkey.pem
 ```
@@ -263,7 +263,7 @@ $ openssl rsa -in privkey.pem.enc -pubout -out pubkey.pem
 If you want someone to send you an encrypted file, you need to give them your
 public key. Use a "secure" channel transfer it to them.
 
-Now, the other person (who also has _LibreSSL_ or _OpenSSL_ installed) can use
+Now, the other person (who also has **LibreSSL** or **OpenSSL** installed) can use
 your public key to encrypt a file and send it to you:
 ```
 $ openssl rsautl -encrypt -in secret.txt -pubin -inkey pubkey.pem -out secret.txt.enc
@@ -286,16 +286,17 @@ PASS: password123
 
 ## Verdict:
 
-_Normal usage:_
+**Normal usage**:
 ```
 Security : 5.5
 UX       : 8
 ```
 
-_Simple usage:_
+**Simple usage**:
 ```
 Security : 9
 UX       : 7
 ```
 
 # 4. GnuPG
+
