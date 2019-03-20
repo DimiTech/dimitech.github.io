@@ -15,8 +15,8 @@ $ cd ~
 $ mkdir secret_sharing/
 $ cd secret_sharing/
 $ cat << _EOF_ >> ./secret.txt
-super secret text
-password123
+USER: dusan
+PASS: password123
 _EOF_
 $ ls
 secret.txt
@@ -24,8 +24,9 @@ secret.txt
 
 # 1. Zip
 
-`zip` is a utility that comes with most popular UNIX derivatives, so no need to
-even install anything. You can check if you have it by running:
+`zip` is a utility that comes with most popular UNIX derivatives, so there is 
+most likely no need to even install anything. You can check if you have it by
+running:
 
 ```bash
 zip --version
@@ -73,15 +74,15 @@ setup.
 
 There are a couple of problems with this method though. It only works well if
 the person that you want to share the secret file is physically near you so you
-can actually verbally share the decryption password.
+can verbally share the decryption password with them.
 
 You can also use this method to share secret files with people that are not in
 your physical vicinity - by sending them the password over some different
 channel than the one that you used to send the encrypted file to them.
 
 Let's say that you have sent the compressed/encrypted file to the recipient in
-an Email attachment. There are a couple of ways to send the password, here are
-2 ideas:
+an Email attachment. There are a couple of ways to pretty securely send the
+decryption password, here are 2 ideas:
 
 1. Call them using some E2E encrypted VoIP application and tell them the password
 2. Send the password using some E2E encrypted chat application, preferrably with message auto-expiry
@@ -91,7 +92,7 @@ keyloggers and audio surveillance (smartphones, laptop or hidden mics), so you
 should keep in mind that this is not the best way to share information that is
 a matter of life or death.
 
-### Verdict:
+## Verdict:
 ```
 Security : 5
 UX       : 10
@@ -137,7 +138,7 @@ the original file on disk, leaving no way to recover it afterwards.
 Aside from that - it shares the same security challenges as the previous method
 since we're again dealing with passwords.
 
-### Verdict:
+## Verdict:
 ```
 Security : 6.5
 UX       : 10
