@@ -83,8 +83,8 @@ Let's say that you have sent the compressed/encrypted file to the recipient in
 an Email attachment. There are a couple of ways to send the password, here are
 2 ideas:
 
-1) Call them using some E2E encrypted VoIP application and tell them the password
-2) Send the password using some E2E encrypted chat application, preferrably with message auto-expiry
+1. Call them using some E2E encrypted VoIP application and tell them the password
+2. Send the password using some E2E encrypted chat application, preferrably with message auto-expiry
 
 One of the big security risks with symmetric, password based secret sharing are
 keyloggers and audio surveillance (smartphones, laptop or hidden mics), so you
