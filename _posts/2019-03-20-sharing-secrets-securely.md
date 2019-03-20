@@ -296,13 +296,13 @@ PASS: password123
 
 ## Verdict:
 
-**Normal usage**:
+**Simple usage**:
 ```
 Security : 5.5
 UX       : 8
 ```
 
-**Simple usage**:
+**Normal usage**:
 ```
 Security : 9
 UX       : 7
