@@ -1,3 +1,10 @@
+---
+layout: post
+title:  ""
+description: "Brief overview of how to securely send secret files"
+tags: [UNIX, Encryption, Credentials]
+---
+
 As a developer|sysadmin|devops or almost any other kind of IT person you are
 going to need to share some secret information with your colleagues at some
 point. Think passwords, DB credentials, AWS credentials... extremely sensitive
