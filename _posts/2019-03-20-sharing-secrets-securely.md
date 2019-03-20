@@ -59,6 +59,8 @@ $ ls
 secret.txt secret.zip
 ```
 
+#TODO: Add a real way to delete/overwrite files.
+
 Remove the original secret file, since we are going to derive it from the
 zip package:
 ```bash
@@ -226,7 +228,7 @@ This is as simple as it gets and it's not much more secure than using `zip`.
 It can be made more secure by using and **AES key** and that would prevent brute
 force attacks.
 
-# TODO: Write how to do this!
+#TODO: Write how to do this!
 
 ## Usage - Normal
 
