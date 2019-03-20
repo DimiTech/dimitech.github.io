@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  ""
+title:  "Sharing Secrets Securely"
 description: "Brief overview of how to securely send secret files"
 tags: [UNIX, Encryption, Credentials]
 
