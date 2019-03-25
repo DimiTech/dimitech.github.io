@@ -363,7 +363,7 @@ Please specify how long the key should be valid.
     <n>m = key expires in n months
     <n>y = key expires in n years
 Key is valid for? (0) 3m
-Key expires at Mon Jun 17 22:07:00 2019 CEST
+Key expires at Mon Jun 18 22:07:00 2019 CEST
 Is this correct? (y/N) y
 ```
 
