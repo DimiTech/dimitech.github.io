@@ -491,9 +491,10 @@ want. The public key is safe for anyone to see.
 
 ```
 $ gpg --import my_pubkey.gpg
+$ rm my_pubkey.gpg
 $ gpg --encrypt --output secret.txt.enc --recipient dusan_dimitric@yahoo.com secret.txt
 $ ls
-my_pubkey.gpg  secret.txt  secret.txt.enc
+secret.txt  secret.txt.enc
 ```
 
 The sender will send the encrypted file to you, using whichever channel they
@@ -512,7 +513,7 @@ PASS: password123
 
 ## Verdict:
 ```
-Security : 9.9
+Security : 9
 UX       : 7
 ```
 
