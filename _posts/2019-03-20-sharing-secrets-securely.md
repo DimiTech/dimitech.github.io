@@ -300,17 +300,221 @@ PASS: password123
 
 ## Verdict:
 
-**Simple usage**:
+**Symmetric key use case**:
 ```
 Security : 5.5
 UX       : 8
 ```
 
-**Normal usage**:
+**Asymmetric key use case**:
 ```
 Security : 9
 UX       : 7
 ```
 
 # 4. GnuPG
+
+As the `gpg` man page says:
+> `GnuPG` is a tool to provide digital encryption and signing services using the
+OpenPGP standard. `GnuPG` features complete key management and all the bells and
+whistles you would expect from a full OpenPGP implementation.
+
+In short, GnuPG is a tool for secure communication, be it email encryption or
+secure file sharing as in the case of this article.
+
+# TODO: GPG also supports symmetric key encryption...
+
+## Generating a GnuPG private/public key pair
+
+I advise that you use the `gpg --full-gen-key` command for key generation,
+since it's going to offer you the most choice. Running this command will
+prompt you for a couple of input parameters, first of them being the encryption
+algorithm. I will choose `RSA AND RSA`:
+
+```
+$ gpg --full-gen-key
+gpg (GnuPG) 2.2.7; Copyright (C) 2018 Free Software Foundation, Inc.
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+
+Please select what kind of key you want:
+ (1) RSA and RSA (default)
+ (2) DSA and Elgamal
+ (3) DSA (sign only)
+ (4) RSA (sign only)
+Your selection? 1
+```
+
+Next you need to choose the keysize, I will pick `4096 bits` which will make
+it opaque to brute-force attacks:
+```
+RSA keys may be between 1024 and 4096 bits long.
+What keysize do you want? (2048) 4096
+Requested keysize is 4096 bits
+```
+
+For key validity, I suggest using a definite expiry period. For the sake of an
+example I'll choose `3 months`:
+```
+Please specify how long the key should be valid.
+       0 = key does not expire
+    <n>  = key expires in n days
+    <n>w = key expires in n weeks
+    <n>m = key expires in n months
+    <n>y = key expires in n years
+Key is valid for? (0) 3m
+Key expires at Mon Jun 17 22:07:00 2019 CEST
+Is this correct? (y/N) y
+```
+
+Next up, GnuPG is going to ask for some personal info in order to create a user
+ID to go along with the newly created key pair:
+
+1. **Real name:** You can put in whatever you want, but [be sure to use only ASCII
+characters](TODO: Insert link) because otherwise you might introduce bugs.
+2. **Email address:** Self explanatory.
+3. **Comment:** Whatever you want, I just leave this blank.
+
+```
+GnuPG needs to construct a user ID to identify your key.
+
+Real name: Dusan Dimitric
+Email address: dusan_dimitric@yahoo.com
+Comment:
+You selected this USER-ID:
+  "Dusan Dimitric <dusan_dimitric@yahoo.com>"
+
+Change (N)ame, (C)omment, (E)mail or (O)kay/(Q)uit? O
+```
+
+Next you're going to be presented with 2 dialogs where you will choose and
+confirm a passphrase that will protect your private key:
+```
+┌──────────────────────────────────────────────────────┐
+│ Please enter the passphrase to                       │
+│ protect your new key                                 │
+│                                                      │
+│ Passphrase: ***********_____________________________ │
+│                                                      │
+│       <OK>                              <Cancel>     │
+└──────────────────────────────────────────────────────┘
+```
+
+```
+┌──────────────────────────────────────────────────────┐
+│ Please re-enter this passphrase                      │
+│                                                      │
+│ Passphrase: ***********_____________________________ │
+│                                                      │
+│       <OK>                              <Cancel>     │
+└──────────────────────────────────────────────────────┘
+```
+
+The GnuPG manual states:
+
+>From the perspective of security, the passphrase to unlock the private key is
+one of the weakest points in GnuPG (and other public-key encryption systems as
+well) since it is the only protection you have if another individual gets your
+private key.
+
+So choose a good passphrase! And it's a **passphrase** not a **password** so
+you can use whitespace to string multiple words together if you want.
+
+Now to finish generating the keys - generate some precious entropy (as
+instructed) and you're done:
+```
+We need to generate a lot of random bytes. It is a good idea to perform
+some other action (type on the keyboard, move the mouse, utilize the
+disks) during the prime generation; this gives the random number
+generator a better chance to gain enough entropy.
+
+gpg: key 08BDFF7DC22C37D1 marked as ultimately trusted
+gpg: revocation certificate stored as '/home/dusan/.gnupg/openpgp-revocs.d/CF5D0CCA5563381584AD977A08BDFF7DC22C37D1.rev'
+public and secret key created and signed.
+
+pub   rsa4096 2019-03-20 [SC] [expires: 2019-06-18]
+      CF5D0CCA5563381584AD977A08BDFF7DC22C37D1
+uid                      Dusan Dimitric <dusan_dimitric@yahoo.com>
+sub   rsa4096 2019-03-20 [E] [expires: 2019-06-18]
+```
+
+You can now see your newly generated key pair in the keyring:
+```
+$ gpg --list-keys
+gpg: checking the trustdb
+gpg: marginals needed: 3  completes needed: 1  trust model: pgp
+gpg: depth: 0  valid:   1  signed:   0  trust: 0-, 0q, 0n, 0m, 0f, 1u
+gpg: next trustdb check due at 2019-06-18
+/home/dusan/.gnupg/pubring.kbx
+pub   rsa4096 2019-03-20 [SC] [expires: 2019-06-18]
+      CF5D0CCA5563381584AD977A08BDFF7DC22C37D1
+uid           [ultimate] Dusan Dimitric <dusan_dimitric@yahoo.com>
+sub   rsa4096 2019-03-20 [E] [expires: 2019-06-18]
+```
+
+Notice that GnuPG takes care of securely storing your private keys so you don't
+have to do it manually.
+
+If you want to change some of the key pair parameters just delete the current
+key and generate a new one. You can delete a key pair with:
+```
+gpg --delete-secret-and-public-key dusan_dimitric@yahoo.com
+```
+
+In order for someone to securely send you a GPG encrypted file you must send
+them your public key. In order to send your public key to someone, you must
+export it first:
+
+```
+$ gpg --output my_pubkey.gpg --export dusan_dimitric@yahoo.com
+$ ls
+my_pubkey.gpg
+```
+
+The key we exported is in binary format by default. The `--armor` flag can be
+used to export the public key in an `ASCII-armored` format, which makes it easy
+to share your public key using email, your webpage or any other textual medium.
+
+Let's overwrite the binary public key with an ASCII-armored one:
+```
+$ gpg --armor --output my_pubkey.gpg --export dusan_dimitric@yahoo.com
+File 'my_pubkey.gpg' exists. Overwrite? (y/N) y
+$ ls
+my_pubkey.gpg
+```
+
+## Encryption/Decryption
+
+In order for someone to securely send you a file with the help of `GnuPG`, they
+first have to import your private key and then use it to encrypt the intended
+file. You can share a your public key with the sender by any means that you
+want. The public key is safe for anyone to see.
+
+```
+$ gpg --import my_pubkey.gpg
+$ gpg --encrypt --output secret.txt.enc --recipient dusan_dimitric@yahoo.com secret.txt
+$ ls
+my_pubkey.gpg  secret.txt  secret.txt.enc
+```
+
+The sender will send the encrypted file to you, using whichever channel they
+want. When you get the encrypted file, you can decrypt it using:
+```
+$ gpg --output secret.txt --decrypt secret.txt.enc
+```
+
+You will be prompted to enter the private key passphrase, and if the correct
+one is entered you will have your decrypted file:
+```
+$ cat secret.txt
+USER: dusan
+PASS: password123
+```
+
+## Verdict:
+```
+Security : 9.9
+UX       : 7
+```
+
 
