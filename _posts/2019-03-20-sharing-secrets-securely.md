@@ -461,6 +461,8 @@ key and generate a new one. You can delete a key pair with:
 gpg --delete-secret-and-public-key dusan_dimitric@yahoo.com
 ```
 
+## Encryption/Decryption
+
 In order for someone to securely send you a GPG encrypted file you must send
 them your public key. In order to send your public key to someone, you must
 export it first:
@@ -482,8 +484,6 @@ File 'my_pubkey.gpg' exists. Overwrite? (y/N) y
 $ ls
 my_pubkey.gpg
 ```
-
-## Encryption/Decryption
 
 In order for someone to securely send you a file with the help of `GnuPG`, they
 first have to import your private key and then use it to encrypt the intended
