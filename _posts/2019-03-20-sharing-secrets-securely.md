@@ -463,9 +463,8 @@ gpg --delete-secret-and-public-key dusan_dimitric@yahoo.com
 
 ## Encryption/Decryption
 
-In order for someone to securely send you a GPG encrypted file you must send
-them your public key. In order to send your public key to someone, you must
-export it first:
+If you want someone to securely send you a GPG encrypted file you must send
+them your public key. First step to sharing your public key is exporting it:
 
 ```
 $ gpg --output my_pubkey.gpg --export dusan_dimitric@yahoo.com
