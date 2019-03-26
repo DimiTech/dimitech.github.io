@@ -315,7 +315,9 @@ whistles you would expect from a full OpenPGP implementation.
 In short, `GnuPG` is a tool for secure communication, be it email encryption or
 secure file sharing as in the case of this article.
 
-You can use `GnuPG` for **symmetric key** encryption as well, but I'm not going
+## Symmetric key use case
+
+You can use `GnuPG` for **symmetric key** encryption, but I'm not going
 to cover it in detail. Here is just a short example:
 
 ```bash
@@ -337,7 +339,9 @@ PASS: password123
 
 Now let's get to the more secure, **assymetric key** use case...
 
-## Generating a GnuPG private/public key pair
+## Assymetric key use case
+
+### Generating a GnuPG private/public key pair
 
 I advise that you use the `gpg --full-gen-key` command for key generation,
 since it's going to offer you the most choice. Running this command will
@@ -474,7 +478,7 @@ key and generate a new one. You can delete a key pair with:
 gpg --delete-secret-and-public-key dusan_dimitric@yahoo.com
 ```
 
-## Encryption/Decryption
+### Encryption/Decryption
 
 In order for someone to securely send you a GPG encrypted file you must send
 them your public key. In order to send your public key to someone, you must
@@ -529,6 +533,3 @@ PASS: password123
 Security : 9+
 UX       : 7
 ```
-
-
-
