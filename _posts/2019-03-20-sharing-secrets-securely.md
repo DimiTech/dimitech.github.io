@@ -36,12 +36,11 @@ secret.txt
 3. [OpenSSL/LibreSSL](#3-openssllibressl)
 4. [GnuPG](#4-gnupg)
 
-
 # 1. Zip
 
-`zip` is a utility that comes with most popular UNIX derivatives, so there is 
-most likely no need to even install anything. You can check if you have it by
-running:
+`zip` is a utility that comes with most popular UNIX derivatives, so there
+is most likely no need to even install anything. You can check if you have
+it by running:
 
 ```bash
 zip --version
@@ -58,8 +57,6 @@ Verify password:
 $ ls
 secret.txt secret.zip
 ```
-
-#TODO: Add a real way to delete/overwrite files.
 
 Remove the original secret file, since we are going to derive it from the
 zip package:
@@ -192,7 +189,7 @@ If neither one of those are present on your system, the installation is pretty
 straight-forward for both, so pick one (**LibreSSL** if you can't decide) and
 let's get on with it.
 
-## Usage - Simple
+## Symmetric key use case
 
 Let's start with the simplest possible example, using the AES-256 cypher.
 
@@ -225,21 +222,17 @@ PASS: password123
 
 This is as simple as it gets and it's not much more secure than using `zip`.
 
-It can be made more secure by using and **AES key** and that would prevent brute
-force attacks.
-
-#TODO: Write how to do this!
-
-## Usage - Normal
+## Asymmetric key use case
 
 ### Generating an asymmetric key pair
 
 **Up until now we have been dealing with `symmetric` encryption - meaning that
-both parties share a same key, which is used both for encryption and decryption.**
+both parties share a same key, which is used both for encryption and
+decryption.**
 
-**From this point forward, we are going to use `asymmetric` encryption, meaning
-that there are 2 keys involved - one for encryption (public key) and the other one
-for decryption (private key).**
+**From this point forward, we are going to deal with `asymmetric` encryption,
+meaning that there are 2 keys involved - one for encryption (public key) and
+the other one for decryption (private key).**
 
 Let's start by generating the **private/public** key pair.
 
@@ -300,13 +293,13 @@ PASS: password123
 
 ## Verdict:
 
-**Symmetric key use case**:
+**Symmetric key use case:**:
 ```
 Security : 5.5
 UX       : 8
 ```
 
-**Asymmetric key use case**:
+**Aymmetric key use case:**:
 ```
 Security : 9
 UX       : 7
@@ -319,10 +312,30 @@ As the `gpg` man page says:
 OpenPGP standard. `GnuPG` features complete key management and all the bells and
 whistles you would expect from a full OpenPGP implementation.
 
-In short, GnuPG is a tool for secure communication, be it email encryption or
+In short, `GnuPG` is a tool for secure communication, be it email encryption or
 secure file sharing as in the case of this article.
 
-# TODO: GPG also supports symmetric key encryption...
+You can use `GnuPG` for **symmetric key** encryption as well, but I'm not going
+to cover it in detail. Here is just a short example:
+
+```bash
+# Run the encryption command and enter the symmetric key passphrase twice:
+$ gpg -c secret.txt
+$ rm secret.txt
+$ ls
+secret.txt.gpg
+
+# Send the encrypted file to the other computer and decrypt it using the same
+# passphrase:
+$ gpg -d -o secret.txt secret.txt.gpg
+gpg: AES encrypted data
+gpg: encrypted with 1 passphrase
+$ cat secret.txt
+USER: dusan
+PASS: password123
+```
+
+Now let's get to the more secure, **assymetric key** use case...
 
 ## Generating a GnuPG private/public key pair
 
@@ -463,8 +476,9 @@ gpg --delete-secret-and-public-key dusan_dimitric@yahoo.com
 
 ## Encryption/Decryption
 
-If you want someone to securely send you a GPG encrypted file you must send
-them your public key. First step to sharing your public key is exporting it:
+In order for someone to securely send you a GPG encrypted file you must send
+them your public key. In order to send your public key to someone, you must
+export it first:
 
 ```
 $ gpg --output my_pubkey.gpg --export dusan_dimitric@yahoo.com
@@ -491,10 +505,9 @@ want. The public key is safe for anyone to see.
 
 ```
 $ gpg --import my_pubkey.gpg
-$ rm my_pubkey.gpg
 $ gpg --encrypt --output secret.txt.enc --recipient dusan_dimitric@yahoo.com secret.txt
 $ ls
-secret.txt  secret.txt.enc
+my_pubkey.gpg  secret.txt  secret.txt.enc
 ```
 
 The sender will send the encrypted file to you, using whichever channel they
@@ -513,8 +526,9 @@ PASS: password123
 
 ## Verdict:
 ```
-Security : 9
+Security : 9+
 UX       : 7
 ```
+
 
 
