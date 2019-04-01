@@ -591,3 +591,5 @@ re-create the missing files next time you run it.
 
 **Lesson learned: Don't use non-ASCII characters for any of your GnuPG key
 identifiers.**
+
+# Bonus 1: GnuPG key management
