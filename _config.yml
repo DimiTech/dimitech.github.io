@@ -4,59 +4,6 @@ description: >
 about: >
   Currently working on an IoT project.
   Feel free to hit me up at: dusan_dimitric@yahoo.com
-gpg_public_key: >-
-  -----BEGIN PGP PUBLIC KEY BLOCK-----\n
-
-  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\n
-  PgE5EW9N7P3vQBf+wjSVRQo=\n
-  =xf3b\n
-  -----END PGP PUBLIC KEY BLOCK-----
 master_repo: false
 url: "https://dusandimitric.com"
 markdown: kramdown
