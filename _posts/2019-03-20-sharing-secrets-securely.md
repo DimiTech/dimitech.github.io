@@ -12,7 +12,7 @@ point. Think passwords, DB credentials, AWS credentials... extremely sensitive
 stuff.
 
 Below are a couple of my favourite ways to do it, ordered from least secure and
-easiest to use to most secure and harder to use.
+easiest to use to most secure and "hardest" to wrap your head around and use.
 They are all UNIX/terminal based since I have literally never seen GUI in my
 life :)
 
@@ -87,8 +87,8 @@ That's as simple as it gets.
 setup.
 
 There are a couple of problems with this method though. It only works well if
-the person that you want to share the secret file is physically near you so you
-can verbally share the decryption password with them.
+the person that you want to share the secret file with is physically near you
+so you can verbally share the decryption password with them.
 
 You can also use this method to share secret files with people that are not in
 your physical vicinity - by sending them the password over some different
@@ -227,12 +227,15 @@ This is as simple as it gets and it's not much more secure than using `zip`.
 ### Generating an asymmetric key pair
 
 **Up until now we have been dealing with `symmetric` encryption - meaning that
-both parties share a same key, which is used both for encryption and
+both parties share the same key, which is used both for encryption and
 decryption.**
 
-**From this point forward, we are going to deal with `asymmetric` encryption,
+**From this point forward, we are going to explore `asymmetric` encryption,
 meaning that there are 2 keys involved - one for encryption (public key) and
 the other one for decryption (private key).**
+
+> The reverse is also common - using the private key to encrypt and the public
+key to decrypt, but that's not relevant for our particular use case here.
 
 Let's start by generating the **private/public** key pair.
 
@@ -344,7 +347,7 @@ Now let's get to the more secure, **assymetric key** use case...
 ### Generating a GnuPG private/public key pair
 
 I advise that you use the `gpg --full-gen-key` command for key generation,
-since it's going to offer you the most choice. Running this command will
+since it's going to offer you the most control. Running this command will
 prompt you for a couple of input parameters, first of them being the encryption
 algorithm. I will choose `RSA AND RSA`:
 
@@ -504,10 +507,12 @@ my_pubkey.gpg
 
 In order for someone to securely send you a file with the help of `GnuPG`, they
 first have to import your private key and then use it to encrypt the intended
-file. You can share a your public key with the sender by any means that you
-want. The public key is safe for anyone to see.
+file. You can share your public key with the sender by any means that you want.
+Your public key is safe for anyone to see and use.
 
 ```
+# TODO: Add fingerprint checking and a link to Bonus 2, see manual "Importing a public key"
+
 $ gpg --import my_pubkey.gpg
 $ gpg --encrypt --output secret.txt.enc --recipient dusan_dimitric@yahoo.com secret.txt
 $ ls
