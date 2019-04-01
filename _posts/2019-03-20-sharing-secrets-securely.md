@@ -35,10 +35,11 @@ secret.txt
 2. [ccrypt](#2-ccrypt)
 3. [OpenSSL/LibreSSL](#3-openssllibressl)
 4. [GnuPG](#4-gnupg)
-4.1 [Troubleshooting: GnuPG Non-ASCII User Identifier](#troubleshooting-gnupg-non-ascii-user-identifier)
-4.2 [Bonus 1: GnuPG key management](#bonus-1-gnupg-key-management)
-4.3 [Bonus 2: GnuPG signing](#bonus-2-gnupg-signing)
-4.4 [Bonus 3: GnuPG public key verification & _web of trust_](#bonus-3-gnupg-public-key-verification--web-of-trust)
+5. [Troubleshooting: GnuPG Non-ASCII User Identifier](#troubleshooting-gnupg-non-ascii-user-identifier)
+6. [Bonus 1: GnuPG key management](#bonus-1-gnupg-key-management)
+7. [Bonus 2: GnuPG signing](#bonus-2-gnupg-signing)
+8. [Bonus 3: GnuPG public key verification & _web of trust_](#bonus-3-gnupg-public-key-verification--web-of-trust)
+
 
 # 1. Zip
 
