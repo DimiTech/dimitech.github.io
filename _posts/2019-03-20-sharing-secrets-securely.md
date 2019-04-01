@@ -388,7 +388,7 @@ Next up, GnuPG is going to ask for some personal info in order to create a user
 ID to go along with the newly created key pair:
 
 1. **Real name:** You can put in whatever you want, but [be sure to use only ASCII
-characters](TODO: Insert link) because otherwise you might introduce bugs.
+characters](#gnupg-non-ascii-troubleshooting) because otherwise you might introduce bugs.
 2. **Email address:** Self explanatory.
 3. **Comment:** Whatever you want, I just leave this blank.
 
@@ -535,3 +535,55 @@ PASS: password123
 Security : 9+
 UX       : 7
 ```
+
+## GnuPG Non-ASCII TROUBLESHOOTING:
+
+Let's say you create a GnuPG key pair and use non-ASCII characters in the `Name`
+field (I used `Dušan Dimitrić`, with `š` and `ć` obviously being non-ASCII).
+Doing that will cause the remove keys command not to work, along with other
+unexpected bugs:
+
+```
+$ gpg --list-keys
+gpg: checking the trustdb
+gpg: marginals needed: 3  completes needed: 1  trust model: pgp
+gpg: depth: 0  valid:   1  signed:   0  trust: 0-, 0q, 0n, 0m, 0f, 1u
+gpg: next trustdb check due at 2019-06-19
+/home/dusan/.gnupg/pubring.kbx
+--------------------------------------
+pub   rsa4096 2019-03-21 [SC] [expires: 2019-06-19]
+      C5875F42BB3439D2505E032D1E93F87508BC08D0
+uid           [ultimate] Dušan Dimitri\xc4\x20<dusan_dimitric@yahoo.com>
+sub   rsa4096 2019-03-21 [E] [expires: 2019-06-19]
+```
+
+Trying to remove the key pair will fail, no matter if you use the `Name`,
+`Email` or fingerprint to identify and delete the key:
+```
+$ gpg --delete-secret-and-public-key Dušan Dimitri\xc4\x20
+gpg (GnuPG) 2.2.7; Copyright (C) 2018 Free Software Foundation, Inc.
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+
+
+sec  rsa4096/1E93F87508BC08D0 2019-03-21 Dušan Dimitri\xc4\x20<dusan_dimitric@yahoo.com>
+
+Delete this key from the keyring? (y/N) y
+This is a secret key! - really delete? (y/N) y
+gpg: deleting secret key failed: A locale function failed
+gpg: deleting secret subkey failed: A locale function failed
+gpg: Dušan: delete key failed: A locale function failed
+```
+
+Easiest way to solve this is to remove all surface level files from your
+`~/.gnupg` directory:
+```
+cd ~/.gnupg
+rm *
+```
+
+Now everything regarding keys and keyrings is deleted and `GnuPG` will
+re-create the missing files next time you run it.
+
+**Lesson learned: Don't use non-ASCII characters for any of your GnuPG key
+identifiers.**
