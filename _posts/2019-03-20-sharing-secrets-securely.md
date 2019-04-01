@@ -205,8 +205,8 @@ $ ls
 secret.txt     secret.txt.enc
 ```
 
-#TODO: Add a real way to delete/overwrite files.
-Notice that the original file is still there. Let's (naively) delete it:
+Notice that the original file is still there. Let's ([naively](https://ssd.eff.org/en/module/how-delete-your-data-securely-linux))
+delete it:
 ```
 $ rm secret.txt
 ```
@@ -251,9 +251,7 @@ one step forward and encrypt the private key itself with a password:
 $ openssl rsa -in privkey.pem -aes-256-ctr -out privkey.pem.enc
 ```
 
-#TODO: Add a real way to delete/overwrite files.
-
-Delete the unencrypted private key (naively):
+Delete the unencrypted private key ([naively](https://ssd.eff.org/en/module/how-delete-your-data-securely-linux)):
 ```
 $ rm privkey.pem
 ```
@@ -275,9 +273,8 @@ your public key to encrypt a file and send it to you:
 $ openssl rsautl -encrypt -in secret.txt -pubin -inkey pubkey.pem -out secret.txt.enc
 ```
 
-> #TODO: Add a real way to delete/overwrite files.
 > If you're encrypting and decrypting on the same machine for testing purposes
-make sure that you (naively) delete the original file: `rm secret.txt`
+make sure that you ([naively](https://ssd.eff.org/en/module/how-delete-your-data-securely-linux)) delete the original file: `rm secret.txt`
 
 After you receive the encrypted file, use your encrypted private key to decrypt
 it:
