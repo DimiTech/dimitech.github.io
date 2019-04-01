@@ -512,9 +512,29 @@ file. You can share your public key with the sender by any means that you want.
 Your public key is safe for anyone to see and use.
 
 ```
-# TODO: Add fingerprint checking and a link to Bonus 2, see manual "Importing a public key"
-
 $ gpg --import my_pubkey.gpg
+```
+
+Before using the imported public key, make sure to validate it first.  A key is
+validated by verifying the key's fingerprint and then signing the key to certify
+it as a valid key. 
+
+```
+$ gpg --fingerprint dusan_dimitric@yahoo.com
+pub   rsa4096 2019-03-24 [SC] [expires: 2019-06-22]
+      0C83 BB42 8D9B C164 9182  F5C6 9F2F 6AA3 E63E D6A0
+uid           [ultimate] Dusan Dimitric <dusan_dimitric@yahoo.com>
+sub   rsa4096 2019-03-24 [E] [expires: 2019-06-22]
+```
+
+The fingerprint here is: `0C83 BB42 8D9B C164 9182  F5C6 9F2F 6AA3 E63E D6A0`.
+
+You must verify that the fingerprint is the same by communicating with the
+public key's owner. This can be in person, over the phone or any other secure
+method. If those 20 bytes match, you can go ahead and proceed with encryption
+using this verified public key.
+
+```
 $ gpg --encrypt --output secret.txt.enc --recipient dusan_dimitric@yahoo.com secret.txt
 $ ls
 my_pubkey.gpg  secret.txt  secret.txt.enc
@@ -540,7 +560,7 @@ Security : 9+
 UX       : 7
 ```
 
-## Troubleshooting: GnuPG Non-ASCII User Identifier:
+# Troubleshooting: GnuPG Non-ASCII User Identifier:
 
 Let's say you create a GnuPG key pair and use non-ASCII characters in the `Name`
 field (I used `Dušan Dimitrić`, with `š` and `ć` obviously being non-ASCII).
