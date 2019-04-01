@@ -4,7 +4,7 @@ title: GnuPG Public Key
 ---
 
 <h1 class="owner-name">My GPG Public Key:</h1>
-<pre style="white-space: normal">
+<pre>
 -----BEGIN PGP PUBLIC KEY BLOCK-----
 
 mQINBFyXWb4BEAC4sWYZaPOlkEdhsbQ3WRtjcMpDkKJGoXaBJcWZGNjKvUqlxXdi
