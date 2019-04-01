@@ -614,7 +614,21 @@ re-create the missing files next time you run it.
 identifiers.**
 
 # Bonus 1: GnuPG key management
-coming soon...
+
+The most cumbersome part of using GnuPG so far is the public key distribution.
+It simply does not scale well. The straight-forward solution to sharing your
+public key to everyone interested would be to host it on one of the GnuPG
+`keyservers`.
+
+I like `keys.gnupg.net` because of it seems popular enough and has a convenient
+web interface: [http://keys.gnupg.net](http://keys.gnupg.net)
+
+> At the time of writing this, `http://keys.gnupg.net` seems like one of the
+few keyservers that actually work, but only using the web interface. If someone
+knows a reliable keyserver shoot me an email.
+
+Consult the manual for more information regarding [key distribution](https://www.gnupg.org/gph/en/manual.html#AEN464).
+
 # Bonus 2: GnuPG signing
 coming soon...
 # Bonus 3: GnuPG public key verification & _web of trust_
