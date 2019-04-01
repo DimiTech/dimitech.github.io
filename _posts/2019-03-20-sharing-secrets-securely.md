@@ -388,7 +388,7 @@ Next up, GnuPG is going to ask for some personal info in order to create a user
 ID to go along with the newly created key pair:
 
 1. **Real name:** You can put in whatever you want, but [be sure to use only ASCII
-characters](#gnupg-non-ascii-troubleshooting) because otherwise you might introduce bugs.
+characters](#gnupg-non-ascii-user-identifier-troubleshooting) because otherwise you might introduce bugs.
 2. **Email address:** Self explanatory.
 3. **Comment:** Whatever you want, I just leave this blank.
 
@@ -536,7 +536,7 @@ Security : 9+
 UX       : 7
 ```
 
-## GnuPG Non-ASCII TROUBLESHOOTING:
+## GnuPG Non-ASCII User Identifier Troubleshooting:
 
 Let's say you create a GnuPG key pair and use non-ASCII characters in the `Name`
 field (I used `Dušan Dimitrić`, with `š` and `ć` obviously being non-ASCII).
