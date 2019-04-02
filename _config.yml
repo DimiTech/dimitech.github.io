@@ -1,8 +1,7 @@
-# name: Diving Deeper
+# name: Dušan Dimitrić - Blog
 description: >
-  Diving deeper into the more arcane technical topics of present and past
+  Dušan Dimitrić
 about: >
-  Currently working on an IoT project.
   Feel free to hit me up at: dusan_dimitric@yahoo.com
 master_repo: false
 url: "https://dusandimitric.com"
@@ -25,11 +24,8 @@ owner:
   github: https://github.com/DusanDimitric
   # stackexchange: https://stackoverflow.com/users/859112/vinit-kumar?tab=profile
   linkedin: https://rs.linkedin.com/in/dusan-dimitric
-  # For Google Authorship https://plus.google.com/authorship
-  # google_plus:
 
 # Analytics and webmaster tools stuff goes here
 google_analytics:
 google_verify:
 # https://ssl.bing.com/webmaster/configure/verify/ownership Option 2 content= goes here
-bing_verify:
