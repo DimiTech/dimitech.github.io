@@ -39,7 +39,7 @@ secret.txt
 6. [Bonus 1: GnuPG Key Management](#bonus-1-gnupg-key-management)
 7. [Bonus 2: GnuPG Signatures](#bonus-2-gnupg-signatures)
 8. [Bonus 3: GnuPG Public Key Verification & _Web of Trust_](#bonus-3-gnupg-public-key-verification--web-of-trust)
-9. [Pushing Privacy Further - Final Tips](#pushing-privacy-further--final-tips)
+9. [Pushing Privacy Further - Final Tips](#pushing-privacy-further---final-tips)
 
 # 1. Zip
 
