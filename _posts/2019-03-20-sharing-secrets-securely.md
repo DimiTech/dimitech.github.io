@@ -37,9 +37,8 @@ secret.txt
 4. [GnuPG](#4-gnupg)
 5. [Troubleshooting: GnuPG Non-ASCII User Identifier](#troubleshooting-gnupg-non-ascii-user-identifier)
 6. [Bonus 1: GnuPG key management](#bonus-1-gnupg-key-management)
-7. [Bonus 2: GnuPG signing](#bonus-2-gnupg-signing)
+7. [Bonus 2: GnuPG signatures](#bonus-2-gnupg-signatures)
 8. [Bonus 3: GnuPG public key verification & _web of trust_](#bonus-3-gnupg-public-key-verification--web-of-trust)
-
 
 # 1. Zip
 
@@ -91,9 +90,14 @@ That's as simple as it gets.
 `zip` is extremely easy to use and in most cases requires no installation or
 setup.
 
-There are a couple of problems with this method though. It only works well if
-the person that you want to share the secret file with is physically near you
-so you can verbally share the decryption password with them.
+There are a couple of problems with this method though. Everyone can see the
+names of the files inside the encrypted `zip` archive. This is an unnecessary
+information leak. Choose your filenames wisely if you wish to use this method.
+
+There are also problems inherent to all symmetric encryption schemes. Using
+symmetric encryption only works well if the person that you want to share the
+secret file with is physically near you so you can verbally share the decryption
+password with them.
 
 You can also use this method to share secret files with people that are not in
 your physical vicinity - by sending them the password over some different
@@ -629,7 +633,32 @@ me an email.
 
 Consult the manual for more information regarding [key distribution](https://www.gnupg.org/gph/en/manual.html#AEN464).
 
-# Bonus 2: GnuPG signing
-coming soon...
+# Bonus 2: GnuPG signatures
+
+In order to make sure that an encrypted file is coming from the sender that
+you are expecting it from, a digital signature can be employed.
+
+The sender will _digitally sign_ the file with their **private key** and you,
+the receiver, will verify that signature using the sender's **public key**.
+
+Sender:
+```
+$ gpg --output secret.txt.sig --detach-sig secret.txt.enc
+```
+
+Receiver:
+```
+$ gpg --verify secret.txt.sig secret.txt.enc
+gpg: Signature made Thu Apr  4 19:33:31 2019 CEST
+gpg:                using RSA key 0C83BB428D9BC1649182F5C69F2F6AA3E63ED6A0
+gpg: Good signature from "Dusan Dimitric <dusan_dimitric@yahoo.com>" [ultimate]
+```
+
+If the verification passes - you can be sure that the file is sent by the owner
+of the **public key** that you used for the verification. Either that, or their
+private key has been compromised.
+
+You can also use signatures for regular, non-encrypted files to ensure that
+they haven't been tampered with.
+
 # Bonus 3: GnuPG public key verification & _web of trust_
-coming soon...
