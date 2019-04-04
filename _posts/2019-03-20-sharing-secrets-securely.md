@@ -36,9 +36,10 @@ secret.txt
 3. [OpenSSL/LibreSSL](#3-openssllibressl)
 4. [GnuPG](#4-gnupg)
 5. [Troubleshooting: GnuPG Non-ASCII User Identifier](#troubleshooting-gnupg-non-ascii-user-identifier)
-6. [Bonus 1: GnuPG key management](#bonus-1-gnupg-key-management)
-7. [Bonus 2: GnuPG signatures](#bonus-2-gnupg-signatures)
-8. [Bonus 3: GnuPG public key verification & _web of trust_](#bonus-3-gnupg-public-key-verification--web-of-trust)
+6. [Bonus 1: GnuPG Key Management](#bonus-1-gnupg-key-management)
+7. [Bonus 2: GnuPG Signatures](#bonus-2-gnupg-signatures)
+8. [Bonus 3: GnuPG Public Key Verification & _Web of Trust_](#bonus-3-gnupg-public-key-verification--web-of-trust)
+9. [Pushing Privacy Further - Final Tips](#pushing-privacy-further--final-tips)
 
 # 1. Zip
 
@@ -617,7 +618,7 @@ re-create the missing files next time you run it.
 **Lesson learned: Don't use non-ASCII characters for any of your GnuPG key
 identifiers.**
 
-# Bonus 1: GnuPG key management
+# Bonus 1: GnuPG Key Management
 
 The most cumbersome part of using GnuPG so far is the public key distribution.
 It simply does not scale well. The straight-forward solution to sharing your
@@ -633,7 +634,7 @@ me an email.
 
 Consult the manual for more information regarding [key distribution](https://www.gnupg.org/gph/en/manual.html#AEN464).
 
-# Bonus 2: GnuPG signatures
+# Bonus 2: GnuPG Signatures
 
 In order to make sure that an encrypted file is coming from the sender that
 you are expecting it from, a digital signature can be employed.
@@ -661,7 +662,7 @@ private key has been compromised.
 You can also use signatures for regular, non-encrypted files to ensure that
 they haven't been tampered with.
 
-# Bonus 3: GnuPG public key verification & _web of trust_
+# Bonus 3: GnuPG Public Key Verification & _Web of Trust_
 
 To prevent man-in-the-middle attacks, it would be wise to develop your `web of
 trust` - a network of people whose public keys you can use with a certain
@@ -687,3 +688,77 @@ Pay attention to [Importing a public key](https://www.gnupg.org/gph/en/manual.ht
 [Validating other keys on your public keyring](https://www.gnupg.org/gph/en/manual.html#AEN335)
 and [Distributing keys](https://www.gnupg.org/gph/en/manual.html#AEN464) sections of the manual.
 
+# Pushing Privacy Further - Final Tips
+
+I will leave you with some of my favorite ways to increase security to the
+**MAX**!
+
+## Tip #1 - Encrypt Your Storage Medium
+
+Encrypting your storage partition will add another layer of protection. In the
+case that someone grabs a hold of your hardware they will have a difficult time
+accessing any of your files including your private keys.
+
+## Tip #2 - Use Secure Channels of Communication
+
+For exchanging the **encrypted files** and **encryption/decryption
+passwords** make sure to use a secure service - something that has E2E
+encrypion... or at least it markets itself that way.
+
+Here are some of the unsecure channels:
+
+* Email
+* SMS
+* Cellular calls
+* Proprietary services
+
+## Tip #3 - Expire Encrypted Files
+
+Upload the encrypted files somewhere where you can expire them - have the
+service delete the files after a short period of time.
+
+## Tip #4 - Tunnel traffic through VPN
+
+This could prevent any eavesdroppers, including your ISP. Choosing a VPN that
+you can trust is not an easy job though.
+
+## Tip #5 - Use Layers of Encryption
+
+Combine encryption tools to enforce practically impenetrable communication.
+By combining multiple tools you mitigate the risk of one of them being
+compromised or zero-day exploited.
+
+Here are some ideas:
+
+### Scenario 1:
+
+**Encryption:**
+1. Encrypt the file using **ccrypt** - with an **encryption password**
+2. Encrypt the output of the previous step with **LibreSSL** or **GnuPG**, using the recipients **public key**
+3. Safely remove the output from step #1
+4. Send the encrypted file using a "secure" communication channel - **channel 1**
+5. Send **encryption password** using a "secure" **channel 2**
+
+**Decryption:**
+1. Get the file via **channel 1**
+2. Get the **encryption password** via **channel 2**
+3. Decrypt using your **LibreSSL** or **GnuPG** private key
+4. Decrypt using **ccrypt** and **encryption password**
+
+## Scenario 2
+
+**Encryption:**
+1. Encrypt the secret file using **LibreSSL AES-256** and a password
+2. Encrypt a file containing the password with **GnuPG** using the recipients **public key**
+3. Send the encrypted password file and the encrypted secret file to the recipient via any 2 "secure" channels
+
+**Decryption:**
+0. Retreive the **password** and **secret** files
+1. Decrypt the password file using your **GnuPG** private key
+2. Decrypt the secret file using **LibreSSL AES-256** and the decrypted password
+
+Etc. etc... you can combine any of the tools  however you want.
+
+If you wish to add some more tips or have any comments regarding this post or
+any other - shoot me an email at: **dusan_dimitric@yahoo.com** (GPG encrypted,
+of course :) ).
