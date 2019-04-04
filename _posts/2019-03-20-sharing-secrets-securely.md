@@ -662,3 +662,28 @@ You can also use signatures for regular, non-encrypted files to ensure that
 they haven't been tampered with.
 
 # Bonus 3: GnuPG public key verification & _web of trust_
+
+To prevent man-in-the-middle attacks, it would be wise to develop your `web of
+trust` - a network of people whose public keys you can use with a certain
+degree of trust.
+
+A `web of trust` is formed by people signing, and therefore validating each
+other's public keys, making them more thrustworthy and tamper-resistant.
+
+The process goes like this:
+1. Check the fingerprint of the other person's public key
+2. Sign the public key
+3. Check to see if your signature is there
+4. Send them the signed public key so they can import it in their keychain and upload to a keyserver
+5. Or - send the signed public key to a public keyserver and the owner of the public key can pull it down along with all the new signatures
+
+You can organize key signing within your company, or, if you are using GnuPG
+privately you can develop this `web of trust` with your friends, people you
+work with and generally people you trust.
+
+If you want to learn more about signing and verification make sure to consult the [GnuPG manual](https://www.gnupg.org/gph/en/manual.html#REVOCATION).
+
+Pay attention to [Importing a public key](https://www.gnupg.org/gph/en/manual.html#AEN84),
+[Validating other keys on your public keyring](https://www.gnupg.org/gph/en/manual.html#AEN335)
+and [Distributing keys](https://www.gnupg.org/gph/en/manual.html#AEN464) sections of the manual.
+
