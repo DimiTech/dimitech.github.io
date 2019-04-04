@@ -672,8 +672,8 @@ other's public keys, making them more thrustworthy and tamper-resistant.
 
 The process goes like this:
 1. Check the fingerprint of the other person's public key
-2. Sign the public key
-3. Check to see if your signature is there
+2. Sign the public key if the fingerprint is correct
+3. Check to see if your newly added signature is there
 4. Send them the signed public key so they can import it in their keychain and upload to a keyserver
 5. Or - send the signed public key to a public keyserver and the owner of the public key can pull it down along with all the new signatures
 
