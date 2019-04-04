@@ -155,7 +155,7 @@ secret.txt
 
 `ccrypt` is extremely simple and easy to set up and use.
 
-It is more secure than `zip` compression because of the fact that it overrides
+It is more secure than `zip` compression because of the fact that it overwrites
 the original file on disk, leaving no way to recover it afterwards.
 
 Aside from that - it shares the same security challenges as the previous method
