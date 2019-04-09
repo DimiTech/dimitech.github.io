@@ -730,7 +730,7 @@ compromised or zero-day exploited.
 
 Here are some ideas:
 
-### Scenario 1:
+## Scenario 1:
 
 **Encryption:**
 1. Encrypt the file using **ccrypt** - with an **encryption password**
@@ -745,7 +745,7 @@ Here are some ideas:
 3. Decrypt using your **LibreSSL** or **GnuPG** private key
 4. Decrypt using **ccrypt** and **encryption password**
 
-## Scenario 2
+## Scenario 2:
 
 **Encryption:**
 1. Encrypt the secret file using **LibreSSL AES-256** and a password
