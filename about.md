@@ -3,7 +3,7 @@ layout: default
 title: About the Author
 ---
 
-<h1 class="owner-name">{{ site.owner.name}} </h1>
+<h1 class="owner-name">About Me</h1>
 ![user-avatar]({{ site.owner.avatar }})
 
 {{site.about}}
