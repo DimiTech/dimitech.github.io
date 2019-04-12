@@ -9,9 +9,14 @@ title: Physics Experiments & Games
   <li>
     <span>
       <a href="{{ site.url }}/retro-2d-game-engine-demo/"><h2>Top-Down Retro 2D Game Engine</h2></a>
+      (<a href="https://github.com/DusanDimitric/retro-2d-game-engine">Source</a>)
+    </span>
+  </li>
+  <li>
+    <span>
+      <a href="{{ site.url }}/trigonium/"><h2>Trigonium</h2></a>
       (<a href="https://github.com/DusanDimitric/trigonium">Source</a>)
     </span>
   </li>
-  <li><a href="{{ site.url }}/trigonium/"><h2>Trigonium</h2></a></li>
 </ul>
 
