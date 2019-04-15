@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "My Problems with JavaScript Promises"
-tags: [Node.js, JavaScript, Promises, Async, async/await]
+tags: [Node.js, JavaScript, Promises, Async, async/await, MicroServices]
 
 ---
 
@@ -34,8 +34,8 @@ following steps:
 2. Get details on items in that user's shopping cart
 3. Create an order
 
-*Ignore the code style and "architectural decisions" in this post, the code
-serves to illustrate an example.*
+> Ignore the code style and "architectural decisions" in this post, the code
+serves to illustrate an example.
 
 ```javascript
 function createOrder(userId) {
@@ -263,14 +263,15 @@ Observables support cancellation along with custom teardown logic you can add.
 
 There are also other libraries can do the job but I would advise against bying
 into other people's ideas and abstractions and sticking to something which
-looks like a natural extension of the JavaScript feature set.
+looks like a natural extension of the JavaScript feature set or is a standard
+library used by millions of people.
 
 # Final takeaways:
 
 Promises have deficiencies that pretty much rule them out for solving certain
 kinds of problems.
 
-By using new JavaScript language features and Reactive Programming libraries
+By using new JavaScript language features and Async Programming libraries
 we can cover the use cases where Promises are not an ideal/viable choice.
 
 Also, I would highly recommend exploring Reactive Programming and there is
@@ -278,5 +279,5 @@ not a better place to start than [here](https://gist.github.com/staltz/868e7e9bc
 
 Angular developers might be more comfortable with RP and FRP (Functional
 Reactive Programming) concepts but, if you are a React or a Node.js
-developer - give (F)RP a try, it will prove invaluable in a large number
-of situations.
+developer - give (F)RP a try, it will prove itself very useful in a large
+number of situations.
