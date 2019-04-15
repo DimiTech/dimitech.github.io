@@ -124,30 +124,7 @@ This is not a hard and fast rule though, as with many things in programming.
 Use good judgement and create the proper level of abstraction for your specific
 situation.
 
-# Problem 2: Promises can't handle events/streams of data
-
-Promises are resolved only once, hence they have an inherent inability deal with
-events/streams of data.
-
-## Solutions:
-
-First, and most obvious solution would be to simply go back to callback based
-event handling. But callbacks leave much to be desired.
-
-If you are in a Node.js environment, you can use [Node.js streams](https://nodejs.org/api/stream.html)
-or [events](https://nodejs.org/api/events.html).
-If you are in the browser environment, you can use Streams API.
-If you have neither of those environments to leverage, you unfortunately have
-to use a 3rd party library.
-
-A full-fledged, robust way to deal with events/streams would be to use the
-ubiquitous Reactive Extensions Library for JavaScript - [RxJS](https://rxjs-dev.firebaseapp.com/).
-
-Eventually, ECMAScript standardization of [Observables](https://github.com/tc39/proposal-observable)
-will (most likely) come and with the implementations that will follow you can
-make use of **Observables** directly in the language itself.
-
-# Problem 3: Promises are not cancellable
+# Problem 2: Promises are not cancellable
 
 ## Example:
 
@@ -273,6 +250,31 @@ There are also other libraries can do the job but I would advise against buying
 into other people's ideas and abstractions and sticking to something which
 looks like a natural extension of the JavaScript feature set or is a standard
 library used by millions of people.
+
+# Problem 3: Promises can't handle events/streams of data
+
+Promises are resolved only once, hence they have an inherent inability deal with
+events/streams of data. Since Promises are not designed for this use-case I can't
+hold it against them. Nevertheless, let's explore some solutions for events and
+streams.
+
+## Solutions:
+
+First, and most obvious solution would be to simply go back to callback based
+event handling. But callbacks leave much to be desired.
+
+If you are in a Node.js environment, you can use [Node.js streams](https://nodejs.org/api/stream.html)
+or [events](https://nodejs.org/api/events.html).
+If you are in the browser environment, you can use Streams API.
+If you have neither of those environments to leverage, you unfortunately have
+to use a 3rd party library.
+
+A full-fledged, robust way to deal with events/streams would be to use the
+ubiquitous Reactive Extensions Library for JavaScript - [RxJS](https://rxjs-dev.firebaseapp.com/).
+
+Eventually, ECMAScript standardization of [Observables](https://github.com/tc39/proposal-observable)
+will (most likely) come and with the implementations that will follow you can
+make use of **Observables** directly in the language itself.
 
 # Final takeaways:
 
