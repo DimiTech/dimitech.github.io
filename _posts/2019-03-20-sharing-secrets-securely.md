@@ -100,7 +100,7 @@ symmetric encryption only works well if the person that you want to share the
 secret file with is physically near you so you can verbally share the decryption
 password with them.
 
-You can also use this method to share secret files with people that are not in
+You can also use this method to share secret files with people who are not in
 your physical vicinity - by sending them the password over some different
 channel than the one that you used to send the encrypted file to them.
 
@@ -109,7 +109,7 @@ an Email attachment. There are a couple of ways to pretty securely send the
 decryption password, here are 2 ideas:
 
 1. Call them using some E2E encrypted VoIP application and tell them the password
-2. Send the password using some E2E encrypted chat application, preferrably with message auto-expiry
+2. Send the password using some E2E encrypted chat application, preferably with message auto-expiry
 
 One of the big security risks with symmetric, password based secret sharing are
 keyloggers and audio surveillance (smartphones, laptop or hidden mics), so you
@@ -170,7 +170,7 @@ UX       : 10
 
 # 3. OpenSSL/LibreSSL
 
-**OpenSSL** has recieved some pretty negative publicity in the past because of
+**OpenSSL** has received some pretty negative publicity in the past because of
 its shortcomings (see - [heartbleed](http://heartbleed.com/)). The programmers
 who worked on it dispersed which made the **OpenSSL** development stop. That's
 why we will use **LibreSSL** instead.
@@ -209,7 +209,7 @@ enter aes-256-ctr encryption password:
 Verifying - enter aes-256-ctr encryption password:
 ```
 
-We now have an encrypted file that we can send to the recepient.
+We now have an encrypted file that we can send to the recipient.
 ```
 $ ls
 secret.txt     secret.txt.enc
@@ -347,9 +347,9 @@ USER: dusan
 PASS: password123
 ```
 
-Now let's get to the more secure, **assymetric key** use case...
+Now let's get to the more secure, **asymmetric key** use case...
 
-## Assymetric key use case
+## Asymmetric key use case
 
 ### Generating a GnuPG private/public key pair
 
@@ -669,7 +669,7 @@ trust` - a network of people whose public keys you can use with a certain
 degree of trust.
 
 A `web of trust` is formed by people signing, and therefore validating each
-other's public keys, making them more thrustworthy and tamper-resistant.
+other's public keys, making them more trustworthy and tamper-resistant.
 
 The process goes like this:
 1. Check the fingerprint of the other person's public key
@@ -703,7 +703,7 @@ accessing any of your files including your private keys.
 
 For exchanging the **encrypted files** and **encryption/decryption
 passwords** make sure to use a secure service - something that has E2E
-encrypion... or at least it markets itself that way.
+encryption... or at least it markets itself that way.
 
 Here are some of the unsecure channels:
 
