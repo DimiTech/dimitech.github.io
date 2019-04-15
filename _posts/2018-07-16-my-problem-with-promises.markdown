@@ -134,10 +134,11 @@ events/streams of data.
 First, and most obvious solution would be to simply go back to callback based
 event handling. But callbacks leave much to be desired.
 
-If you are in a Node.js environment, you can use [Node.js streams](https://nodejs.org/api/stream.html).
+If you are in a Node.js environment, you can use [Node.js streams](https://nodejs.org/api/stream.html)
+or [events](https://nodejs.org/api/events.html).
 If you are in the browser environment, you can use Streams API.
-If you have neither of those environemnts to leverage, you have to use
-a 3rd party library.
+If you have neither of those environments to leverage, you unfortunately have
+to use a 3rd party library.
 
 A full-fledged, robust way to deal with events/streams would be to use the
 ubiquitous Reactive Extensions Library for JavaScript - [RxJS](https://rxjs-dev.firebaseapp.com/).
