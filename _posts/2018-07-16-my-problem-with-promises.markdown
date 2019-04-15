@@ -229,7 +229,7 @@ proposal was withdrawn since they could not reach a concensus.
 Until we get language support for cancellation we will have to use an external
 async library to solve this problem.
 
-For example, _Bluebird_'s implementation of [promise cancellation](http://bluebirdjs.com/docs/api/cancellation.html)
+For example, [Bluebird's promise cancellation](http://bluebirdjs.com/docs/api/cancellation.html)
 is straight-forward and it also terminates network requests by default, which
 is a great bonus.
 
