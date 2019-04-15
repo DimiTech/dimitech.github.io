@@ -259,7 +259,9 @@ Way better!
 
 Another possible solution would be to again use Observables (for example -
 [RxJS](https://rxjs-dev.firebaseapp.com/)).  
-Observables support cancellation along with custom teardown logic you can add.
+Observables support cancellation along with custom teardown logic you can add
+but they are a completely differnet way of dealing with asynchronous programming
+overall.
 
 There are also other libraries can do the job but I would advise against buying
 into other people's ideas and abstractions and sticking to something which
