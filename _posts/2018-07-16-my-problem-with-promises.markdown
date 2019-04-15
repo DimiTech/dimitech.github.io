@@ -224,7 +224,7 @@ Pretty rough and contrived, but does the job moderately well.
 Is there a better solution though?
 
 The TC39 members were working on it but the [Promise cancellation](https://github.com/tc39/proposal-cancelable-promises)
-proposal was withdrawn since they could not reach a concensus.
+proposal was withdrawn since they could not reach a consensus.
 
 Until we get language support for cancellation we will have to use an external
 async library to solve this problem.
@@ -261,7 +261,7 @@ Another possible solution would be to again use Observables (for example -
 [RxJS](https://rxjs-dev.firebaseapp.com/)).  
 Observables support cancellation along with custom teardown logic you can add.
 
-There are also other libraries can do the job but I would advise against bying
+There are also other libraries can do the job but I would advise against buying
 into other people's ideas and abstractions and sticking to something which
 looks like a natural extension of the JavaScript feature set or is a standard
 library used by millions of people.
