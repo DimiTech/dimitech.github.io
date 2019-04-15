@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "My Problems with JavaScript Promises"
-tags: [Node.js, JavaScript, Promises, Async, async/await, MicroServices]
+tags: [Node.js, JavaScript, Promises, Async, async/await]
 
 ---
 
@@ -9,7 +9,7 @@ I don't particularly fancy JavaScript's **Promises**. Here are some of the
 problems I have with using them as well as solutions to those problems which you
 can use to write better asynchronous code, today!
 
-# Problem 1: Promise chains often force variable declarations in their surrounding scope
+# Problem 1: You can't access the lexical scope of Promise callbacks
 
 Promises are not really great for long-running chains of *inter-dependent* async
 operations. By *inter-dependent* I mean some async calls needing the return
@@ -24,8 +24,8 @@ you can assign return values to them and use them down the Promise chain.
 Let's say that you are working in a *microservice-ridden* architecture and that
 you need to juggle multiple services in order to process an **order**.
 
-This problem doesn't only come up when using the *microservices* pattern, it
-comes up all the time in bigger Promise chains.
+This problem doesn't only come up when working with services, it crops up all
+the time in bigger Promise chains.
 
 For this example, let's keep it really simple and say you need to perform the
 following steps:
@@ -56,7 +56,7 @@ createOrder(1)
 As you can see, the `OrderService.createOrder()` function needs both the **user
 data** and **shopping cart items** in order to be executed.
 
-The natural solution to this is to declare a variable outside (above) the
+The common solution to this problem is to declare a variable outside (above) the
 Promise chain and store the intermediary **user data** in it when it arrives
 from the **UserService**.
 
@@ -145,111 +145,125 @@ make use of **Observables** directly in the language itself.
 
 ## Example:
 
-Let's say we want to process a payment. Payment processing is an asynchronous
-action that takes a certain amount of time. We want to cancel that payment
-processing if it takes too long and that will be implemented using the **Timeout
-Race** pattern.
-(Payments wouldn't be handled like this but bear with me, it's just for example
-purposes).  
+Let's say that we are (1) requesting some raw data (maybe by interacting with
+hardware), then we need to (2) decode and process that data, and lastly, (3)
+show it on the screen of some user facing interface.
 
+The flow goes like this:
+1. Fetch raw data (this operation is **asynchronous** and takes some time, around 1000ms
+   let's say)
+2. Decode data (this is **synchronous** and **blocking**)
+2. Present the decoded data on the screen
+
+In code it could look something like this:
 ```javascript
-const processPayment = () => new Promise((resolve, reject) => {
-  preparePayment(() => {
-    chargeCreditCard().then(resolve)
-  })
-})
-function preparePayment(callback) {
-  setTimeout(callback, 2 * 1000)
-}
-function chargeCreditCard() {
-  console.log('Credit card is charged $XXX')
-  return Promise.resolve()
-}
-
-const rejectAfter = timeout => new Promise((resolve, reject) => {
-  setTimeout(() => reject('Request timed out!'), timeout)
-})
-
-Promise.race([
-    processPayment(),
-    rejectAfter(1000)
-  ])
-  .then(() => {
-    console.log('Payment processed')
-  })
+fetchRawData() // Takes ~1000ms to resolve
+  .then(buffer => decode(buffer))
+  .then(decoded => showOnScreen(decoded))
   .catch(console.error)
 ```
 
-In the example above, payment processing takes ~2000ms, and our timeout is set
-to 1000ms. The `Promise.race()` will reject after those 1000ms. What happens to
-our `processPayment()` promise that lost the race? **Its code executes
-nonetheless!**
+Now, what would happen if the user navigated to another screen before
+`fetchRawData()` returned? The user doesn't care about the previous screen or
+it's data anymore!
 
-This is the example program's output:
+Most likely - an error would be thrown since you don't have a place to display
+the data anymore. References to the GUI components from the previous screen
+are now gone.
 
-```
-Request timed out!
-Credit card is charged $XXX
-```
+This is obviously annoying for a couple of reasons:
+* `decode(buffer)` will waste some CPU cycles by processing data we don't need
+  anymore
+* `showOnScreen(decoded)` will throw an **error** which we have to handle in
+  code or feed to the logging system
 
-We accidentally charged the customer!
+Depending on your specific use case the annoyances of not being able to
+**cancel** a promise chain might be more or less severe.
 
 ## Solution:
 
 One ugly solution would be to create a flag and use it to indicate whether
-the `processPayment()` is should continue executing or not:
+the promise chain should continue executing or not:
 
 ```javascript
-const processPayment = () => new Promise((resolve, reject) => {
-  preparePayment(() => {
-    chargeCreditCard()
-      .then(resolve)
-      .catch(e => {
-        console.error(e)
-        reject()
-      })
+const p = fetchRawData() // Takes ~1000ms to resolve
+  .then(buffer => {
+    if (p.isCancelled) return Promise.reject()
+    return decode(buffer)
   })
-})
-
-function preparePayment(callback) {
-  setTimeout(callback, 2 * 1000)
-}
-
-function chargeCreditCard() {
-  if (SHOULD_CHARGE_CUSTOMER) {
-    console.log('Credit card is charged $XXX')
-    return Promise.resolve()
-  }
-  return Promise.reject('Cancelled!')
-}
-
-const rejectAfter = timeout => new Promise((resolve, reject) => {
-  setTimeout(() => reject('Request timed out!'), timeout)
-})
-
-let SHOULD_CHARGE_CUSTOMER = true
-
-Promise.race([
-    processPayment(),
-    rejectAfter(1000)
-  ])
-  .then(() => {
-    console.log('Payment processed')
+  .then(decoded => {
+    if (p.isCancelled) return Promise.reject()
+    return showOnScreen(decoded)
   })
   .catch(e => {
-    SHOULD_CHARGE_CUSTOMER = false
-    console.error(e)
+    if (p.isCancelled) {
+      console.log('Cancelled!')
+    }
+    else {
+      console.error(e)
+    }
   })
+
+setTimeout(() => {
+  p.isCancelled = true
+}, 500)
 ```
 
-This is ugly and contrived.
+First we saved a reference to the promise chain in the variable `p`. For the
+cancellation token we use a boolean property on the promise chain reference -
+`p.isCancelled`. 
 
-TC39 won't be helping us with [Promise cancellation](https://github.com/tc39/proposal-cancelable-promises)
-anytime soon either.
+We will simulate the user interaction by "cancelling" the promise chain after
+500ms, which means that `fetchRawData()` has not resolved at that point in time.
 
-The proper solution again is to use Observables ([RxJS](https://rxjs-dev.firebaseapp.com/) for example).
+This solution forces us to check for the `p.isCancelled` token in every
+`.then()` closure.
 
+Pretty rough and contrived, but does the job moderately well.
+
+Is there a better solution though?
+
+The TC39 members were working on it but the [Promise cancellation](https://github.com/tc39/proposal-cancelable-promises)
+proposal was withdrawn since they could not reach a concensus.
+
+Until we get language support for cancellation we will have to use an external
+async library to solve this problem.
+
+For example, _Bluebird_'s implementation of [promise cancellation](http://bluebirdjs.com/docs/api/cancellation.html)
+is straight-forward and it also terminates network requests by default, which
+is a great bonus.
+
+Using _Bluebird_ the previous code would look like this:
+
+```javascript
+const Promise = require('bluebird')
+
+Promise.config({
+  cancellation: true
+})
+
+const p = fetchRawData() // Takes ~1000ms to resolve
+  .then(buffer => decode(buffer))
+  .then(decoded => showOnScreen(decoded))
+  .catch(console.error)
+  .finally(() => {
+    if (p.isCancelled) {
+      console.log('Cancelled!')
+    }
+  })
+
+setTimeout(() => p.cancel(), 500)
+```
+
+Way better!
+
+Another possible solution would be to again use Observables (for example -
+[RxJS](https://rxjs-dev.firebaseapp.com/)).  
 Observables support cancellation along with custom teardown logic you can add.
+
+There are also other libraries can do the job but I would advise against bying
+into other people's ideas and abstractions and sticking to something which
+looks like a natural extension of the JavaScript feature set.
 
 # Final takeaways:
 
