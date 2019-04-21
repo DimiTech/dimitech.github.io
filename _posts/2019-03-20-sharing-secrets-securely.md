@@ -504,13 +504,16 @@ The key we exported is in binary format by default. The `--armor` flag can be
 used to export the public key in an `ASCII-armored` format, which makes it easy
 to share your public key using email, your webpage or any other textual medium.
 
-Let's overwrite the binary public key with an ASCII-armored one:
+Let's remove the binary public key and create an ASCII-armored one:
 ```
-$ gpg --armor --output my_pubkey.gpg --export dusan_dimitric@yahoo.com
-File 'my_pubkey.gpg' exists. Overwrite? (y/N) y
+$ rm my_pubkey.gpg
+$ gpg --armor --output my_pubkey.asc --export dusan_dimitric@yahoo.com
 $ ls
-my_pubkey.gpg
+my_pubkey.asc
 ```
+
+>I like to use the `.asc` extension for ASCII-armored keys, and `.gpg` for plain,
+binary keys.
 
 In order for someone to securely send you a file with the help of `GnuPG`, they
 first have to import your private key and then use it to encrypt the intended
@@ -518,7 +521,7 @@ file. You can share your public key with the sender by any means that you want.
 Your public key is safe for anyone to see and use.
 
 ```
-$ gpg --import my_pubkey.gpg
+$ gpg --import my_pubkey.asc
 ```
 
 Before using the imported public key, make sure to validate it first.  A key is
