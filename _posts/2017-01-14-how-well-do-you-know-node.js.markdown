@@ -75,13 +75,13 @@ When you declare a global variable in the browser, that variable becomes the pro
 
 This example illustrates that behavior:
 
-{% highlight javascript %}
+```javascript
 /* Run this code in your browser console. */
 var globalVar = 'global variable'
 
 console.log(globalVar)        // Output: 'global variable'.
 console.log(window.globalVar) // Output: 'global variable'.
-{% endhighlight %}
+```
 
 ### Node.js JavaScript:
 
@@ -89,13 +89,13 @@ In the Node.js environment, we don't have a `window` global variable (since ther
 
 You can think of the `global` object in the same way you think about `window`. Its properties are global, publicly available *values*.
 
-{% highlight javascript %}
+```javascript
 /* Run this code in your Node.js REPL terminal. */
 var globalVar = 'global variable'
 
 console.log(globalVar)        // Output: 'global variable'.
 console.log(global.globalVar) // Output: 'global variable'.
-{% endhighlight %}
+```
 
 Where it gets tricky is when you declare a global variable inside a *.js* file.
 
@@ -107,7 +107,7 @@ To test this behavior, create a new project folder and inside that folder create
 
 Put the follwing code inside those files:
 
-{% highlight javascript %}
+```javascript
 /**
  * file1.js
  */
@@ -118,9 +118,9 @@ console.log(globalVar)                      // Output: 'global variable'.
 console.log(global.globalVar === undefined) // Output: true.
 
 require('./file2')
-{% endhighlight %}
+```
 
-{% highlight javascript %}
+```javascript
 /**
  * file2.js
  */
@@ -132,7 +132,7 @@ try {
 }
 
 console.log(global.globalVar === undefined) // Output: true.
-{% endhighlight %}
+```
 
 `cd` into your project folder and run the first file: `node file1`.
 
@@ -155,7 +155,7 @@ The Node.js runtime environment has some global variables that are always availa
 
 Open up your Node REPL and try accessing the following variables:
 
-{% highlight javascript %}
+```javascript
 /* Type this code in your Node.js REPL terminal line by line 
    and observe the output. */
 global // Enter.
@@ -168,13 +168,13 @@ global.module === module // Output: true.
 
 module.exports                           // Enter.
 global.module.exports === module.exports // Output: true.
-{% endhighlight %}
+```
 
 The `global` object is the Node's global variable and all of the variables below it are its properties.
 
 But what happens inside files? Let's figure it out, create and run the following file:
 
-{% highlight javascript %}
+```javascript
 /** 
  *  module_test.js - Node module API test.
  */
@@ -182,7 +182,7 @@ console.dir(this)    // Output: {}
 console.dir(exports) // Output: {}
 console.dir(module.exports === exports) // Output: true
 console.dir(module.exports === this)    // Output: true
-{% endhighlight %}
+```
 
 Interesting. We come to a conclusion that, inside of a file, `this`, `exports` and `module.exports` are pointing to the same memory address. They are the same object!
 
@@ -197,7 +197,7 @@ We want to use the `exports` variable as a shorthand for `module.exports`.
 Let's consider a situation where we want our public API to contain 3 methods.
 We could achieve that in multiple ways (there's probably even more than this):
 
-{% highlight javascript %}
+```javascript
 /** 
  *  module_test2.js - Node module API test 2.
  */ 
@@ -242,7 +242,7 @@ this = {
 }
 
 // etc. etc... 
-{% endhighlight %}
+```
 
 So `exports` is used when we want our API to expose multiple values (functions, objects, strings... whatever). We declare those values as separate properties of the `exports` object.
 
@@ -252,7 +252,7 @@ You might be wondering why are the last two APIs failing to get exposed? The ans
 
 Imagine your every Node file (module) being a function and having these invisible lines of code at the beginning and the end of them:
 
-{% highlight javascript %}
+```javascript
 function testModule() {
     var exports = module.exports = {}
     // ...
@@ -260,7 +260,7 @@ function testModule() {
     // ...
     return module.exports
 }
-{% endhighlight %}
+```
 
 It's only natural that then, if you make `exports` point to another value, it gets compeletely ignored and module.exports gets returned.
 
@@ -272,13 +272,13 @@ If you want to learn more about this behavior, dig deeper into CommonJS modules.
 
 There are two ways (that I'm familiar with) to `require` local files:
 
-{% highlight javascript %}
+```javascript
 // `require`-ing a module using the relative path.
 let testModule = require('./test-module.js')
 
 // `require`-ing a module using the absolute path.
 let testModuleAgain = require('/home/dusan/Desktop/test-module.js')
-{% endhighlight %}
+```
 
 Relative paths are way more clean and readable but we also have the absolute path option if it's necessary.
 

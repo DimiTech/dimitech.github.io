@@ -203,26 +203,26 @@ let's get on with it.
 
 Let's start with the simplest possible example, using the AES-256 cypher.
 
-```
+```bash
 $ openssl enc -aes-256-ctr -in secret.txt -out secret.txt.enc
 enter aes-256-ctr encryption password:
 Verifying - enter aes-256-ctr encryption password:
 ```
 
 We now have an encrypted file that we can send to the recipient.
-```
+```bash
 $ ls
 secret.txt     secret.txt.enc
 ```
 
 Notice that the original file is still there. Let's ([naively](https://ssd.eff.org/en/module/how-delete-your-data-securely-linux))
 delete it:
-```
+```bash
 $ rm secret.txt
 ```
 
 Use the `-d` flag to decrypt and enter the decryption password:
-```
+```bash
 $ openssl enc -aes-256-ctr -d -in secret.txt.enc -out secret.txt
 enter aes-256-ctr decryption password:
 $ cat secret.txt
@@ -250,25 +250,25 @@ key to decrypt, but that's not relevant for our particular use case here.
 Let's start by generating the **private/public** key pair.
 
 I'll generate an **RSA 4096 bit** private key first:
-```
+```bash
 $ openssl genrsa -out privkey.pem 4096
 ```
 
 **NOTICE:** The private key should be kept in a very safe place! Never share it
 with anyone. It should absolutely always stay only on your machine. I will go
 one step forward and encrypt the private key itself with a password:
-```
+```bash
 $ openssl rsa -in privkey.pem -aes-256-ctr -out privkey.pem.enc
 ```
 
 Delete the unencrypted private key ([naively](https://ssd.eff.org/en/module/how-delete-your-data-securely-linux)):
-```
+```bash
 $ rm privkey.pem
 ```
 
 Now, for the second part, I derive the **public key** from the previously created
 and encrypted **private key**:
-```
+```bash
 $ openssl rsa -in privkey.pem.enc -pubout -out pubkey.pem
 ```
 
@@ -279,7 +279,7 @@ public key. Use a "secure" channel transfer it to them.
 
 Now, the other person (who also has **LibreSSL** or **OpenSSL** installed) can use
 your public key to encrypt a file and send it to you:
-```
+```bash
 $ openssl rsautl -encrypt -in secret.txt -pubin -inkey pubkey.pem -out secret.txt.enc
 ```
 
@@ -288,14 +288,14 @@ make sure that you ([naively](https://ssd.eff.org/en/module/how-delete-your-data
 
 After you receive the encrypted file, use your encrypted private key to decrypt
 it:
-```
+```bash
 $ openssl rsautl -decrypt -in secret.txt.enc -out secret.txt -inkey privkey.pem.enc
 Enter pass phrase for privkey.pem.enc:
 ```
 
 Enter the password for decrypting your private key and you're done!
 
-```
+```bash
 $ cat secret.txt
 USER: dusan
 PASS: password123
@@ -358,7 +358,7 @@ since it's going to offer you the most control. Running this command will
 prompt you for a couple of input parameters, first of them being the encryption
 algorithm. I will choose `RSA AND RSA`:
 
-```
+```bash
 $ gpg --full-gen-key
 gpg (GnuPG) 2.2.7; Copyright (C) 2018 Free Software Foundation, Inc.
 This is free software: you are free to change and redistribute it.
@@ -466,7 +466,7 @@ sub   rsa4096 2019-03-20 [E] [expires: 2019-06-18]
 ```
 
 You can now see your newly generated key pair in the keyring:
-```
+```bash
 $ gpg --list-keys
 gpg: checking the trustdb
 gpg: marginals needed: 3  completes needed: 1  trust model: pgp
@@ -494,7 +494,7 @@ In order for someone to securely send you a GPG encrypted file you must send
 them your public key. In order to send your public key to someone, you must
 export it first:
 
-```
+```bash
 $ gpg --output my_pubkey.gpg --export dusan_dimitric@yahoo.com
 $ ls
 my_pubkey.gpg
@@ -505,7 +505,7 @@ used to export the public key in an `ASCII-armored` format, which makes it easy
 to share your public key using email, your webpage or any other textual medium.
 
 Let's remove the binary public key and create an ASCII-armored one:
-```
+```bash
 $ rm my_pubkey.gpg
 $ gpg --armor --output my_pubkey.asc --export dusan_dimitric@yahoo.com
 $ ls
@@ -520,7 +520,7 @@ first have to import your private key and then use it to encrypt the intended
 file. You can share your public key with the sender by any means that you want.
 Your public key is safe for anyone to see and use.
 
-```
+```bash
 $ gpg --import my_pubkey.asc
 ```
 
@@ -528,7 +528,7 @@ Before using the imported public key, make sure to validate it first.  A key is
 validated by verifying the key's fingerprint and then signing the key to certify
 it as a valid key. 
 
-```
+```bash
 $ gpg --fingerprint dusan_dimitric@yahoo.com
 pub   rsa4096 2019-03-24 [SC] [expires: 2019-06-22]
       0C83 BB42 8D9B C164 9182  F5C6 9F2F 6AA3 E63E D6A0
@@ -543,7 +543,7 @@ public key's owner. This can be in person, over the phone or any other secure
 method. If those 20 bytes match, you can go ahead and proceed with encryption
 using this verified public key.
 
-```
+```bash
 $ gpg --encrypt --output secret.txt.enc --recipient dusan_dimitric@yahoo.com secret.txt
 $ ls
 my_pubkey.gpg  secret.txt  secret.txt.enc
@@ -551,13 +551,13 @@ my_pubkey.gpg  secret.txt  secret.txt.enc
 
 The sender will send the encrypted file to you, using whichever channel they
 want. When you get the encrypted file, you can decrypt it using:
-```
+```bash
 $ gpg --output secret.txt --decrypt secret.txt.enc
 ```
 
 You will be prompted to enter the private key passphrase, and if the correct
 one is entered you will have your decrypted file:
-```
+```bash
 $ cat secret.txt
 USER: dusan
 PASS: password123
@@ -576,7 +576,7 @@ field (I used `Dušan Dimitrić`, with `š` and `ć` obviously being non-ASCII).
 Doing that will cause the remove keys command not to work, along with other
 unexpected bugs:
 
-```
+```bash
 $ gpg --list-keys
 gpg: checking the trustdb
 gpg: marginals needed: 3  completes needed: 1  trust model: pgp
@@ -592,7 +592,7 @@ sub   rsa4096 2019-03-21 [E] [expires: 2019-06-19]
 
 Trying to remove the key pair will fail, no matter if you use the `Name`,
 `Email` or fingerprint to identify and delete the key:
-```
+```bash
 $ gpg --delete-secret-and-public-key Dušan Dimitri\xc4\x20
 gpg (GnuPG) 2.2.7; Copyright (C) 2018 Free Software Foundation, Inc.
 This is free software: you are free to change and redistribute it.
@@ -610,7 +610,7 @@ gpg: Dušan: delete key failed: A locale function failed
 
 Easiest way to solve this is to remove all surface level files from your
 `~/.gnupg` directory:
-```
+```bash
 cd ~/.gnupg
 rm *
 ```
@@ -646,12 +646,12 @@ The sender will _digitally sign_ the file with their **private key** and you,
 the receiver, will verify that signature using the sender's **public key**.
 
 Sender:
-```
+```bash
 $ gpg --output secret.txt.sig --detach-sig secret.txt.enc
 ```
 
 Receiver:
-```
+```bash
 $ gpg --verify secret.txt.sig secret.txt.enc
 gpg: Signature made Thu Apr  4 19:33:31 2019 CEST
 gpg:                using RSA key 0C83BB428D9BC1649182F5C69F2F6AA3E63ED6A0

@@ -6,7 +6,7 @@ module.exports = function(grunt) {
       dist: {
         src: [
           'css/base.css',
-          'css/syntax/syntax.css',
+          'css/syntax/dusan.css',
           'css/octicons.css',
           'css/font-awesome.min.css'
         ],
