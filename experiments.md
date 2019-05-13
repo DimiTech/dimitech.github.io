@@ -1,9 +1,9 @@
 ---
 layout: default
-title: Physics Experiments & Games
+title: Code Experiments
 ---
 
-<h1 class="owner-name">Games & Physics Experiments:</h1>
+<h1 class="owner-name">Games/Math/Physics Experiments:</h1>
 
 ## [Top-Down Retro 2D Game Engine]({{ site.url }}/retro-2d-game-engine-demo/)
 [Demo]({{ site.url }}/retro-2d-game-engine-demo/) | [Source](https://github.com/DusanDimitric/retro-2d-game-engine)
