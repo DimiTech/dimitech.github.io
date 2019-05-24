@@ -11,8 +11,8 @@ title: Code Experiments
 ## [Trigonium]({{ site.url }}/trigonium/)
 [Demo]({{ site.url }}/trigonium/) | [Source](https://github.com/DusanDimitric/trigonium)
 
-## [Browser Potentiometer]({{ site.url }}/potentiometer/demo/demo1)
-[Demo1]({{ site.url }}/potentiometer/demo/demo1) | [Demo2]({{ site.url }}/potentiometer/demo/demo2) | [Source](https://github.com/DusanDimitric/potentiometer)
-
 ## [Windows JS]({{ site.url }}/windows-js/)
 [Demo]({{ site.url }}/windows-js/) | [Source](https://github.com/DusanDimitric/windows-js)
+
+## [Browser Potentiometer]({{ site.url }}/potentiometer/demo/demo1)
+[Demo1]({{ site.url }}/potentiometer/demo/demo1) | [Demo2]({{ site.url }}/potentiometer/demo/demo2) | [Source](https://github.com/DusanDimitric/potentiometer)
