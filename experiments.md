@@ -12,7 +12,7 @@ There's some pretty interesting math going on.
 
 Use W, A, S, D to move, mouse/trackpad to aim & shoot.
 
-[Demo]({{ site.url }}/retro-2d-game-engine-demo/) | [Source](https://github.com/DusanDimitric/retro-2d-game-engine)
+### [Demo]({{ site.url }}/retro-2d-game-engine-demo/) | [Source](https://github.com/DusanDimitric/retro-2d-game-engine)
 
 ## [Trigonium]({{ site.url }}/trigonium/)
 [Demo]({{ site.url }}/trigonium/) | [Source](https://github.com/DusanDimitric/trigonium)
