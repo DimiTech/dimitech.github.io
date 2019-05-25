@@ -45,7 +45,11 @@ Browser implementation of a game menu that I saw on [YouTube](https://www.youtub
 Just thought it would be fun to create it with pure CSS/HTML.
 
 ## [Windows JS]({{ site.url }}/windows-js/)
-[Demo]({{ site.url }}/windows-js/) | [Source](https://github.com/DusanDimitric/windows-js)
+[Demo]({{ site.url }}/windows-js/) / [Source](https://github.com/DusanDimitric/windows-js)
+
+A simple windowing experiment library created just for fun... might come in handy one day, who knows.
 
 ## [Browser Potentiometer]({{ site.url }}/potentiometer/demo/demo1)
-[Demo1]({{ site.url }}/potentiometer/demo/demo1) | [Demo2]({{ site.url }}/potentiometer/demo/demo2) | [Source](https://github.com/DusanDimitric/potentiometer)
+[Demo1]({{ site.url }}/potentiometer/demo/demo1) / [Demo2]({{ site.url }}/potentiometer/demo/demo2) | [Source](https://github.com/DusanDimitric/potentiometer)
+
+Pots for the web inspired by VST plugins and DAWs.
