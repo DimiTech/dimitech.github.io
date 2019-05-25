@@ -6,16 +6,35 @@ title: Code Experiments
 <h1 class="owner-name">Games/Math/Physics Experiments:</h1>
 
 ## [Top-Down Retro 2D Game Engine]({{ site.url }}/retro-2d-game-engine-demo/)
-
 [Demo]({{ site.url }}/retro-2d-game-engine-demo/) / [Source](https://github.com/DusanDimitric/retro-2d-game-engine)
 
-This is a retro, top-down shooter game engine that I spent some time on.
+Retro, 2D, top-down shooter game engine.
 There's some pretty interesting math going on.
 
-Use W, A, S, D to move, mouse/trackpad to aim & shoot.
+W, A, S, D to move, mouse/trackpad to aim & shoot.
 
 ## [Trigonium]({{ site.url }}/trigonium/)
-[Demo]({{ site.url }}/trigonium/) | [Source](https://github.com/DusanDimitric/trigonium)
+[Demo]({{ site.url }}/trigonium/) / [Source](https://github.com/DusanDimitric/trigonium)
+A small 2 player game I wrote while doing some boring maintanance on the main computer.
+
+Player 1 Controls:
+```
+Thrust     = Up Arrow Key
+Turn Right = Right Arrow Key
+Turn Left  = Left Arrow Key
+Fire       = Shift (Option on Mac)
+```
+Player 2 Controls:
+```
+Thrust     = "W" Key 
+Turn Right = "D" Key
+Turn Left  = "A" Key 
+Fire       = "F" Key
+```
+General Controls:
+```
+Pause = Esc
+```
 
 ## [Doom Menu]({{ site.url }}/doom-menu-css/)
 [Demo]({{ site.url }}/doom-menu-css/) | [Source](https://github.com/DusanDimitric/doom-menu-css)
