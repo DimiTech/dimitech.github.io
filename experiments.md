@@ -7,7 +7,7 @@ title: Code Experiments
 
 ## [Top-Down Retro 2D Game Engine]({{ site.url }}/retro-2d-game-engine-demo/)
 
-[Demo]({{ site.url }}/retro-2d-game-engine-demo/) | [Source](https://github.com/DusanDimitric/retro-2d-game-engine)
+[Demo]({{ site.url }}/retro-2d-game-engine-demo/) &vert; [Source](https://github.com/DusanDimitric/retro-2d-game-engine)
 
 This is a retro, top-down shooter game engine that I spent some time on.
 There's some pretty interesting math going on.
