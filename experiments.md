@@ -23,7 +23,7 @@ Player 1 Controls:
 Thrust     = Up Arrow Key
 Turn Right = Right Arrow Key
 Turn Left  = Left Arrow Key
-Fire       = Shift (Option on Mac)
+Fire       = Shift
 ```
 Player 2 Controls:
 ```
