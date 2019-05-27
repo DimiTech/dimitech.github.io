@@ -58,3 +58,6 @@ Pots for the web inspired by VST plugins and DAWs.
 [Demo]({{ site.url }}/fluid-sim/) / [Source](https://github.com/DusanDimitric/fluid-sim)
 
 An old fluid simulation experiment. Could be fun to play with I guess...
+
+![Gif](https://github.com/DusanDimitric/windows-js/blob/master/demo.gif)
+
