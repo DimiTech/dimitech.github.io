@@ -53,3 +53,8 @@ A simple windowing experiment library created just for fun... might come in hand
 [Demo1]({{ site.url }}/potentiometer/demo/demo1) / [Demo2]({{ site.url }}/potentiometer/demo/demo2) / [Source](https://github.com/DusanDimitric/potentiometer)
 
 Pots for the web inspired by VST plugins and DAWs.
+
+## ▶ [Fluid Simulation]({{ site.url }}/fluid-sim/)
+[Demo]({{ site.url }}/fluid-sim/) / [Source](https://github.com/DusanDimitric/fluid-sim)
+
+An old fluid simulation experiment. Could be fun to play with I guess...
