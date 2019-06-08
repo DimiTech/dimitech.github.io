@@ -34,7 +34,7 @@ Let's get on with it:
 10. [How does the cluster module work? How is it different than using a load balancer?](#10-how-does-the-cluster-module-work-how-is-it-different-than-using-a-load-balancer)
 11. [What are the --harmony-* flags?](#11-what-are-the---harmony--flags)
 12. [How can you read and inspect the memory usage of a Node.js process?](#12-how-can-you-read-and-inspect-the-memory-usage-of-a-nodejs-process)
-13. Can reverse-search in commands history be used inside Node’s REPL?
+13. [Can reverse-search in commands history be used inside Node’s REPL?](#13-can-reverse-search-in-commands-history-be-used-inside-nodes-repl)
 14. What are V8 object and function templates?
 15. What is libuv and how does Node.js use it?
 16. How can you make Node’s REPL always use JavaScript strict mode?
@@ -540,3 +540,46 @@ The best reference regarding `--harmony` flags:
 - [https://nodejs.org/en/docs/es6/](https://nodejs.org/en/docs/es6/)
 
 ## 12. How can you read and inspect the memory usage of a Node.js process?
+
+Let's first create a test Node.js program that will run for a long time:
+
+```bash
+$ cat << _EOF_ >> ./test.js
+let i = 0
+setInterval(() => {
+  ++i
+  console.log('i:', i)
+}, 1000)
+_EOF_
+$ node test.js
+```
+
+If you are on Linux, you could perform simple monitoring manually:
+
+```bash
+# Find your Node.js PID
+$ ps aux | grep 'node test.js' | grep -v grep | tr -s ' ' | cut -d ' ' -f 2
+9268
+
+# Then feed it to `top`
+$ top -p 9268
+
+# Both commands can be ran in a single line like this:
+top -p $(ps aux | grep 'node test.js' | grep -v grep | tr -s ' ' | cut -d ' ' -f 2)
+```
+
+The relevant `top` output might look something like this:
+
+```
+ PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+9268 dusan     20   0  562964  27844  23320 S   0.3  0.3   0:00.09 node
+```
+
+We're interested in the `RES` value, which is the physical memory that the
+task is using (in KiB). In this case it's `26,844 KiB` (`27488.256 KB`), so our
+Node.js process is using roughly 27 MB of physical memory at that certain point
+in time.
+
+[> Difference between KiB and KB](https://superuser.com/questions/287498/what-is-the-difference-between-a-kibibyte-a-kilobit-and-a-kilobyte)
+
+## 13. Can reverse-search in commands history be used inside Node’s REPL?
