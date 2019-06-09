@@ -6,8 +6,6 @@ tags: [Node.js, JavaScript]
 
 ---
 So, the other day I ran across a blog post called [How well do you know Node.js?](https://edgecoders.com/how-well-do-you-know-node-js-36b1473c01c8){:target="_blank"}
-It's basically a content marketing piece with a purpose of selling a Node.js course (which is perfectly fine of course). 
-It still offers value to the reader in form of 40 questions that put your Node knowledge to the test.
 
 I've gone ahead and answered these questions here so that people who read this
 post can review or upgrade their Node chops.
@@ -35,9 +33,9 @@ Let's get on with it:
 11. [What are the --harmony-* flags?](#11-what-are-the---harmony--flags)
 12. [How can you read and inspect the memory usage of a Node.js process?](#12-how-can-you-read-and-inspect-the-memory-usage-of-a-nodejs-process)
 13. [Can reverse-search in commands history be used inside Node’s REPL?](#13-can-reverse-search-in-commands-history-be-used-inside-nodes-repl)
-14. What are V8 object and function templates?
-15. What is libuv and how does Node.js use it?
-16. How can you make Node’s REPL always use JavaScript strict mode?
+14. [What are V8 object and function templates?](#14-what-are-v8-object-and-function-templates)
+15. [What is libuv and how does Node.js use it?](#15-what-is-libuv-and-how-does-nodejs-use-it)
+16. [How can you make Node’s REPL always use JavaScript strict mode?](#16-how-can-you-make-nodes-repl-always-use-javascript-strict-mode)
 17. How can we do one final operation before a Node process exits? Can that operation be done asynchronously?
 18. Besides V8 and libuv, what other external dependencies does Node have?
 19. What’s the problem with the process uncaughtException event? How is it different than the exit event?
@@ -658,3 +656,47 @@ find what you need/like.
 * [https://nodejs.org/en/docs/guides/debugging-getting-started/#chrome-devtools-55](https://nodejs.org/en/docs/guides/debugging-getting-started/#chrome-devtools-55)
 
 ## 13. Can reverse-search in commands history be used inside Node’s REPL?
+
+Out of the box - **no**.
+
+## 14. What are V8 object and function templates?
+
+Simply put - v8::ObjectTemplate and v8::FunctionTemplate are used to make C++
+Objects/Functions available in JavaScript code.
+
+> For example, Google Chrome uses templates to wrap C++ DOM nodes as JavaScript
+  objects and to install functions in the global namespace.
+
+I recommend reading the v8 dev doc section on templates, as well as that entire
+_Getting started_ guide: [https://v8.dev/docs/embed#templates](https://v8.dev/docs/embed#templates)
+
+## 15. What is libuv and how does Node.js use it?
+
+`libuv` is a C library that provides Node.js with its async I/O capabilities -
+everything from networking to filesystem access.
+It is of crucial significance to Node.
+
+`libuv` contributors have even made some YouTube videos:
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/sGTRmPiXD4Y" frameborder="0" allowfullscreen></iframe>
+
+Also, Ryan Dahl has done a tutorial on it a couple of years ago, I highly
+recommend watching it:
+
+<iframe src="https://player.vimeo.com/video/24713213" width="640" height="400"
+frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+<p><a href="https://vimeo.com/24713213">using libuv and http-parser to build a
+webserver</a> from <a href="https://vimeo.com/user278471">ry</a> on <a
+href="https://vimeo.com">Vimeo</a>.</p>
+
+## 16. How can you make Node’s REPL always use JavaScript strict mode?
+
+Just run the REPL with the `--use_strict` flag:
+
+```
+$ node --use_strict
+> foo = 3
+Thrown:
+ReferenceError: foo is not defined
+```
+
