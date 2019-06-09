@@ -126,9 +126,9 @@ require('./file2')
  */
  
 try {
-    console.log(globalVar) // Throws an exception since `globalVar` is not defined.
+  console.log(globalVar) // Throws an exception since `globalVar` is not defined.
 } catch(err) {
-    console.dir(err.name === 'ReferenceError') // Output: true.
+  console.dir(err.name === 'ReferenceError') // Output: true.
 }
 
 console.log(global.globalVar === undefined) // Output: true.
@@ -220,25 +220,25 @@ this.methodThree = () => { console.log('whatever 3') }
 // or:
 
 module.exports = {
-    methodOne()   { console.log('whatever 1') },
-    methodTwo()   { console.log('whatever 2') },
-    methodThree() { console.log('whatever 3') }
+  methodOne()   { console.log('whatever 1') },
+  methodTwo()   { console.log('whatever 2') },
+  methodThree() { console.log('whatever 3') }
 }
 
 // These two API definitions fail to get exported.
 
 // Fails.
 exports = {
-    methodOne()   { console.log('whatever 1') },
-    methodTwo()   { console.log('whatever 2') },
-    methodThree() { console.log('whatever 3') }
+  methodOne()   { console.log('whatever 1') },
+  methodTwo()   { console.log('whatever 2') },
+  methodThree() { console.log('whatever 3') }
 }
 
 // Fails.
 this = {
-    methodOne()   { console.log('whatever 1') },
-    methodTwo()   { console.log('whatever 2') },
-    methodThree() { console.log('whatever 3') }
+  methodOne()   { console.log('whatever 1') },
+  methodTwo()   { console.log('whatever 2') },
+  methodThree() { console.log('whatever 3') }
 }
 
 // etc. etc... 
@@ -254,11 +254,11 @@ Imagine your every Node file (module) being a function and having these invisibl
 
 ```javascript
 function testModule() {
-    var exports = module.exports = {}
-    // ...
-    // Your module code...
-    // ...
-    return module.exports
+  var exports = module.exports = {}
+  // ...
+  // Your module code...
+  // ...
+  return module.exports
 }
 ```
 
