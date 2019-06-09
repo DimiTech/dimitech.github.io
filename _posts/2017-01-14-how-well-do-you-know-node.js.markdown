@@ -541,6 +541,11 @@ The best reference regarding `--harmony` flags:
 
 ## 12. How can you read and inspect the memory usage of a Node.js process?
 
+### 12.1 Using Linux `top`
+
+Since I love simplicity - let's start with what we already have in UNIX, the
+`top` command.
+
 Let's first create a test Node.js program that will run for a long time:
 
 ```bash
@@ -554,7 +559,7 @@ _EOF_
 $ node test.js
 ```
 
-If you are on Linux, you could perform simple monitoring manually:
+If you are on Linux, you could perform simple monitoring manually using `top`:
 
 ```bash
 # Find your Node.js PID
@@ -581,5 +586,75 @@ Node.js process is using roughly 27 MB of physical memory at that certain point
 in time.
 
 [> Difference between KiB and KB](https://superuser.com/questions/287498/what-is-the-difference-between-a-kibibyte-a-kilobit-and-a-kilobyte)
+
+### 12.2 Using `process.memoryUsage()`
+
+Node's global `process` object has a `.memoryUsage()` function you can use to
+get more segmented view into your program's memory usage:
+
+```javascript
+process.memoryUsage()
+
+/* Example output:
+{
+  rss: 29405184,
+  heapTotal: 5799936,
+  heapUsed: 2982200,
+  external: 774256
+}
+*/
+```
+
+* `rss` - Resident Set Size, basically how much memory your program is using in
+  total.
+* `heapTotal` - heap space available.
+* `heapUsed` - heap space that's currently occupied.
+* `external` - memory usage of C++ objects bound to JavaScript (managed by V8).
+
+You can find more info about this function in the
+[process API Docs](https://nodejs.org/api/process.html#process_process_memoryusage).
+
+### 12.3 Using Chrome DevTools for Node.js
+
+DevTools are helpful when you need to dig deeper, i.e. when you've realized
+that a memory leak exists but not sure what's causing it.
+
+Before running DevTools first run node with the `--inspect` flag:
+
+```bash
+$ node --inspect test.js
+```
+
+Now that you have a debugging handle on our Node.js process open up `Chrome` and
+enter `chrome://inspect` in the URL bar. There you will see your target process
+and when you press `inspect` the DevTools will pop up:
+
+![Chrome DevTools Screenshot](/images/2017-01-14-how-well-do-you-know-node.js/12.3_screenshot_chrome_devtools.jpg "Chrome DevTools Screenshot")
+
+To inspect the `heap` portion of your memory (which is the important one if you
+are looking for memory leaks) go to the `Memory` tab and create a `Heap Snapshot`.
+The result is going to look something like this:
+
+![Heap Snapshot](/images/2017-01-14-how-well-do-you-know-node.js/12.3_screenshot_heap_snapshot.jpg "Heap Snapshot")
+
+The heap snapshot is large and complex but if you know your program really well
+you should be able to realize what's happening. You can also sample memory
+usage over time (Record Allocation Timeline) in order to get more insight.
+
+DevTools have quite a bit of useful functionalities so I encourage you to
+explore them if you need to. There is also a Chrome Extension called
+[NIM (Node Inspector Manager)](https://chrome.google.com/webstore/detail/nodejs-v8-inspector-manag/gnhhdgbaldcilmgcpfddgdbkhjohddkj)
+that might improve your workflow. Also keep in mind that you're better off
+running Chrome (and its DevTools) on Windows or MacOX since there it offers the
+full set of features unlike on Linux.
+
+Those were a couple of ways that you can inspect your program's memory usage
+but there are many more, and more are being developed. Feel free to explore and
+find what you need/like.
+
+### Useful links:
+* [https://www.valentinog.com/blog/memory-usage-node-js/](https://www.valentinog.com/blog/memory-usage-node-js/)
+* [https://www.youtube.com/watch?v=hliOMEQRqf8](https://www.youtube.com/watch?v=hliOMEQRqf8)
+* [https://nodejs.org/en/docs/guides/debugging-getting-started/#chrome-devtools-55](https://nodejs.org/en/docs/guides/debugging-getting-started/#chrome-devtools-55)
 
 ## 13. Can reverse-search in commands history be used inside Node’s REPL?
