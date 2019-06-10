@@ -52,7 +52,7 @@ p {
 ol>li,
 ul>li
 {
-  list-style-position: inside;
+  list-style-position: outside;
   font-size: 1.1em;
   line-height: 1.4;
 }
