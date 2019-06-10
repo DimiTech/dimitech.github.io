@@ -36,8 +36,8 @@ Let's get on with it:
 14. [What are V8 object and function templates?](#14-what-are-v8-object-and-function-templates)
 15. [What is libuv and how does Node.js use it?](#15-what-is-libuv-and-how-does-nodejs-use-it)
 16. [How can you make Node’s REPL always use JavaScript strict mode?](#16-how-can-you-make-nodes-repl-always-use-javascript-strict-mode)
-17. How can we do one final operation before a Node process exits? Can that operation be done asynchronously?
-18. Besides V8 and libuv, what other external dependencies does Node have?
+17. [How can we do one final operation before a Node process exits? Can that operation be done asynchronously?](#17-how-can-we-do-one-final-operation-before-a-node-process-exits-can-that-operation-be-done-asynchronously)
+18. [Besides V8 and libuv, what other external dependencies does Node have?](#18-besides-v8-and-libuv-what-other-external-dependencies-does-node-have)
 19. What’s the problem with the process uncaughtException event? How is it different than the exit event?
 20. Do Node buffers use V8 memory? Can they be resized?
 21. What’s the difference between Buffer.alloc and Buffer.allocUnsafe?
@@ -699,4 +699,132 @@ $ node --use_strict
 Thrown:
 ReferenceError: foo is not defined
 ```
+
+## 17. How can we do one final operation before a Node process exits? Can that operation be done asynchronously?
+
+A Node.js process exits if:
+1. The event loop is emptied out and has no more work to do.
+2. `process.exit()` was called.
+
+In either case the global `process` object will receive an `'exit'` event where
+you can do some synchronous work. Here is a simple example:
+
+```javascript
+process.stdout.write('Hello')
+process.on('exit', () => {
+  process.stdout.write('Goodbye!\n')
+})
+process.stdout.write(' there!\n')
+
+/* Output:
+Hello there!
+Goodbye!
+*/
+```
+
+The code in the 'exit' event callback can **only be synchronous**, otherwise it
+will not work correctly:
+
+```javascript
+process.stdout.write('Hello')
+process.on('exit', () => {
+  setTimeout(() => {
+    process.stdout.write('Goodbye!\n')
+  }, 0)
+})
+process.stdout.write(' there!\n')
+
+/* Output:
+Hello there!
+*/
+```
+
+In order to perform async work you should use the [beforeExit](https://nodejs.org/api/process.html#process_event_beforeexit)
+event:
+
+```javascript
+process.stdout.write('Hello')
+process.on('beforeExit', () => {
+  setTimeout(() => {
+    process.stdout.write('Goodbye!\n')
+    process.exit(0)
+  }, 0)
+})
+process.stdout.write(' there!\n')
+
+/* Output:
+Hello there!
+Goodbye!
+*/
+```
+
+## 18. Besides V8 and libuv, what other external dependencies does Node have?
+
+Since Node.js is open-source we can view its [GitHub repository](https://github.com/nodejs/node)
+and see the dependencies there.
+
+At the time of this writing - the `deps/` directory contains most of the static
+libraries which Node depends on:
+
+```bash
+$ git clone https://github.com/nodejs/node.git
+$ cd node/
+$ ls -alhF deps/
+total 68K
+drwxrwxr-x 17 xxx xxx 4.0K Jun 10 12:21 ./
+drwxrwxr-x 11 xxx xxx 4.0K Jun 10 12:21 ../
+drwxrwxr-x  4 xxx xxx 4.0K Jun 10 12:21 acorn/
+drwxrwxr-x  8 xxx xxx 4.0K Jun 10 12:21 acorn-plugins/
+drwxrwxr-x  3 xxx xxx 4.0K Jun 10 12:21 brotli/
+drwxrwxr-x  5 xxx xxx 4.0K Jun 10 12:21 cares/
+drwxrwxr-x  3 xxx xxx 4.0K Jun 10 12:21 histogram/
+drwxrwxr-x  3 xxx xxx 4.0K Jun 10 12:21 http_parser/
+drwxrwxr-x  3 xxx xxx 4.0K Jun 10 12:21 icu-small/
+drwxrwxr-x  4 xxx xxx 4.0K Jun 10 12:21 llhttp/
+drwxrwxr-x  3 xxx xxx 4.0K Jun 10 12:21 nghttp2/
+drwxrwxr-x  6 xxx xxx 4.0K Jun 10 12:21 node-inspect/
+drwxrwxr-x 11 xxx xxx 4.0K Jun 10 12:21 npm/
+drwxrwxr-x  4 xxx xxx 4.0K Jun 10 12:21 openssl/
+drwxrwxr-x 10 xxx xxx 4.0K Jun 10 12:21 uv/
+drwxrwxr-x 16 xxx xxx 4.0K Jun 10 12:21 v8/
+drwxrwxr-x 14 xxx xxx 4.0K Jun 10 12:21 zlib/
+```
+
+We can get even more information if we peek into the LICENSE file, where Node's
+dependency licences are listed:
+
+```
+The externally maintained libraries used by Node.js are:
+
+- Acorn, located at deps/acorn, is licensed as follows: ...
+- Acorn plugins, located at deps/acorn-plugins, is licensed as follows: ...
+- c-ares, located at deps/cares, is licensed as follows: ...
+- HTTP Parser, located at deps/http_parser, is licensed as follows: ...
+- ICU, located at deps/icu-small, is licensed as follows: ...
+- libuv, located at deps/uv, is licensed as follows: ...
+- llhttp, located at deps/llhttp, is licensed as follows: ...
+- OpenSSL, located at deps/openssl, is licensed as follows: ...
+- Punycode.js, located at lib/punycode.js, is licensed as follows: ...
+- V8, located at deps/v8, is licensed as follows: ...
+- SipHash, located at deps/v8/src/third_party/siphash, is licensed as follows: ...
+- zlib, located at deps/zlib, is licensed as follows: ...
+- npm, located at deps/npm, is licensed as follows: ...
+- GYP, located at tools/gyp, is licensed as follows: ...
+- jinja2, located at tools/inspector_protocol/jinja2, is licensed as follows: ...
+- markupsafe, located at tools/inspector_protocol/markupsafe, is licensed as follows: ...
+- cpplint.py, located at tools/cpplint.py, is licensed as follows: ...
+- ESLint, located at tools/node_modules/eslint, is licensed as follows: ...
+- babel-eslint, located at tools/node_modules/babel-eslint, is licensed as follows: ...
+- gtest, located at test/cctest/gtest, is licensed as follows: ...
+- nghttp2, located at deps/nghttp2, is licensed as follows: ...
+- node-inspect, located at deps/node-inspect, is licensed as follows: ...
+- large_pages, located at src/large_pages, is licensed as follows: ...
+- caja, located at lib/internal/freeze_intrinsics.js, is licensed as follows: ...
+- brotli, located at deps/brotli, is licensed as follows: ...
+- HdrHistogram, located at deps/histogram, is licensed as follows: ...
+- node-heapdump, located at src/heap_utils.cc, is licensed as follows: ...
+```
+
+You can also dig deepeer if you're interested but these were the most important
+ones.
 
