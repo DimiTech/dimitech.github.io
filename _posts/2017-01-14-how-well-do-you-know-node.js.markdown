@@ -37,8 +37,8 @@ Let's get on with it:
 16. [How can you make Node’s REPL always use JavaScript strict mode?](#16-how-can-you-make-nodes-repl-always-use-javascript-strict-mode)
 17. [How can we do one final operation before a Node process exits? Can that operation be done asynchronously?](#17-how-can-we-do-one-final-operation-before-a-node-process-exits-can-that-operation-be-done-asynchronously)
 18. [Besides V8 and libuv, what other external dependencies does Node have?](#18-besides-v8-and-libuv-what-other-external-dependencies-does-node-have)
-19. What’s the problem with the process uncaughtException event? How is it different than the exit event?
-20. Do Node buffers use V8 memory? Can they be resized?
+19. [What’s the problem with the process uncaughtException event? How is it different than the exit event?](#19-whats-the-problem-with-the-process-uncaughtexception-event-how-is-it-different-than-the-exit-event)
+20. [Do Node buffers use V8 memory? Can they be resized?](#20-do-node-buffers-use-v8-memory-can-they-be-resized)
 21. What’s the difference between Buffer.alloc and Buffer.allocUnsafe?
 22. How is the slice method on buffers different from that on arrays?
 23. What is the string_decoder module useful for? How is it different than casting buffers to strings?
@@ -827,3 +827,39 @@ The externally maintained libraries used by Node.js are:
 You can also dig deepeer if you're interested but these were the most important
 ones.
 
+## 19. What’s the problem with the process uncaughtException event? How is it different than the exit event?
+
+The [uncaughtException](https://nodejs.org/api/process.html#process_event_uncaughtexception)
+event callback can be used as a global error handler.
+It might seem useful since it prevents the process from crashing when unhandled
+errors occur.
+I prefer to **crash hard** and fix the problems at the cause.
+
+Therefore, I recommend using 'uncaughtException' sparringly, if at all.
+You should handle your errors locally - at the place where you expect them to be
+thrown.
+
+2 major problems with using 'uncaughtException':
+* It can easily leave the process in an invalid state by not crashing on serious errors
+* Exceptions thrown from within the 'uncaughtException' event handler will not be caught
+
+The [documentation](https://nodejs.org/api/process.html#process_warning_using_uncaughtexception_correctly)
+offers great advice:
+> The correct use of 'uncaughtException' is to perform synchronous cleanup of
+allocated resources (e.g. file descriptors, handles, etc) before shutting down
+the process. It is not safe to resume normal operation after
+'uncaughtException'.
+
+When the 'exit' event is emitted the application is toast, you can't save it
+from exiting or restart it. You can do async work, restart or keep the app
+running in the 'uncaughtException' handler, and that's the difference. Also the
+'exit' event is fired after 'uncaughtException'.
+
+If you're tempted to restart the application after a 'uncaughtException', do not.
+Use `supervisor`, `pm2`, `nodemon` or whatever other tool instead:
+> To restart a crashed application in a more reliable way, whether
+'uncaughtException' is emitted or not, an external monitor should be employed
+in a separate process to detect application failures and recover or restart as
+needed.
+
+## 20. Do Node buffers use V8 memory? Can they be resized?
