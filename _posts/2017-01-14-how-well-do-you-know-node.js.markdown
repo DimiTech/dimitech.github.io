@@ -40,8 +40,8 @@ Let's get on with it:
 19. [What’s the problem with the process uncaughtException event? How is it different than the exit event?](#19-whats-the-problem-with-the-process-uncaughtexception-event-how-is-it-different-than-the-exit-event)
 20. [Do Node buffers use V8 memory? Can they be resized?](#20-do-node-buffers-use-v8-memory-can-they-be-resized)
 21. [What’s the difference between Buffer.alloc and Buffer.allocUnsafe?](#21-whats-the-difference-between-bufferalloc-and-bufferallocunsafe)
-22. How is the slice method on buffers different from that on arrays?
-23. What is the string_decoder module useful for? How is it different than casting buffers to strings?
+22. [How is the slice method on buffers different from that on arrays?](#22-how-is-the-slice-method-on-buffers-different-from-that-on-arrays)
+23. [What is the string_decoder module useful for? How is it different than casting buffers to strings?](#23-what-is-the-string_decoder-module-useful-for-how-is-it-different-than-casting-buffers-to-strings)
 24. What are the 5 major steps that the require function does?
 25. What is the require.resolve function and what is it useful for?
 26. What is the main property in package.json useful for?
@@ -875,3 +875,8 @@ It also says that the **Buffer size cannot be changed**:
 > The size of the Buffer is established when it is created and cannot be changed.
 
 ## 21. What’s the difference between Buffer.alloc and Buffer.allocUnsafe?
+
+## 22. How is the slice method on buffers different from that on arrays?
+
+## 23. What is the string_decoder module useful for? How is it different than casting buffers to strings?
+
