@@ -49,6 +49,14 @@ p {
   font-size: 19px;
 }
 
+ol>li,
+ul>li
+{
+  list-style-position: inside;
+  font-size: 1.1em;
+  line-height: 1.4;
+}
+
 a.top-link {
   color: black;
   margin-top: 40px;

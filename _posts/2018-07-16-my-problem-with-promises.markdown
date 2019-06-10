@@ -240,7 +240,7 @@ setTimeout(() => p.cancel(), 500)
 
 Way better!
 
-Another possible solution would be to again use Observables (for example -
+Another possible solution would be to use Observables (for example -
 [RxJS](https://rxjs-dev.firebaseapp.com/)).  
 Observables support cancellation along with custom teardown logic you can add
 but they are a completely differnet way of dealing with asynchronous programming

@@ -6,11 +6,10 @@ tags: [Node.js, JavaScript]
 
 ---
 So, the other day I ran across a blog post called [How well do you know Node.js?](https://edgecoders.com/how-well-do-you-know-node-js-36b1473c01c8){:target="_blank"}
+I've gone ahead and answered these questions here so that you can review or
+upgrade your Node.js chops.
 
-I've gone ahead and answered these questions here so that people who read this
-post can review or upgrade their Node chops.
-
-In order to get most out of these answers - try out all of the examples and see
+**Tip:** In order to get most out of these answers - try out all of the examples and see
 the behaviour yourself.
 
 **Notice:** The article is prone to changes so I've copied the list of questions
