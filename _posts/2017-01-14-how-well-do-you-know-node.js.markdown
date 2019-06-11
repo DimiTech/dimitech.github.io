@@ -42,7 +42,7 @@ Let's get on with it:
 21. [What’s the difference between Buffer.alloc and Buffer.allocUnsafe?](#21-whats-the-difference-between-bufferalloc-and-bufferallocunsafe)
 22. [How is the slice method on buffers different from that on arrays?](#22-how-is-the-slice-method-on-buffers-different-from-that-on-arrays)
 23. [What is the string_decoder module useful for? How is it different than casting buffers to strings?](#23-what-is-the-string_decoder-module-useful-for-how-is-it-different-than-casting-buffers-to-strings)
-24. What are the 5 major steps that the require function does?
+24. [What are the 5 major steps that the require function does?](#24-what-are-the-5-major-steps-that-the-require-function-does)
 25. What is the require.resolve function and what is it useful for?
 26. What is the main property in package.json useful for?
 27. What are circular modular dependencies in Node and how can they be avoided?
@@ -876,7 +876,103 @@ It also says that the **Buffer size cannot be changed**:
 
 ## 21. What’s the difference between Buffer.alloc and Buffer.allocUnsafe?
 
+`Buffer.alloc()` allocates a memory block and fills that memory with 0x00 or
+user-defined data.
+
+`Buffer.allocUnsafe()` also allocates a memory block but **does not fill it
+with data**. The contents of the Buffer that was created this way are unknown
+and might contain old data.
+`Buffer.allocUnsafe()` is faster than `Buffer.alloc()` and the cost is that the
+newly created Buffer might contain undefined, and possibly sensitive Buffer
+content.
+
+The [documentation](https://nodejs.org/api/buffer.html#buffer_buffer_from_buffer_alloc_and_buffer_allocunsafe)
+covers this pretty well.
+
 ## 22. How is the slice method on buffers different from that on arrays?
+
+`String.slice()` returns the slice as a new string instance, leaving the
+original intact:
+
+```javascript
+var original = '123456789'
+var slice = original.slice(0, 3)
+
+console.log(slice)
+console.log(original)
+
+/* Output:
+123
+123456789
+*/
+```
+
+`buf.slice()` returns a new buffer that points to the same memory as the
+original buffer:
+
+```javascript
+var original = Buffer.from('123456789')
+var slice = original.slice(0, 3)
+
+console.log('slice:', slice)
+console.log('original:', original)
+
+/* Output:
+slice:    <Buffer 31 32 33>
+original: <Buffer 31 32 33 34 35 36 37 38 39>
+*/
+
+// If we change the slice, the original is changed as well.
+slice[0] = 0x00
+slice[1] = 0x00
+slice[2] = 0x00
+
+console.log('slice:', slice)
+console.log('original:', original)
+
+/* Output:
+slice:    <Buffer 00 00 00>
+original: <Buffer 00 00 00 34 35 36 37 38 39>
+*/
+```
+
+Simply put - `String.slice()` is immutable, `buf.slice()` is mutable.
+
+The [documentation](https://nodejs.org/api/buffer.html#buffer_buf_slice_start_end)
+explains it really well too.
 
 ## 23. What is the string_decoder module useful for? How is it different than casting buffers to strings?
 
+According to the [documentation](https://nodejs.org/api/string_decoder.html)
+String Decoder should be useful for converting Buffers to Strings while
+preserving encoded multi-byte UTF-8 and UTF-16 characters. 
+
+But by testing it with a simple program it does not seem to differ from
+`Buffer.toString()` at all, even with special UTF-8 characters:
+
+```javascript
+const { StringDecoder } = require('string_decoder')
+const decoder = new StringDecoder('utf8')
+
+const cent = Buffer.from([0xC2, 0xA2])
+console.log(cent.toString())
+console.log(cent.toString() === decoder.write(cent))
+
+const euro = Buffer.from([0xE2, 0x82, 0xAC])
+console.log(euro.toString())
+console.log(euro.toString() === decoder.write(euro))
+
+/* Output:
+¢
+true
+€
+true
+*/
+```
+
+I honestly don't know what `string_decoder` is useful for. Maybe there are some
+specific use cases with some obscure character encodings? Or maybe it's just a
+legacy leftover module. If someone knows what's the significance of this module
+please feel free to share!
+
+## 24. What are the 5 major steps that the require function does?
