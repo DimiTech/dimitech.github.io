@@ -972,7 +972,8 @@ true
 
 I honestly don't know what `string_decoder` is useful for. Maybe there are some
 specific use cases with some obscure character encodings? Or maybe it's just a
-legacy leftover module. If someone knows what's the significance of this module
-please feel free to share!
+legacy leftover. If someone knows what's the significance of this module please
+feel free to share!
 
 ## 24. What are the 5 major steps that the require function does?
+
