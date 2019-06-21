@@ -43,10 +43,10 @@ Let's get on with it:
 22. [How is the slice method on buffers different from that on arrays?](#22-how-is-the-slice-method-on-buffers-different-from-that-on-arrays)
 23. [What is the string_decoder module useful for? How is it different than casting buffers to strings?](#23-what-is-the-string_decoder-module-useful-for-how-is-it-different-than-casting-buffers-to-strings)
 24. [What are the 5 major steps that the require function does?](#24-what-are-the-5-major-steps-that-the-require-function-does)
-25. What is the require.resolve function and what is it useful for?
-26. What is the main property in package.json useful for?
-27. What are circular modular dependencies in Node and how can they be avoided?
-28. What are the 3 file extensions that will be automatically tried by the require function?
+25. [What is the require.resolve function and what is it useful for?](#25-what-is-the-requireresolve-function-and-what-is-it-useful-for)
+26. [What is the main property in package.json useful for?](#26-what-is-the-main-property-in-packagejson-useful-for)
+27. [What are circular modular dependencies in Node and how can they be avoided?](#27-what-are-circular-modular-dependencies-in-node-and-how-can-they-be-avoided)
+28. [What are the 3 file extensions that will be automatically tried by the require function?](#28-what-are-the-3-file-extensions-that-will-be-automatically-tried-by-the-require-function)
 29. When creating an http server and writing a response for a request, why is the end() function required?
 30. When is it ok to use the file system *Sync methods?
 31. How can you print only one level of a deeply nested object?
@@ -976,4 +976,78 @@ legacy leftover. If someone knows what's the significance of this module please
 feel free to share!
 
 ## 24. What are the 5 major steps that the require function does?
+
+Node.js uses a module system called **CommonJS**.
+In the world of CommonJS, every source code file is a module.
+Node.js (CommonJS) modules are basically singletons with certain functions and
+properties attached to each them (`require()`, `module`, `exports`...).
+
+The `require()` function loads a module at the given file path. It returns that
+module's `exports` property.
+
+We can read the Node.js module system source code and figure out what it does.
+It is located in `lib/module.js`.
+
+As we can see by analyzing the source, `require()` wraps the `_load()` function
+which performs the following steps:
+
+1. Check the cache for the requested (required) file.
+2. If a module already exists in the cache: return its exports object.
+3. If the module is native: call `NativeModule.require()` with the filename and
+   return the result.
+4. Otherwise, create a new module for the file and save it to the cache.
+5. Then have it load the file contents before returning its exports object.
+
+### Useful links:
+* [https://fredkschott.com/post/2014/06/require-and-the-module-system/](https://fredkschott.com/post/2014/06/require-and-the-module-system/)
+
+## 25. What is the require.resolve function and what is it useful for?
+
+As written in the [documentation](https://nodejs.org/api/modules.html#modules_require_resolve_request_options):
+
+> `require.resolve(request[, options]) uses the internal require() machinery to
+  look up the location of a module, but rather than loading the module, just
+  return the resolved filename.
+
+`require.resolve()` might be useful for debugging or if you want to get a path
+string to a module without typing it out explicitly.
+
+## 26. What is the main property in package.json useful for?
+
+The `"main"` property of `package.json` points to the file that is the entry
+point to the Node.js application (or package).
+Unless you are publishing your package to NPM or another package registry the
+"main" property is just informative but not functinally useful.
+
+### Useful links:
+* [https://docs.npmjs.com/files/package.json#main](https://docs.npmjs.com/files/package.json#main)
+
+## 27. What are circular modular dependencies in Node and how can they be avoided?
+
+The biggest indicator that you have a circular dependency in Node.js is if you
+keep getting an empty object `{}` instead of your required module!
+
+This happened to me once while creating a _Rock, Paper, Scissors_ game, where
+the circular dependency was obvious: `Rock > Scissors > Paper > Rock...`.
+
+It still took me a couple of minutes to figure out what was wrong since this is
+a really rare situation to get yourself in while using Node. Node.js **permits**
+circular depencencies and it's rare to get into problems but you should still
+be very careful. Circular dependencies are also an indicator that you possibly
+have a design problem, so take a closer look at your code.
+
+If you really can't untangle circular dependencies in your code then you can
+export your module first and then require the dependencies second (lexically).
+
+Laurent Perrin explained it really well in his blog post:
+[Circular dependencies in node.js](https://coderwall.com/p/myzvmg/circular-dependencies-in-node-js).
+
+## 28. What are the 3 file extensions that will be automatically tried by the require function?
+
+Looking at the `lib/module.js` source, it reveals the file extensions that the
+`require()` function tries to resolve:
+
+1. `.js`
+2. `.json`
+3. `.node`
 
