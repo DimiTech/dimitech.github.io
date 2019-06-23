@@ -47,18 +47,18 @@ Let's get on with it:
 26. [What is the main property in package.json useful for?](#26-what-is-the-main-property-in-packagejson-useful-for)
 27. [What are circular modular dependencies in Node and how can they be avoided?](#27-what-are-circular-modular-dependencies-in-node-and-how-can-they-be-avoided)
 28. [What are the 3 file extensions that will be automatically tried by the require function?](#28-what-are-the-3-file-extensions-that-will-be-automatically-tried-by-the-require-function)
-29. When creating an http server and writing a response for a request, why is the end() function required?
-30. When is it ok to use the file system *Sync methods?
-31. How can you print only one level of a deeply nested object?
-32. What is the node-gyp package used for?
-33. The objects exports, require, and module are all globally available in every module but they are different in every module. How?
-34. How can a module be both requirable by other modules and executable directly using the node command?
-35. What’s an example of a built-in stream in Node that is both readable and writable?
-36. What’s the difference between using event emitters and using simple callback functions to allow for asynchronous handling of code?
-37. The require function always caches the module it requires. What can you do if you need to execute the code in a required module many times?
-38. What’s the difference between the Paused and the Flowing modes of readable streams?
-39. What does the --inspect argument do for the node command?
-40. When working with streams, when do you use the pipe function and when do you use events? Can those two methods be combined?
+29. [When creating an http server and writing a response for a request, why is the end() function required?](#29-when-creating-an-http-server-and-writing-a-response-for-a-request-why-is-the-end-function-required)
+30. [When is it ok to use the file system *Sync methods?](#30-when-is-it-ok-to-use-the-file-system-sync-methods)
+31. [How can you print only one level of a deeply nested object?](#31-how-can-you-print-only-one-level-of-a-deeply-nested-object)
+32. [What is the node-gyp package used for?](#32-what-is-the-node-gyp-package-used-for)
+33. [The objects exports, require, and module are all globally available in every module but they are different in every module. How?](#33-the-objects-exports-require-and-module-are-all-globally-available-in-every-module-but-they-are-different-in-every-module-how)
+34. [How can a module be both requirable by other modules and executable directly using the node command?](#34-how-can-a-module-be-both-requirable-by-other-modules-and-executable-directly-using-the-node-command)
+35. [What’s an example of a built-in stream in Node that is both readable and writable?](#35-whats-an-example-of-a-built-in-stream-in-node-that-is-both-readable-and-writable)
+36. [What’s the difference between using event emitters and using simple callback functions to allow for asynchronous handling of code?](#36-whats-the-difference-between-using-event-emitters-and-using-simple-callback-functions-to-allow-for-asynchronous-handling-of-code)
+37. [The require function always caches the module it requires. What can you do if you need to execute the code in a required module many times?](#37-the-require-function-always-caches-the-module-it-requires-what-can-you-do-if-you-need-to-execute-the-code-in-a-required-module-many-times)
+38. [What’s the difference between the Paused and the Flowing modes of readable streams?](whats-the-difference-between-the-paused-and-the-flowing-modes-of-readable-streams)
+39. [What does the --inspect argument do for the node command?](#39-what-does-the-inspect-argument-do-for-the-node-command)
+40. [When working with streams, when do you use the pipe function and when do you use events? Can those two methods be combined?](#40-when-working-with-streams-when-do-you-use-the-pipe-function-and-when-do-you-use-events-can-those-two-methods-be-combined)
 
 ## 1. How come when you declare a global variable in any Node.js file it’s not really global to all modules?
 
@@ -141,7 +141,8 @@ If you explicitly need to declare a global variable, attach the value to the `gl
 
 *Helpful resources:*
 
-- Eloquent JavaScript - Modules chapter explains how the CommonJS require function works on a basic level: [http://eloquentjavascript.net/10_modules.html](http://eloquentjavascript.net/10_modules.html){:target="_blank"}
+- Eloquent JavaScript - Modules chapter explains how the CommonJS require function works on a basic level: [http://eloquentjavascript.net/10_modules.html](http://eloquentjavascript.net/10_modules.html)
+- Node.js Module documentation explains how Node.js modules work in more detail [https://nodejs.org/api/modules.html](https://nodejs.org/api/modules.html)
 
 
 ## 2. When exporting the API of a Node module, why can we sometimes use `exports` and other times we have to use `module.exports`?
@@ -504,6 +505,12 @@ Node.js Cluster documentation:
 
 Node.js runs on modern versions of V8 by default, and new ECMAScript features
 are being brought in V8 all the time.
+
+You can see which version of V8 your Node.js installation uses by running:
+```bash
+$ node -p 'process.versions.v8'
+7.4.288.21-node.16
+```
 
 `--harmony` is a Node.js runtime flag which enables **staged** ECMAScript
 features to be used in the Node.js application.
@@ -970,10 +977,46 @@ true
 */
 ```
 
-I honestly don't know what `string_decoder` is useful for. Maybe there are some
-specific use cases with some obscure character encodings? Or maybe it's just a
-legacy leftover. If someone knows what's the significance of this module please
-feel free to share!
+`string_decoder` becomes useful when the program is receiving a stream of bytes.
+The euro symbol consists of 3 bytes: `0xE2, 0x82, 0xAC`. When we individually
+write those to the `sting_decoder` it will wait until the actual 'utf-8'
+character is formed. Let's simulate receiving 3 bytes as buffer chunks and then
+write them individually to the `string_decoder`:
+
+```javascript
+const EventEmitter = require('events')
+const { StringDecoder } = require('string_decoder')
+const decoder = new StringDecoder('utf8')
+
+class ByteEmitter extends EventEmitter {}
+
+const byteEmitter = new ByteEmitter()
+
+byteEmitter.on('data', chunk => {
+  const buffer = Buffer.from([chunk])
+  console.log(buffer.toString('utf-8'))
+  console.log(decoder.write(buffer))
+})
+
+const euro = [0xE2, 0x82, 0xAC]
+byteEmitter.emit('data', euro[0])
+byteEmitter.emit('data', euro[1])
+byteEmitter.emit('data', euro[2])
+
+/* Output:
+�
+
+�
+
+�
+€
+*/
+```
+
+We can see that the individual Buffers don't make sense as printable characters
+when constructed from individual byte chunks. `string_decoder` expects a 'utf-8'
+character and only forms a printable character when all the necessary bytes
+arrive.
 
 ## 24. What are the 5 major steps that the require function does?
 
@@ -1050,4 +1093,254 @@ Looking at the `lib/module.js` source, it reveals the file extensions that the
 1. `.js`
 2. `.json`
 3. `.node`
+
+## 29. When creating an http server and writing a response for a request, why is the end() function required?
+
+Here is what the docs have to say about `res.end()` in the context of a HTTP
+Server:
+
+> This method signals to the server that all of the response headers and body
+> have been sent; that server should consider this message complete. The
+> method, response.end(), MUST be called on each response.
+
+Simple enough, but let's dive deeper.
+
+Node.js HTTP server implementation tries really hard to never buffer entire
+requests or responses but instead it prefers to **stream** them to the client.
+Streaming offers greater performance and reduces the server's memory footprint.
+
+Because we are streaming the response back to the client, `res.end()` needs to
+be called manually in order to close the connection socket and therefore end
+the response stream.
+
+## 30. When is it ok to use the file system *Sync methods?
+
+Blocking (*Sync) operations are best to be avoided in Node.js but sometimes
+they can be more convenient and even necessary. From my experience you can
+freely use *Sync calls when:
+
+1. The order of blocking operations is important.
+2. The blocking operation is performed only once (or a couple of times max) in
+the entire lifecycle of the application.
+
+## 31. How can you print only one level of a deeply nested object?
+
+Using `util.inspect()` you can specify the logging **depth**:
+
+```javascript
+const util = require('util')
+
+const exampleObject = {
+  first : 'John',
+  last  : 'Doe',
+  company : {
+    address : 'Example St.',
+    IBAN    : 'XXX-XXX',
+  }
+}
+
+console.log(utsl.inspect(exampleObject, { depth: 1 }))
+/* Output:
+{
+  first: 'John',
+  last: 'Doe',
+  company: { address: 'Example St.', IBAN: 'XXX-XXX' }
+}
+*/
+
+console.log(util.inspect(exampleObject, { depth: 0 }))
+/* Output:
+{ first: 'John', last: 'Doe', company: [Object] }
+*/
+```
+
+## 32. What is the node-gyp package used for?
+
+Taken from the [node-gyp README](https://github.com/nodejs/node-gyp):
+
+> `node-gyp` is a cross-platform command-line tool written in Node.js for
+compiling [native addon modules](https://nodejs.org/api/addons.html) for
+Node.js. It bundles the [gyp](https://gyp.gsrc.io) project used by the Chromium
+team and takes away the pain of dealing with the various differences in build
+platforms.
+
+Node.js Native Addons are written in C/C++ and need to be compiled using
+node-gyp in order to be used on your machine (platform).
+
+## 33. The objects exports, require, and module are all globally available in every module but they are different in every module. How?
+
+Every Node.js file is implicitly a CommonJS module. What happens under the hood
+is that every file gets wrapped in a function (by the Node module system) and
+`exports`, `require` and `module` are provided as the wrapping function's
+arguments. That's why those variables appear to be global.
+
+### Useful links:
+* [Node.js Module Documentation](https://nodejs.org/api/modules.html#modules_the_module_wrapper)
+* [CommonJS Module Source Code](https://github.com/nodejs/node/blob/master/lib/internal/modules/cjs/loader.js)
+* [https://fredkschott.com/post/2014/06/require-and-the-module-system/](https://fredkschott.com/post/2014/06/require-and-the-module-system/)
+
+## 34. How can a module be both requirable by other modules and executable directly using the node command?
+
+The [module documentation](https://nodejs.org/api/modules.html#modules_the_module_wrapper)
+explains how module code is wrapped before it's executed:
+
+> Before a module's code is executed, Node.js will wrap it with a function
+wrapper that looks like the following:
+
+```javascript
+(function(exports, require, module, __filename, __dirname) {
+  // Module code actually lives in here
+});
+```
+
+> By doing this, Node.js achieves a few things:
+
+```
+* It keeps top-level variables (defined with `var`, `const` or `let`) scoped to
+the module rather than the global object.
+* It helps to provide some global-looking variables that are actually specific
+to the module, such as:
+  * The `module` and `exports` objects that the implementor can use to export
+    values from the module.
+  * The convenience variables `__filename` and `__dirname`, containing the
+    module's absolute filename and directory path.
+```
+
+Ran directly using `node` or by using `require()`, the module code is being
+wrapped by the Node runtime in the same manner.
+
+## 35. What’s an example of a built-in stream in Node that is both readable and writable?
+
+A **Duplex stream** is a stream that implements both the Readable and Writable
+streams. You can listen and emit events from duplex streams.
+
+An example of a duplex stream is the ['net.Socket'](https://nodejs.org/api/net.html#net_net_createserver_options_connectionlistener).
+
+## 36. What’s the difference between using event emitters and using simple callback functions to allow for asynchronous handling of code?
+
+Emitting events is usually a more flexible way of dealing with asynchrony in
+your program. Of course that comes with a cost of higher complexity.
+
+Here are some technical Event-Emitter characteristics:
+* Event-Emitters are a Pub-Sub mechanism, where we can have multiple listeners
+  for a single event.
+* Error and success events are separated.
+* Like when using callbacks, using events doesn't mean that code execution is
+  asynchronous.
+
+The main difference between the two approaches is architectural.
+
+Event emitters are a tool by which we can achieve a higher level of
+architectural decoupling.
+
+Here's a legendary video on Event-Driven Architecture:
+
+<iframe width="560" height="315"
+src="https://www.youtube.com/embed/STKCRSUsyP0" frameborder="0"
+allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+allowfullscreen></iframe>>
+
+## 37. The require function always caches the module it requires. What can you do if you need to execute the code in a required module many times?
+
+Let's create 2 files:
+```bash
+$ touch main.js accumulator.js
+```
+
+The `accumulator` will hold a `sum`, increment and log it.
+```javascript
+// accumulator.js
+let sum = 0
+sum = sum + 1
+module.exports = sum
+```
+
+In the `main` file let's require our `accumulator` module 3 times:
+```javascript
+// main.js
+const sum1 = require('./accumulator')
+const sum2 = require('./accumulator')
+const sum3 = require('./accumulator')
+
+console.log(sum1)
+console.log(sum2)
+console.log(sum3)
+/* Output:
+1
+1
+1
+*/
+```
+
+By now, we know that CommonJS modules behave like singletons (because of the
+module cache) and therefore the source code in `accumulator.js` will be executed
+only once.
+
+One way to execute the entire module code every time the module is required is
+by using **wrapping the code that needs to be executed every time with a
+function**.
+
+Let's modify the files:
+```diff
+// accumulator.js
+let sum = 0
+-sum = sum + 1
+-module.exports = sum
++module.exports = () => {
++  sum = sum + 1
++  return sum
++}
+```
+
+```diff
+// main.js
+-const sum1 = require('./accumulator')
+-const sum2 = require('./accumulator')
+-const sum3 = require('./accumulator')
++const sum1 = require('./accumulator')()
++const sum2 = require('./accumulator')()
++const sum3 = require('./accumulator')()
+
+console.log(sum1)
+console.log(sum2)
+console.log(sum3)
+/* Output:
+1
+2
+3
+*/
+```
+
+## 38. What’s the difference between the Paused and the Flowing modes of readable streams?
+
+All readable streams are in `Paused` mode by default.
+Attaching a `'data'` event listener switches the stream to `Flowing` mode.
+
+`Flowing` mode can also be activated manually by executing `stream.resume()`
+but if there are no `'data'` listeners attached at that moment, the **incoming
+data will be lost**.
+
+The author of these 40 Node.js questions has written a great article about
+Node.js streams:
+
+[Node.js Streams: Everything you need to know](https://www.freecodecamp.org/news/node-js-streams-everything-you-need-to-know-c9141306be93/)
+
+> When a readable stream is in the paused mode, we can use the read() method to
+> read from the stream on demand, however, for a readable stream in the flowing
+> mode, the data is continuously flowing and we have to listen to events to
+> consume it.
+
+## 39. What does the --inspect argument do for the node command?
+
+As we have seen [before](#123-using-chrome-devtools-for-nodejs), the `--inspect`
+flag enables the Inspector Agent which makes the Node.js process listen for a
+debugging client.
+
+## 40. When working with streams, when do you use the pipe function and when do you use events? Can those two methods be combined?
+
+We usually use `pipe` in order to "pipe" the data into writable streams. It's
+a really clean and simple technique. We use `events` in order to react to every
+stream event, when that is necessary.
+
+`pipes` and `events` can be freely combined.
 
