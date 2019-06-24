@@ -102,7 +102,7 @@ Node.js uses the CommonJS module system.
 
 To test this behavior, create a new project folder and inside that folder create 2 files - `file1.js` and `file2.js` (creative, I know).
 
-Put the follwing code inside those files:
+Put the following code inside those files:
 
 ```javascript
 /**
@@ -797,7 +797,7 @@ drwxrwxr-x 14 xxx xxx 4.0K Jun 10 12:21 zlib/
 ```
 
 We can get even more information if we peek into the LICENSE file, where Node's
-dependency licences are listed:
+dependency licenses are listed:
 
 ```
 The externally maintained libraries used by Node.js are:
@@ -831,7 +831,7 @@ The externally maintained libraries used by Node.js are:
 - node-heapdump, located at src/heap_utils.cc, is licensed as follows: ...
 ```
 
-You can also dig deepeer if you're interested but these were the most important
+You can also dig deeper if you're interested but these were the most important
 ones.
 
 ## 19. What’s the problem with the process uncaughtException event? How is it different than the exit event?
@@ -842,7 +842,7 @@ It might seem useful since it prevents the process from crashing when unhandled
 errors occur.
 I prefer to **crash hard** and fix the problems at the cause.
 
-Therefore, I recommend using 'uncaughtException' sparringly, if at all.
+Therefore, I recommend using 'uncaughtException' sparingly, if at all.
 You should handle your errors locally - at the place where you expect them to be
 thrown.
 
@@ -1060,7 +1060,7 @@ string to a module without typing it out explicitly.
 The `"main"` property of `package.json` points to the file that is the entry
 point to the Node.js application (or package).
 Unless you are publishing your package to NPM or another package registry the
-"main" property is just informative but not functinally useful.
+"main" property is just informative but not functionally useful.
 
 ### Useful links:
 * [https://docs.npmjs.com/files/package.json#main](https://docs.npmjs.com/files/package.json#main)
@@ -1075,7 +1075,7 @@ the circular dependency was obvious: `Rock > Scissors > Paper > Rock...`.
 
 It still took me a couple of minutes to figure out what was wrong since this is
 a really rare situation to get yourself in while using Node. Node.js **permits**
-circular depencencies and it's rare to get into problems but you should still
+circular dependencies and it's rare to get into problems but you should still
 be very careful. Circular dependencies are also an indicator that you possibly
 have a design problem, so take a closer look at your code.
 
