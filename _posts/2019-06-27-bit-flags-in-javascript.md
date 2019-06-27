@@ -2,7 +2,7 @@
 layout: post
 title:  "Bit Flags in JavaScript"
 description: "How to create and use bit flags in JavaScript"
-tags: [Bit Flags, Low-Level, Useless, Fun, C, C++, JavaScript, Bitwise]
+tags: [Bit Flags, Bit Fields, Low-Level, Useless, Fun, C, C++, JavaScript, TypeScript, Bitwise]
 
 ---
 
@@ -210,4 +210,21 @@ but if you want to use them, as a tribute to the old days, go ahead!
 I personally like to sprinkle them here and there just for fun.
 
 P.S. I hope you enjoyed my ASCII art :)
+
+# Bonus: TypeScript implemenation
+
+In TypeScript, bit flags can be represented by using an `enum`:
+
+```typescript
+enum Directions = {
+  N  = 1 << 0,
+  NE = 1 << 1,
+  E  = 1 << 2,
+  SE = 1 << 3,
+  S  = 1 << 4,
+  SW = 1 << 5,
+  W  = 1 << 6,
+  NW = 1 << 7,
+}
+```
 
