@@ -16,7 +16,7 @@ to 8 boolean options in 1 byte.
 
 TCP/IP, BLE and a whole bunch of other low-level protocols use bit flags and bit
 fields extensively. It doesn't make much sense in JavaScript, since all
-JavaScript numbers are 64bit floats, and we don't manage the memory ourselves
+JavaScript numbers are 64bit floats and we don't manage the memory ourselves
 but it's still a fun technique to use when it's appropriate.
 
 # Example
@@ -147,7 +147,7 @@ console.log('Player can move NW:', (traversableDirections & Directions.NW) === D
 
 # Comparison with the traditional approach
 
-Our code so far looks like this:
+Our bit-flag code so far looks like this:
 
 ```javascript
 const Directions = {
@@ -200,8 +200,8 @@ console.log('Player can move W :', traversableDirections.W ) // false
 console.log('Player can move NW:', traversableDirections.NW) // false
 ```
 
-Even though the traditional JavaScript approach has less code it is less
-readable and less performant.
+Even though the traditional JavaScript approach has less code it is somewhat
+less readable and less performant.
 
 The `traversableDirections` object needs to be created
 every time and eventually garbage collected (keep in mind that this code might
@@ -215,17 +215,18 @@ const traversableDirections =
   Directions.E
 ```
 
-The bitwise `&` flag checking is way more tedious than a simple property access although
-bitwise operations should be pretty CPU efficient even in JS (since they should
-map directly to machine code). It's worth noting that this does not offer any
-significant performance improvements in this case.
+On the other hand, the bitwise `&` flag checking is way more tedious than a
+simple property access although, even in JavaScript, bitwise operations should
+be pretty CPU efficient (since they should map directly to machine code). It's
+worth noting that this does not offer any significant performance improvements
+in this case.
 
 ## Conclusion
 
 Bit flags are an old-school technique that is really unnecessary in JavaScript
-but if you want to use them, even as a tribute to the old days, go ahead!
+but if you want to use them, as a tribute to the old days, go ahead!
 
 I personally like to sprinkle them here and there just for fun.
 
-P.S. I hope you enjoyed my ASCII art :D
+P.S. I hope you enjoyed my ASCII art :)
 
