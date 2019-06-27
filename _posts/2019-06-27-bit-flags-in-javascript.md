@@ -209,7 +209,7 @@ but if you want to use them, as a tribute to the old days, go ahead!
 
 I personally like to sprinkle them here and there just for fun.
 
-P.S. I hope you enjoyed my ASCII art :)
+P.S. I hope you enjoyed the ASCII :)
 
 # Bonus: TypeScript implemenation
 
