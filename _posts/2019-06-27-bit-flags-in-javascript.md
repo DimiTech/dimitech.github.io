@@ -14,7 +14,7 @@ Instead of using 1 byte of memory (`unsigned char`) to represent each boolean
 value and waste 7 bits every time, bit flags were utilized in order to pack up
 to 8 boolean options in 1 byte.
 
-TCP/IP, BLE and a whole bunch of other low-level protocols use bit flags and bit
+TCP/IP, BLE and a bunch of other low-level protocols use bit flags and bit
 fields extensively. It doesn't make much sense in JavaScript, since all
 JavaScript numbers are 64bit floats and we don't manage the memory ourselves
 but it's still a fun technique to use when it's appropriate.
@@ -78,7 +78,8 @@ the `shift left` operator `<<`.
 
 ## 2. Definging the traversable directions
 
-We define the traversable directions using the bitwise OR (`|`) operator:
+We define the traversable directions by chaining them using the bitwise OR (`|`)
+operator:
 
 ```javascript
 const traversableDirections =
@@ -201,7 +202,7 @@ be pretty CPU efficient (since they should map directly to machine code). It's
 worth noting that this does not offer any significant performance improvements
 in this case.
 
-## Conclusion
+# Conclusion
 
 Bit flags are an old-school technique that is really unnecessary in JavaScript
 but if you want to use them, as a tribute to the old days, go ahead!
