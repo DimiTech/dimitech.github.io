@@ -24,19 +24,7 @@ but it's still a fun technique to use when it's appropriate.
 Let's say we're developing a simple turn-based strategy game, and the player
 can move in any of the [4 Cardinal and 4 Intercardinal directions](https://en.wikipedia.org/wiki/Cardinal_direction):
 
-```javascript
-4 Cardinal and 4 Intercardinal Directions (8 in total):
-
-/*
-       N       
-  NW   ▲   NE  
-     ◤ ◮ ◥     
-W  ◄   ●   ►  E
-     ◣   ◢     
-  SW   ▼   SE  
-       S       
-*/
-```
+![ASCII Compass](/images/2019-06-27-bit-flags-in-javascript/compass.png "ASCII Compass")
 
 In our game, some tiles on the map are **traversable** and some are not.
 We want to simulate a situation like this one here:
@@ -57,15 +45,7 @@ In the example above the player (`◄►`) can only move to the **North**,
 In order to know which of the tiles adjacent to the player are **traversable**
 and which are not we can use an 8bit **bit flag**:
 
-```
-  00000111 === 7
-  ↑↑↑↑↑↑↑↑
-  NWSSSENN
-  W W E E 
-
-1 - Traversable
-0 - Not Traversable
-```
+![Bit Flags](/images/2019-06-27-bit-flags-in-javascript/bit-flags.png "Bit Flags")
 
 # Implementation
 
