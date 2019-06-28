@@ -88,11 +88,11 @@ const traversableDirections =
   Directions.E
 
 console.log(
-  'Available directions:',
+  'Traversable directions:',
   traversableDirections.toString(2).padStart(8, '0'),
 )
 /* Output:
-Available directions: 00000111
+Traversable directions: 00000111
 */
 ```
 
