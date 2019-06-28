@@ -230,7 +230,7 @@ enum Directions = {
 
 # Bonus #2 - C Implementation
 
-C Implementation using pre-processor headers:
+C Implementation using pre-processor macros:
 
 ```c
 #include <stdio.h>
