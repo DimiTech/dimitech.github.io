@@ -312,7 +312,7 @@ int main(int argc, char** argv) {
     .SW = 0,
     .W  = 0,
     .NW = 0,
-  }; // 0b00000111;
+  }; // 0b00000111
 
   printf(
     "Size of traversableDirections: %lu %s\n",
