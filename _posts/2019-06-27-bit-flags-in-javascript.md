@@ -320,11 +320,6 @@ int main(int argc, char** argv) {
     sizeof(traversableDirections) == 1 ? "byte" : "bytes"
   ); // 1 byte
 
-  printf(
-    "traversableDirections == 0b00000111: %s\n\n",
-    ((int)traversableDirections == 0b00000111) ? "true" : "false"
-  ); // true
-
   printf("Player can move N : %d\n", traversableDirections.N  == 1); // 1
   printf("Player can move NE: %d\n", traversableDirections.NE == 1); // 1
   printf("Player can move E : %d\n", traversableDirections.E  == 1); // 1
