@@ -211,7 +211,7 @@ I personally like to sprinkle them here and there just for fun.
 
 P.S. I hope you enjoyed the ASCII :)
 
-# Bonus: TypeScript implemenation
+# Bonus #1: TypeScript implemenation
 
 In TypeScript, bit flags can be represented by using an `enum`:
 
@@ -273,4 +273,57 @@ int main(int argc, char** argv) {
 }
 ```
 
-## C Implementation using a bit field struct
+C Implementation using a bit field struct (less portable and can lead to
+possible undefined behavior):
+
+```c
+#include <stdio.h>
+
+typedef struct {
+  unsigned char N  : 1; // -------□
+  unsigned char NE : 1; // ------□-
+  unsigned char E  : 1; // -----□--
+  unsigned char SE : 1; // ----□---
+  unsigned char S  : 1; // ---□----
+  unsigned char SW : 1; // --□-----
+  unsigned char W  : 1; // -□------
+  unsigned char NW : 1; // □-------
+} Directions;
+
+int main(int argc, char** argv) {
+  printf("Size of Directions struct: %lu\n", sizeof(Directions)); // 1 byte
+
+  Directions traversableDirections = {
+    .N  = 1,
+    .NE = 1,
+    .E  = 1,
+    .SE = 0,
+    .S  = 0,
+    .SW = 0,
+    .W  = 0,
+    .NW = 0,
+  }; // 0b00000111;
+
+  printf(
+    "Size of traversableDirections: %lu %s\n",
+    sizeof(traversableDirections),
+    sizeof(traversableDirections) == 1 ? "byte" : "bytes"
+  ); // 1 byte
+
+  printf(
+    "traversableDirections == 0b00000111: %s\n\n",
+    ((int)traversableDirections == 0b00000111) ? "true" : "false"
+  ); // true
+
+  printf("Player can move N : %d\n", traversableDirections.N  == 1); // 1
+  printf("Player can move NE: %d\n", traversableDirections.NE == 1); // 1
+  printf("Player can move E : %d\n", traversableDirections.E  == 1); // 1
+  printf("Player can move SE: %d\n", traversableDirections.SE == 1); // 0
+  printf("Player can move S : %d\n", traversableDirections.S  == 1); // 0
+  printf("Player can move SW: %d\n", traversableDirections.SW == 1); // 0
+  printf("Player can move W : %d\n", traversableDirections.W  == 1); // 0
+  printf("Player can move NW: %d\n", traversableDirections.NW == 1); // 0
+
+  return 0;
+}
+```
