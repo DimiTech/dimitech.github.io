@@ -186,7 +186,10 @@ less readable and less performant.
 
 The `traversableDirections` object needs to be created
 every time and eventually garbage collected (keep in mind that this code might
-be running at 60fps). The hash-map implementation of `traversableDirections` is
+be running at 60fps). This can be mitigated by directly mutating a single
+`traversableDirections` object properties.
+
+Either way, the hash-map implementation of `traversableDirections` is
 way less readable to me than the bit flag - which is crystal clear:
 
 ```javascript
