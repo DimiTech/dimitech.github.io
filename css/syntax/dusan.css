@@ -12,7 +12,7 @@
 .highlight .p { color: #d0d0d0 } /* Punctuation */
 .highlight .ch { color: #73a755; font-style: italic } /* Comment.Hashbang */
 .highlight .cm { color: #73a755; font-style: italic } /* Comment.Multiline */
-.highlight .cp { color: #96d3ff; } /* Comment.Preproc */
+.highlight .cp { color: #ffc88a; } /* Comment.Preproc */
 .highlight .cpf { color: #73a755; font-style: italic } /* Comment.PreprocFile */
 .highlight .c1 { color: #73a755; font-style: italic } /* Comment.Single */
 .highlight .cs { color: #e50808; font-weight: bold; background-color: #520000 } /* Comment.Special */
