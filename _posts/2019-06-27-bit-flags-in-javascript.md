@@ -216,7 +216,7 @@ P.S. I hope you enjoyed the ASCII :)
 In TypeScript, bit flags can be represented by using an `enum`:
 
 ```typescript
-enum Directions = {
+enum Directions {
   N  = 1 << 0,
   NE = 1 << 1,
   E  = 1 << 2,
@@ -226,6 +226,13 @@ enum Directions = {
   W  = 1 << 6,
   NW = 1 << 7,
 }
+
+const traversableDirections: number =
+  Directions.N  |
+  Directions.NE |
+  Directions.E
+
+// ...
 ```
 
 # Bonus #2 - C Implementation
