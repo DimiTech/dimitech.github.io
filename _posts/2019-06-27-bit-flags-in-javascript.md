@@ -228,3 +228,49 @@ enum Directions = {
 }
 ```
 
+# Bonus #2 - C Implementation
+
+## C Implementation using pre-processor headers:
+
+```c
+#include <stdio.h>
+
+#define DIRECTIONS_N  (1 << 0) // 00000001
+#define DIRECTIONS_NE (1 << 1) // 00000010
+#define DIRECTIONS_E  (1 << 2) // 00000100
+#define DIRECTIONS_SE (1 << 3) // 00001000
+#define DIRECTIONS_S  (1 << 4) // 00010000
+#define DIRECTIONS_SW (1 << 5) // 00100000
+#define DIRECTIONS_W  (1 << 6) // 01000000
+#define DIRECTIONS_NW (1 << 7) // 10000000
+
+int main(int argc, char** argv) {
+  unsigned char traversableDirections =
+    DIRECTIONS_N  |
+    DIRECTIONS_NE |
+    DIRECTIONS_E;
+
+  printf(
+    "Size of traversableDirections: %lu %s\n",
+    sizeof(traversableDirections),
+    sizeof(traversableDirections) == 1 ? "byte" : "bytes"
+  ); // 1 byte
+
+  printf(
+    "traversableDirections == 0b00000111: %s\n\n",
+    (traversableDirections == 0b00000111) ? "true" : "false"
+  ); // true
+
+  printf("Player can move N : %d\n", (traversableDirections & DIRECTIONS_N ) == DIRECTIONS_N ); // 1
+  printf("Player can move NE: %d\n", (traversableDirections & DIRECTIONS_NE) == DIRECTIONS_NE); // 1
+  printf("Player can move E : %d\n", (traversableDirections & DIRECTIONS_E ) == DIRECTIONS_E ); // 1
+  printf("Player can move SE: %d\n", (traversableDirections & DIRECTIONS_SE) == DIRECTIONS_SE); // 0
+  printf("Player can move S : %d\n", (traversableDirections & DIRECTIONS_S ) == DIRECTIONS_S ); // 0
+  printf("Player can move SW: %d\n", (traversableDirections & DIRECTIONS_SW) == DIRECTIONS_SW); // 0
+  printf("Player can move W : %d\n", (traversableDirections & DIRECTIONS_W ) == DIRECTIONS_W ); // 0
+  printf("Player can move NW: %d\n", (traversableDirections & DIRECTIONS_NW) == DIRECTIONS_NW); // 0
+  return 0;
+}
+```
+
+## C Implementation using a bit field struct
