@@ -30,16 +30,10 @@ a img{ border:none; }
   Main Layout
 ----------------------------------------------------------------------------*/
 
-@font-face {
-    font-family: AvenirLTStd;
-    font-style: normal;
-    src: url("AvenirLTStd-Book.otf") format("opentype");
-    font-display: swap;
-}
-
 body {
-  font-family: "AvenirLTStd", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  font-family: 'Raleway', sans-serif;
   font-size: 14.5px;
+  letter-spacing: 0.05em;
   color: #333;
   text-shadow: 0 1px 0 rgba(255,255,255,1.0);
 }
@@ -60,15 +54,29 @@ ul>li
 a.top-link {
   color: black;
   margin-top: 40px;
-  font-size: 60px;
+  font-size: 46px;
   text-decoration: none;
+  
+  display: none; /* Hidden - Display only the logo */
 }
 
 a.top-link:hover {
-  margin-top: 40px;
-  color: black;
-  font-size: 60px;
   text-decoration: none;
+  color: deepskyblue;
+}
+
+a.top-logo img {
+  width: 100px;
+  border-radius: 50px;
+  -webkit-box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.29);
+     -moz-box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.29);
+          box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.29);
+  transition: all 0.4s ease-in-out;
+}
+a.top-logo img:hover {
+  -webkit-box-shadow: 0px 0px 5px 2px rgba(0,0,0,0.29);
+     -moz-box-shadow: 0px 0px 5px 2px rgba(0,0,0,0.29);
+          box-shadow: 0px 0px 5px 2px rgba(0,0,0,0.29);
 }
 
 strong {
@@ -116,12 +124,12 @@ hr:before {
 
 header {
   margin: 20px 0 20px 0;
-  /* text-align: right; */
+  text-align: center;
 }
 
 ul.nav {
   margin: 0;
-  padding: 8px 0 8px 0;
+  padding: 16px 0 12px 0;
   list-style-type: none;
 }
 ul.nav li {
@@ -151,6 +159,9 @@ ul.nav li a {
   margin-right: 10px;
   text-decoration: none;
   font-weight: lighter;
+}
+ul.nav li a:hover {
+  color: deepskyblue;
 }
 
 ul.nav li.logo {
@@ -213,12 +224,11 @@ ul.nav li.logo a {
 
 .listing .post.other {
   color: #666;
-  /*border-left: 1px solid #ddd;*/
 }
 .listing .post.other h2 {
   margin: -5px 0 -15px 0;
   font-size: 21px;
-  font-weight: lighter;
+  font-weight: normal;
 }
 .listing .post.other h2 a {
   color: #000;
@@ -328,7 +338,16 @@ h4 {
 
 .pagination  {
   text-align: right;
+  padding-bottom: 30px;
 }
+.pagination a {
+  text-decoration: none;
+}
+.pagination i {
+  font-size: 26px;
+  margin-left: 10px;
+}
+
 .figure {
   margin: 19px 0 19px 0;
   padding: 2px;
@@ -451,6 +470,7 @@ p > a > img {
 
 .post-date {
   font-size: 14px;
+  margin-top: 1.5em;
 }
 
 @media only screen and (max-width: 520px) {
@@ -530,7 +550,6 @@ code.html span.doctype {
 
 
 .social-media-icons  {
-  float: left;
   margin-right: 6px;
   color: black;
 }

@@ -90,7 +90,6 @@ concat: {
     src: [
       'css/base.css',
       'css/sytax/emacs.css', // change this to another theme if you prefer, like vim.css and run grunt
-      'css/octicons.css'
     ],
     dest: 'css/<%= pkg.name %>.add.css'
   }

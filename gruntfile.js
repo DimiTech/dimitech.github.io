@@ -7,7 +7,6 @@ module.exports = function(grunt) {
         src: [
           'css/base.css',
           'css/syntax/dusan.css',
-          'css/octicons.css',
           'css/font-awesome.min.css'
         ],
         dest: 'css/<%= pkg.name %>.add.css'
