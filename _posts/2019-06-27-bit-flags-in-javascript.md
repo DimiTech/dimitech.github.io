@@ -76,7 +76,7 @@ console.log(Directions)
 Each one of the options is the next power of 2. This is easily achievable using
 the `shift left` operator `<<`.
 
-## 2. Definging the traversable directions
+## 2. Defining the traversable directions
 
 We define the traversable directions by chaining them using the bitwise OR (`|`)
 operator:
