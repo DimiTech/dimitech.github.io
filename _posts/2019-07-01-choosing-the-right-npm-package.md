@@ -250,7 +250,8 @@ mean a lot to the authors.
 By following the points given above you should be able to effectively filter
 NPM packages and find exactly what you need. In the case that you don't find
 what you need consider authoring and publishing a software package of your own.
-I will gladly do a code-review, feel free to hit me up at: dusan_dimitric@yahoo.com.
+I will gladly do a code-review, feel free to hit me up at:
+<a href="mailto:dusan_dimitric@yahoo.com">dusan_dimitric@yahoo.com</a>.
 
 Until next time!
 
