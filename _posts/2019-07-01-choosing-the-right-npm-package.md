@@ -37,7 +37,7 @@ software ecosystem** besides JavaScript and NPM.
 
 # 1) Search the NPM registry and the Web
 
-In addition to searching on **NPM**, make sure to search the **Web** in general,
+In addition to searching the **NPM** registry, make sure to search the **Web** in general,
 using any of your favorite search engines (or many different ones if you're
 struggling to find anything good).
 
@@ -148,7 +148,7 @@ can sometimes get pretty outrageous. I prefer packages with the least amount of
 dependencies since that usually brings greater flexibility, security, faster
 build times, smaller bundle sizes, easier maintenance etc. etc...
 
-**The less dependencies the package has - the better!**
+**The fewer dependencies the package has - the better!**
 
 ## API Design
 
@@ -165,7 +165,7 @@ Other than that, go with what you like and prefer.
 An example demo project can be extremely useful when trying out an NPM
 package. This is especially true for larger packages.
 
-Often times the examples are not up to date or they're missing some minor thing
+Often times the examples are not up to date, or they're missing some minor thing
 which leaves them in a broken state. Demo projects can be tedious to maintain
 so don't shy away from fixing them and submitting a PR.
 
@@ -207,7 +207,7 @@ at all. This is a separate topic in itself but here are a couple of ideas:
 ## Fix/improve the example project
 
 Often times the example demo projects have some small issues or a dependency or
-two missing from the declaration. This is literally a 1 minute fix that anyone
+two missing from the declaration. This is literally a 1-minute fix that anyone
 can do. If you spot this in a package that you're using just go ahead and make
 a PR.
 
@@ -217,7 +217,7 @@ minutes.
 
 ## Fix the tests
 
-Tests can fail for a varity of different reasons, but sometimes the fix is
+Tests can fail for a variety of different reasons, but sometimes the fix is
 really easy and cheap to do. If you see that the package that you're using has
 failing tests - investigate and try to fix them if it's a minor thing.
 
