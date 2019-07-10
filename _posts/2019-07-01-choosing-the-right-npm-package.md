@@ -25,10 +25,10 @@ packages:
 1. [Search the NPM registry and the Web](#1-search-the-npm-registry-and-the-web)
 2. [Popularity](#2-popularity)
 3. [Maintenance](#3-maintenance)
-5. [Quality of Documentation](#4-quality-of-documentation)
+5. [Quality of documentation](#4-quality-of-documentation)
 4. [Does the package fit your specific use case?](#5-does-the-package-fit-your-specific-use-case)
 6. [Evaluate the design choices](#6-evaluate-the-design-choices)
-7. [Quality of the Example Project](#7-quality-of-the-example-project)
+7. [Quality of the example project](#7-quality-of-the-example-project)
 8. [Security](#8-security)
 9. [Contribute!](#9-contribute)
 
@@ -47,7 +47,7 @@ dependencies in the search query, _e.g.,_ `react`, `express`, `hapi`...
 # 2) Popularity
 
 One of the first parameters by which I sort NPM packages is **popularity**,
-which can be seen in the number of weekly downloads as well as GitHub stars.
+which is reflected in the number of weekly downloads as well as GitHub stars.
 
 Popularity gives a certain degree of validation to the package. A lot of people
 using a package means that there is pressure to maintain it.
@@ -62,7 +62,7 @@ place to start.
 # 3) Maintenance
 
 If you are building a serious project that will last for years, it's crucial
-that your NPM package dependencies are **well maintained**.
+that your NPM dependencies are **well maintained**.
 
 In terms of software packages, maintenance is the main thing that separates the
 wheat from the chaff.
@@ -92,7 +92,7 @@ Additionally, you can use NPM to sort packages by **maintanence** and **quality*
 and those sort parameters are explained on the [NPMS website](https://npms.io/about)
 as well as in [NPM docs](https://docs.npmjs.com/searching-for-and-choosing-packages-to-download#package-search-rank-criteria).
 
-# 4) Quality of Documentation
+# 4) Quality of documentation
 
 Although documentation is not extremely important, it can save you a LOT of
 time if a package has:
@@ -160,7 +160,7 @@ In general, **the API should be intuitive and elegant**.
 
 Other than that, go with what you like and prefer.
 
-# 7) Quality of the Example Project
+# 7) Quality of the example project
 
 An example demo project can be extremely useful when trying out an NPM
 package. This is especially true for larger packages.
@@ -189,10 +189,14 @@ solutions as well.
 
 # 9) Contribute!
 
-The last but not least - **contribute**! My feeling is that at least 99% of
-programmers (including myself) are not contributing enough. People take
-open-source (and free) software for granted and don't want to think about the
-fact that there are other humans working hard on it for little or no gains at all.
+The last but not least - **contribute**! 
+
+> If you can't find a package that solves your problem - consider creating it yourself!
+
+My feeling is that at least 99% of programmers (including myself) are not
+contributing enough. People take open-source (and free) software for granted
+and don't want to think about the fact that there are other humans working hard
+on it for little or no gains at all.
 
 I think that every mid to senior level programmer should contribute to their ecosystems of
 choice! This is a very bold statement but **contribution** is not only writing
@@ -237,7 +241,7 @@ can mean a lot to the maintainers.
 
 ## Marketing
 
-If you're using social media - mention a great software package that helped you
+If you're using "social media" - mention a great software package that helped you
 out so that others can know about it. It only takes a couple of seconds and can
 mean a lot to the authors.
 
@@ -247,5 +251,6 @@ By following the points given above you should be able to effectively filter
 NPM packages and find exactly what you need. In the case that you don't find
 what you need consider authoring and publishing a software package of your own.
 I will gladly do a code-review, feel free to hit me up at: dusan_dimitric@yahoo.com.
+
 Until next time!
 
