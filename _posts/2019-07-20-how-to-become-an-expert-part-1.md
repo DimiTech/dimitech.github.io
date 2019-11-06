@@ -46,7 +46,7 @@ The truth is - in order to become an **expert programmer** you don't need much
 talent.
 For example - I would rate my mental abilities as AVERAGE. Some concepts I
 grasp very quickly and very well, others not so quickly and not very well. That's just how my brain
-works. Everyone has strenghts and weaknesses.
+works. Everyone has strengths and weaknesses.
 
 The thing that actually matters is **motivation**. My **motivation** stems from
 my **curiosity** about computers. I would rate my curiosity as EXTREME. That's
@@ -62,7 +62,7 @@ what allowed me to get really good, really fast.
 In terms of knowledge availability - we live in the best time in history so far.
 Thousands of books, courses, videos are available FOR FREE! You can take online
 college classes FOR FREE! This is the first time in history that we have
-these kind of learning opportunities accessible anywhere in the world! Take
+these kinds of learning opportunities accessible anywhere in the world! Take
 advantage of it!
 
 There are also countless learning resources available for purchase. Keep in
@@ -97,7 +97,7 @@ This is exactly how it is when initially learning to program a computer.
 You start by learning a lot of fundamentals and most of the time you're not
 even sure **why you're learning them**. You don't see the big picture - **what can be
 built with these small building blocks?** You have to embrace these uncomfortable
-feelings and just **POWER THROUGH**. Know that the the painstaking process of
+feelings and just **POWER THROUGH**. Know that the painstaking process of
 learning the fundamentals is going to pay off dividends very soon.
 
 > Keep in mind that the first 100 hours of learning something new are the most
@@ -107,7 +107,7 @@ learning the fundamentals is going to pay off dividends very soon.
 
 ## Pay attention to every single detail
 
-While learning you have to be extremely precise and pedantic when it comes to
+While learning, you have to be extremely precise and pedantic when it comes to
 understanding concepts. Make sure that you **100%** understand everything that
 you're learning.
 This is very hard, but practicing a engineering-like rigor is the
@@ -159,7 +159,7 @@ You might go ahead and start building a project just to find out that it
 actually is too hard for you at that point. That is fine as well. Failure is
 not important, you're just practicing.
 
-When I was first learning programming, I started building a graphing calculator
+When I was first learning to program, I started building a graphing calculator
 in Java, so that I can visualize different mathematical functions (similar to
 how MatLab does it). Here is how that turned out:
 
@@ -171,11 +171,11 @@ that matters when learning.
 
 So go ahead and write a program!
 
-> Even though these practice projects are small and seamingly insignificant,
+> Even though these practice projects are small and seemingly insignificant,
   treat them as VERY IMPORTANT. Try to do your best on each and every one of
   them!
   This will prepare you to do serious work in the future. When the time comes
-  to create something imporant, you will be well prepared to create quality work,
+  to create something important, you will be well-prepared to create quality work,
   since you've been doing it all along!
 
 ## Learn how to find answers on the internet
@@ -203,8 +203,8 @@ didn't write** and make sense of it relatively quickly.
 
 Another great way to push yourself is to attend local meetups and user groups.
 You can find these on the internet, just search for '`[your_city] programming or
-technology meetups`'. If you don't live in a biger city with an active IT
-culture, try travelling to the nearest one in order to attend.
+technology meetups`'. If you don't live in a bigger city with an active IT
+culture, try traveling to the nearest one in order to attend.
 
 If you're a beginner, a lot of the meetup talks/speeches/presentations will fly
 over your head. It will be too much for you to handle. The speakers / other
@@ -255,7 +255,7 @@ hours per week on it anyways, which may allow you to grow faster.
 
 Many beginners ask this question. Here are the answers:
 
-If you want to be an **intemediate** programmer, then **you do not need math**.
+If you want to be an **intermediate** programmer, then **you do not need math**.
 
 If you want to be an **expert**, then **absolutely yes**. You do need to know at
 least high-school level math.
