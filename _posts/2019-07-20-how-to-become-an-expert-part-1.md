@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "How to Become an Expert (Part 1)"
-description: "What it takes to become an expert programmer (Part 1)"
+description: "What it Takes to Become an Expert Programmer (Part 1)"
 tags: [Programming, Expert, Best Practices]
 
 ---
