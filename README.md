@@ -108,3 +108,7 @@ concat: {
 * Homepage: http://vinitkumar.me
 * e-mail: vinit1414.08@bitmesra.ac.in
 * Twitter: [@vinitkme](https://twitter.com/vinitkme "vinitkme on twitter")
+
+## Good Spell checkers:
+
+- https://spellcheckplus.com/en/
