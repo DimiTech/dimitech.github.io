@@ -227,7 +227,7 @@ and contribute!**
 ## What programming language to choose?
 
 It doesn't matter that much. Don't overthink it, you're eventually going to
-learn multiple programming languages anyways.
+learn multiple programming languages anyway.
 **Just pick one and learn it extremely well before moving on.**
 
 Here are the important things to consider when picking a programming language:
@@ -236,7 +236,7 @@ Here are the important things to consider when picking a programming language:
 
 This is very important because a big, active user community will mean that there
 are plenty of learning resources available, messaging channels, forums, events,
-etc. It also means that there should be less bugs in the language itself and
+etc. It also means that there should be fewer bugs in the language itself and
 that the newly discovered bugs / vulnerabilities are going to be fixed quickly.
 
 ### Is there a big market demand for that language?
