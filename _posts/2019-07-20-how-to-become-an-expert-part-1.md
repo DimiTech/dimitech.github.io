@@ -239,7 +239,7 @@ are plenty of learning resources available, messaging channels, forums, events,
 etc. It also means that there should be less bugs in the language itself and
 that the newly discovered bugs / vulnerabilities are going to be fixed quickly.
 
-## Is there a big market demand for that language?
+### Is there a big market demand for that language?
 
 If you're considering programming for money, this is obviously important. A
 good thing to do is to keep track of the highest paying programming languages and
