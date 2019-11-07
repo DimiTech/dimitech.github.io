@@ -226,12 +226,30 @@ and contribute!**
 
 ## What programming language to choose?
 
-Doesn't matter. **Just pick one and learn it extremely well before moving on.**
+It doesn't matter that much. Don't overthink it, you're eventually going to
+learn multiple programming languages anyways.
+**Just pick one and learn it extremely well before moving on.**
 
-Important things to consider when picking a programming language:
+Here are the important things to consider when picking a programming language:
 
-- Is the language popular? Do a lot of people use it?
-- Is there a big market demand for that language?
+### Is the language popular? Do a lot of people use it?
+
+This is very important because a big, active user community will mean that there
+are plenty of learning resources available, messaging channels, forums, events,
+etc. It also means that there should be less bugs in the language itself and
+that the newly discovered bugs / vulnerabilities are going to be fixed quickly.
+
+## Is there a big market demand for that language?
+
+If you're considering programming for money, this is obviously important. A
+good thing to do is to keep track of the highest paying programming languages and
+ecosystems, and keep an eye on the upcoming trends as well.
+
+### What kind of a program do you want to make?
+
+You might have a project in mind that you want to build at some point. Do some
+research on the internet (and in person) to find out what language/ecosystem
+fits your use case the best.
 
 ## How long does it take to become a proficient programmer?
 
