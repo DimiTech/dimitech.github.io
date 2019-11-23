@@ -6,18 +6,19 @@ tags: [Bit Flags, Bit Fields, Low-Level, Useless, Fun, C, C++, JavaScript, TypeS
 
 ---
 
-**Bit flags** are a clever trick that was used in C programming in order to
-represent boolean options (and small numbers in general) in a more memory
-efficient manner. 
+**Bit flags** are used in low-level programming for packing multiple boolean
+values in a memory efficient manner. 
 
-Instead of using 1 byte of memory (`unsigned char`) to represent each boolean
-value and waste 7 bits every time, bit flags were utilized in order to pack up
-to 8 boolean options in 1 byte.
+Let's say that we need to keep track of 8 boolean flags - instead of using 1
+byte of memory to represent each boolean value and waste 7 bits every time,
+bit flags can be utilized in order to pack all 8 boolean options in a single byte.
 
-TCP/IP, BLE and a bunch of other low-level protocols use bit flags and bit
-fields extensively. It doesn't make much sense in JavaScript, since all
-JavaScript numbers are 64bit floats and we don't manage the memory ourselves
-but it's still a fun technique to use when it's appropriate.
+A classic example of packed bit flags is the FLAGs register.  
+Device drivers, firmware, network protocols and a bunch of other low-level
+software uses bit flags and bit fields extensively.
+It doesn't make much sense in JavaScript, since all JavaScript numbers are 64bit
+floats and we don't manage the memory ourselves but it's still a fun technique
+to use when it's appropriate.
 
 # Example
 
