@@ -1184,7 +1184,9 @@ arguments. That's why those variables appear to be global.
 The [docs](https://nodejs.org/docs/latest/api/modules.html#modules_accessing_the_main_module)
 explain it perfectly:
 
-> When a file is run directly from Node.js, require.main is set to its module. That means that it is possible to determine whether a file has been run directly by testing require.main === module.
+> When a file is run directly from Node.js, `require.main` is set to its `module`.
+  That means that it is possible to determine whether a file has been run
+  directly by testing `require.main === module`.
 
 In the following example, `command.js` is requireable and executeable directly
 from the terminal:
