@@ -30,6 +30,16 @@
 <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png">
 <link rel="manifest" href="/images/favicon/site.webmanifest">
 
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-141270590-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-141270590-1');
+</script>
+
 <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,400i,600&display=swap" rel="stylesheet">
 
 {% if site.rtl %}
@@ -42,14 +52,4 @@
 {% else %}
 <link rel="stylesheet" href="{{ '/css/main.min.css' | relative_url }}" type="text/css" />
 {% endif %}
-
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-141270590-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-141270590-1');
-</script>
 
