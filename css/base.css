@@ -427,19 +427,11 @@ p.note {
   color: #666;
 }
 
-.twitter-tweet-rendered {
-  padding: 10px 0;
-}
-
 @media only screen and (max-width: 520px) {
   h1 {
     font-size: 30px;
     line-height: 1.0;
     letter-spacing: 0;
-  }
-
-  .container .twitter-tweet-rendered.tw-align-center {
-    width: 100% !important;
   }
 }
 
