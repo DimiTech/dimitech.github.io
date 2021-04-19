@@ -47,6 +47,7 @@ Turn Right = Right Arrow Key
 Turn Left  = Left Arrow Key
 Fire       = Shift
 ```
+
 Player 2 Controls:
 ```
 Thrust     = "W" Key 
@@ -54,6 +55,7 @@ Turn Right = "D" Key
 Turn Left  = "A" Key 
 Fire       = "F" Key
 ```
+
 General Controls:
 ```
 Pause = Esc
