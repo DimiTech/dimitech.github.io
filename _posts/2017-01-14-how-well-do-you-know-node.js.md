@@ -144,7 +144,6 @@ If you explicitly need to declare a global variable, attach the value to the `gl
 - Eloquent JavaScript - Modules chapter explains how the CommonJS require function works on a basic level: [http://eloquentjavascript.net/10_modules.html](http://eloquentjavascript.net/10_modules.html)
 - Node.js Module documentation explains how Node.js modules work in more detail [https://nodejs.org/api/modules.html](https://nodejs.org/api/modules.html)
 
-
 ## 2. When exporting the API of a Node module, why can we sometimes use `exports` and other times we have to use `module.exports`?
 
 First let's understand what `module`, `exports` and `module.exports` are. They are all properties of the Node's `global` object.
