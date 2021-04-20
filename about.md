@@ -9,15 +9,15 @@ title: About the Author
 
 <div class="pagination">
   {% if site.owner.linkedin %}
-    <a href="{{ site.owner.linkedin }}" class="social-media-icons"><i class="fa fa-2x fa-linkedin" aria-hidden="true"></i></a>
+    <a href="{{ site.owner.linkedin }}" class="social-media-icons">LinkedIn</a>
   {% endif %}
   {% if site.owner.email %}
-    <a href="mailto:{{ site.owner.email }}" class="social-media-icons"><i class="fa fa-2x fa-envelope" aria-hidden="true"></i></a>
+    <a href="mailto:{{ site.owner.email }}" class="social-media-icons">E-Mail</a>
   {% endif %}
   {% if site.owner.github %}
-    <a href="{{ site.owner.github }}" class="social-media-icons"><i class="fa fa-2x fa-github" aria-hidden="true"></i></a>
+    <a href="{{ site.owner.github }}" class="social-media-icons">GitHub</a>
   {% endif %}
   {% if site.owner.stackexchange %}
-    <a href="{{ site.owner.stackexchange }}" class="social-media-icons"><i class="fa fa-2x fa-stack-overflow" aria-hidden="true"></i></a>
+    <a href="{{ site.owner.stackexchange }}" class="social-media-icons">StackExchange</a>
   {% endif %}
 </div>
