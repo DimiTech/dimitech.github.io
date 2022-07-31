@@ -17,6 +17,10 @@ This is a list of some of my favorite books, and I **highly** recommend them to 
 <br>
 <img src="/images/books/mark_fisher_capitalist_realism.jpg" alt="Capitalist Realism - Mark Fisher" width="200"/>
 
+### To Kill a Nation: The Attack on Yugoslavia - Michael Parenti
+<br>
+<img src="/images/books/michael_parenti_to_kill_a_nation.jpg" alt="To Kill a Nation: The Attack on Yugoslavia - Michael Parenti" width="200"/>
+
 ### The Age of Surveillance Capitalism - Shoshana Zuboff
 <br>
 <img src="/images/books/shoshana_zuboff_surveillance_capitalism.jpg" alt="Capitalist Realism - Mark Fisher" width="200"/>
