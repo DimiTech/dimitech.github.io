@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "How to Become an Expert (Part 2)"
+title:  "(WIP) - How to Become an Expert (Part 2)"
 description: "What it Takes to Become an Expert Programmer (Part 2)"
 tags: [Programming, Expert, Best Practices]
 
@@ -12,7 +12,7 @@ in life.
 
 The goal is to become a Professional Software Developer - an Expert.
 
-I will split this post into SOFT SKILLS and HARD SKILL" parts, but keep in
+I will split this post into HARD SKILLS and SOFT SKILLS parts, but keep in
 mind that they're both equally imporant.
 
 # HARD SKILLS
