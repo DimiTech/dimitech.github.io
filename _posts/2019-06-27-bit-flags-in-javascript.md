@@ -25,22 +25,32 @@ to use when it's appropriate.
 Let's say we're developing a simple turn-based strategy game, and the player
 can move in any of the [4 Cardinal and 4 Intercardinal directions](https://en.wikipedia.org/wiki/Cardinal_direction):
 
-![ASCII Compass](/images/2019-06-27-bit-flags-in-javascript/compass.png "ASCII Compass")
+```
+4 Cardinal and 4 Intercardinal Directions (8 in total):
+
+       N
+  NW   ▲   NE
+     ◤ ◭ ◥
+W  ◀   ●   ▶  E
+     ◣   ◢
+  SW   ▼   SE
+       S
+```
 
 In our game, some tiles on the map are **traversable** and some are not.
 We want to simulate a situation like this one here:
 
 ```
 ▓▓░░░░
-▓▓◄►░░
+▓▓◀▶░░
 ▓▓▓▓▓▓
 
-◄► - Player
+◀▶ - Player
 ░░ - Traversable
 ▓▓ - Not Traversable
 ```
 
-In the example above the player (`◄►`) can only move to the **North**,
+In the example above the player (`◀▶`) can only move to the **North**,
 **North East** or **East**. Other directions are blocked.
 
 In order to know which of the tiles adjacent to the player are **traversable**
