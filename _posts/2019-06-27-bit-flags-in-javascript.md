@@ -46,7 +46,15 @@ In the example above the player (`◄►`) can only move to the **North**,
 In order to know which of the tiles adjacent to the player are **traversable**
 and which are not we can use an 8bit **bit flag**:
 
-![Bit Flags](/images/2019-06-27-bit-flags-in-javascript/bit-flags.png "Bit Flags")
+```
+  00000111 === 7
+  ↑↑↑↑↑↑↑↑
+  NWSSSENN
+  W W E E
+
+1 - Traversable
+0 - Not Traversable
+```
 
 # Implementation
 
