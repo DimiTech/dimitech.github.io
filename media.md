@@ -6,7 +6,7 @@ title: Media
 # Media
 
 ## Check out my YouTube Channel:
-### [Dušan Dimitrić](https://www.youtube.com/channel/UCKqX92EEpKK40PXJTZ58ejw)
+### [Dimi Tech](https://www.youtube.com/channel/UCKqX92EEpKK40PXJTZ58ejw)
 
 ## Some of the YouTube Videos:
 <br>
