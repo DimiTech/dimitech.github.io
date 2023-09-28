@@ -274,7 +274,7 @@ There are two ways (that I'm familiar with) to `require` local files:
 let testModule = require('./test-module.js')
 
 // `require`-ing a module using the absolute path.
-let testModuleAgain = require('/home/dusan/Desktop/test-module.js')
+let testModuleAgain = require('/home/dimi/Desktop/test-module.js')
 ```
 
 Relative paths are way more clean and readable but we also have the absolute path option if it's necessary.
@@ -580,7 +580,7 @@ The relevant `top` output might look something like this:
 
 ```
  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
-9268 dusan     20   0  562964  27844  23320 S   0.3  0.3   0:00.09 node
+9268 dimi      20   0  562964  27844  23320 S   0.3  0.3   0:00.09 node
 ```
 
 We're interested in the `RES` value, which is the physical memory that the
