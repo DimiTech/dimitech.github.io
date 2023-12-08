@@ -18,7 +18,7 @@ W, A, S, D to move, mouse/trackpad to aim & shoot.
 
 [Demo]({{ site.url }}/inventory-system/) / [Source](https://github.com/DimiTech/inventory-system)
 
-W, A, S, D to move, I to toggle Inventory, Mouse to drag and drop Items.
+W, A, S, D to move, I to toggle Inventory, R to sort the Inventory & Mouse to drag and drop Items.
 
 ## ▶ [Doom Menu]({{ site.url }}/doom-menu-css/)
 
