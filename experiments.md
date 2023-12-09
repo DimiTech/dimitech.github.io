@@ -14,9 +14,9 @@ There's some pretty interesting math going on.
 
 W, A, S, D to move, mouse/trackpad to aim & shoot.
 
-## ▶ [Simple Video Game Inventory System]({{ site.url }}/inventory-system/)
+## ▶ [Simple Video Game Inventory System]({{ site.url }}/inventory-system/?complexInventory=true)
 
-[Demo]({{ site.url }}/inventory-system/) / [Source](https://github.com/DimiTech/inventory-system)
+[Demo]({{ site.url }}/inventory-system/?complexInventory=true) / [Source](https://github.com/DimiTech/inventory-system)
 
 W, A, S, D to move, I to toggle Inventory, R to sort the Inventory & Mouse to drag and drop Items.
 
