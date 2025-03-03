@@ -1,3 +1,35 @@
+# Run on MacOS:
+
+1. Uninstall Ruby (if installed):
+```
+# If ruby is installed by brew, uninstall:
+brew list ruby
+brew uninstall ruby
+```
+2. Install RVM & latest version of Ruby:
+```
+\curl -sSL https://get.rvm.io
+rvm list known
+
+# Install latest Ruby
+rvm install ruby-3
+
+ruby -v
+gem -v
+```
+3. Install `jekyll` and `bundler` gems
+```
+gem install jekyll bundler
+```
+4. Install dependencies
+```
+bundle install
+```
+5. Run the Jekyll server:
+```
+jekyll serve
+```
+
 # White Paper
 
 **White Paper** is a theme for Jekyll. It is built keeping content in focus and is best for writers/developers who also like to share code with their essays.
