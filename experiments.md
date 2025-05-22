@@ -75,3 +75,7 @@ General Controls:
 ```
 Pause = Esc
 ```
+
+## ▶ [Cubelets]({{ site.url }}/cubelets-game/)
+
+Simple HTML5 canvas demo.
