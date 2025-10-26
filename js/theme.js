@@ -97,6 +97,26 @@
       const themeToggle = document.getElementById("theme-toggle");
       if (themeToggle) {
         themeToggle.addEventListener("click", toggleTheme);
+
+        // Prevent blue highlight on iOS
+        themeToggle.addEventListener(
+          "touchstart",
+          function (e) {
+            e.preventDefault();
+            this.classList.add("active");
+          },
+          { passive: false }
+        );
+
+        themeToggle.addEventListener(
+          "touchend",
+          function (e) {
+            e.preventDefault();
+            this.classList.remove("active");
+            toggleTheme();
+          },
+          { passive: false }
+        );
       }
     }
   }

@@ -369,18 +369,20 @@ table {
   color: var(--text-primary);
   border: 2px solid var(--border-color);
   border-radius: 50%;
-  width: 66px;
-  height: 66px;
-  font-size: 26px;
+  width: 52px;
+  height: 52px;
+  font-size: 20px;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   transition: all 0.3s ease;
   outline: none;
+  -webkit-appearance: none;
   box-shadow: 0 2px 8px var(--shadow-color);
   margin: 0;
   padding: 0;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   -webkit-tap-highlight-color: transparent;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -390,9 +392,9 @@ table {
 }
 
 .theme-toggle:hover {
-  background: var(--accent-color);
-  color: white;
-  border-color: var(--accent-color);
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  border-color: var(--border-color);
   transform: scale(1.05);
   box-shadow: 0 4px 12px var(--shadow-color);
 }
@@ -403,6 +405,11 @@ table {
 
 .theme-toggle:active {
   transform: scale(0.95);
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  border-color: var(--border-color);
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color: transparent;
 }
 
 /* Syntax highlighting is now in code.css */
@@ -410,9 +417,9 @@ table {
 /* Responsive adjustments */
 @media only screen and (max-width: 768px) {
   .theme-toggle {
-    font-size: 31px;
-    width: 77px;
-    height: 77px;
+    font-size: 25px;
+    width: 62px;
+    height: 62px;
   }
 
   /* Make navigation more compact on tablets */
@@ -442,9 +449,9 @@ table {
 
 @media only screen and (max-width: 520px) {
   .theme-toggle {
-    font-size: 35px;
-    width: 88px;
-    height: 88px;
+    font-size: 28px;
+    width: 70px;
+    height: 70px;
   }
 
   /* Stack navigation vertically on small screens */
@@ -489,9 +496,9 @@ table {
 @media only screen and (max-width: 400px) {
   /* Extra small screens - even more compact */
   .theme-toggle {
-    font-size: 40px;
-    width: 99px;
-    height: 99px;
+    font-size: 32px;
+    width: 79px;
+    height: 79px;
   }
 
   .nav li {
