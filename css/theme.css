@@ -320,6 +320,36 @@ table {
 /* Social media icons */
 .social-media-icons {
   color: var(--text-primary);
+  margin: 0 1em;
+  text-decoration: none;
+}
+
+.social-media-icons:hover {
+  text-decoration: none;
+  color: var(--accent-color);
+}
+
+/* Footer styling */
+.social {
+  padding: 2em 0 2em 0;
+  text-align: center;
+  border-top: 1px solid var(--border-color);
+  margin-top: 3em;
+}
+
+.pagination {
+  padding: 1em 0 5em 0;
+  text-align: center;
+}
+
+.pagination a {
+  text-decoration: none;
+  color: var(--text-primary);
+}
+
+.pagination a:hover {
+  text-decoration: none;
+  color: var(--accent-color);
 }
 
 /* Theme toggle container */
