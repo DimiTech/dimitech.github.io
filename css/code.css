@@ -1,0 +1,289 @@
+/*----------------------------------------------------------------------------
+  Code Syntax Highlighting Styles
+  Unified styling for both light and dark themes
+----------------------------------------------------------------------------*/
+
+/* Base code block styling */
+pre {
+  background: var(--pre-bg);
+  color: var(--pre-color);
+  border: none;
+  border-radius: 0;
+  padding: 0 1em;
+  margin: 1.5em 0;
+  overflow-x: auto;
+  font-size: 0.9em;
+  line-height: 1.5;
+  font-family: "SF Mono", Monaco, "Cascadia Code", "Roboto Mono", Consolas,
+    "Courier New", monospace;
+}
+
+code {
+  color: var(--code-color);
+  background: var(--code-bg);
+  padding: 0.2em 0.4em;
+  border-radius: 3px;
+  font-size: 0.9em;
+  font-family: "SF Mono", Monaco, "Cascadia Code", "Roboto Mono", Consolas,
+    "Courier New", monospace;
+}
+
+/* Syntax highlighting - unified for both themes */
+.highlight {
+  background: var(--pre-bg);
+  color: var(--pre-color);
+  border-radius: 0;
+  padding: 0 1em;
+  margin: 1.5em 0;
+  overflow-x: auto;
+  font-family: "SF Mono", Monaco, "Cascadia Code", "Roboto Mono", Consolas,
+    "Courier New", monospace;
+  font-size: 0.9em;
+  line-height: 1.5;
+}
+
+/* Comments */
+.highlight .c,
+.highlight .ch,
+.highlight .cm,
+.highlight .c1,
+.highlight .cpf {
+  color: #858585;
+  font-style: italic;
+}
+
+/* Keywords */
+.highlight .k,
+.highlight .kc,
+.highlight .kd,
+.highlight .kn,
+.highlight .kp,
+.highlight .kr,
+.highlight .kt {
+  color: #569cd6;
+  font-weight: bold;
+}
+
+/* Strings */
+.highlight .s,
+.highlight .s1,
+.highlight .s2,
+.highlight .sb,
+.highlight .sc,
+.highlight .sd,
+.highlight .se,
+.highlight .sh,
+.highlight .si,
+.highlight .sr,
+.highlight .ss {
+  color: #ce9178;
+}
+
+/* Classes and Names */
+.highlight .nc,
+.highlight .nn {
+  color: #4ec9b0;
+}
+
+/* Functions */
+.highlight .nf {
+  color: #dcdcaa;
+}
+
+/* Attributes */
+.highlight .na {
+  color: #9cdcfe;
+}
+
+/* Built-ins */
+.highlight .nb {
+  color: #4fc1ff;
+}
+
+/* Tags */
+.highlight .nt {
+  color: #569cd6;
+  font-weight: bold;
+}
+
+/* Variables */
+.highlight .nv {
+  color: #4fc1ff;
+}
+
+/* Numbers */
+.highlight .m,
+.highlight .mb,
+.highlight .mf,
+.highlight .mh,
+.highlight .mi,
+.highlight .mo {
+  color: #b5cea8;
+}
+
+/* Operators */
+.highlight .o {
+  color: var(--text-primary);
+}
+
+/* Punctuation */
+.highlight .p {
+  color: var(--text-primary);
+}
+
+/* Errors */
+.highlight .err {
+  color: #f44747;
+  background-color: var(--bg-secondary);
+}
+
+/* Generic */
+.highlight .g {
+  color: var(--text-primary);
+}
+
+.highlight .l {
+  color: var(--text-primary);
+}
+
+.highlight .n {
+  color: var(--text-primary);
+}
+
+.highlight .x {
+  color: var(--text-primary);
+}
+
+/* Preprocessor */
+.highlight .cp {
+  color: #ffc88a;
+}
+
+/* C# specific */
+.highlight .cs {
+  color: #e50808;
+  font-weight: bold;
+  background-color: var(--bg-secondary);
+}
+
+/* Deleted */
+.highlight .gd {
+  color: #d22323;
+}
+
+/* Generic Emph */
+.highlight .ge {
+  color: var(--text-primary);
+  font-style: italic;
+}
+
+/* Generic Error */
+.highlight .gr {
+  color: #d22323;
+}
+
+/* Generic Heading */
+.highlight .gh {
+  color: var(--text-primary);
+  font-weight: bold;
+}
+
+/* Generic Inserted */
+.highlight .gi {
+  color: #589819;
+}
+
+/* Generic Output */
+.highlight .go {
+  color: var(--text-muted);
+}
+
+/* Generic Prompt */
+.highlight .gp {
+  color: var(--text-muted);
+}
+
+/* Generic Strong */
+.highlight .gs {
+  color: var(--text-primary);
+  font-weight: bold;
+}
+
+/* Generic Subheading */
+.highlight .gu {
+  color: var(--text-primary);
+}
+
+/* Generic Traceback */
+.highlight .gt {
+  color: #d22323;
+}
+
+/* Literal Date */
+.highlight .ld {
+  color: var(--text-primary);
+}
+
+/* Name Entity */
+.highlight .ne {
+  color: var(--text-muted);
+}
+
+/* Name Label */
+.highlight .nl {
+  color: var(--text-primary);
+}
+
+/* Name Other */
+.highlight .nx {
+  color: var(--text-primary);
+}
+
+/* Name Property */
+.highlight .py {
+  color: var(--text-primary);
+}
+
+/* Operator Word */
+.highlight .ow {
+  color: #569cd6;
+  font-weight: bold;
+}
+
+/* Whitespace */
+.highlight .w {
+  color: var(--text-muted);
+}
+
+/* String Affix */
+.highlight .sa {
+  color: #ed9de3;
+}
+
+/* String Escape */
+.highlight .sx {
+  color: #ffc88a;
+}
+
+/* Name Builtin Pseudo */
+.highlight .bp {
+  color: #4fc1ff;
+}
+
+/* Name Function Magic */
+.highlight .fm {
+  color: #dcdcaa;
+}
+
+/* Name Variable Class */
+.highlight .vc,
+.highlight .vg,
+.highlight .vi,
+.highlight .vm {
+  color: #4fc1ff;
+}
+
+/* Literal Number Integer Long */
+.highlight .il {
+  color: #569cd6;
+}

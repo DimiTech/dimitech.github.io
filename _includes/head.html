@@ -1,54 +1,116 @@
-<meta charset="utf-8">
+<meta charset="utf-8" />
 <title>{{ site.description }}</title>
-<meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
-{% if page.tags %}<meta name="keywords" content="{{ page.tags | join: ', ' }}">{% endif %}
-<meta property="og:type" content="article">
-<meta property="og:title" content="{% if page.title %}{{ page.title }} &#8211; {% endif %}{{ site.title }}">
-<meta property="og:description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
-<meta property="og:url" content="{{ site.url }}{{ page.url }}">
-<meta property="og:site_name" content="{{ site.title }}">
+<meta
+  name="description"
+  content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}"
+/>
+{% if page.tags %}<meta
+  name="keywords"
+  content="{{ page.tags | join: ', ' }}"
+/>{% endif %}
+<meta property="og:type" content="article" />
+<meta
+  property="og:title"
+  content="{% if page.title %}{{ page.title }} &#8211; {% endif %}{{ site.title }}"
+/>
+<meta
+  property="og:description"
+  content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}"
+/>
+<meta property="og:url" content="{{ site.url }}{{ page.url }}" />
+<meta property="og:site_name" content="{{ site.title }}" />
 
 <!-- Webmaster Tools verfication -->
-{% if site.google_verify %}<meta name="google-site-verification" content="{{ site.google_verify }}">{% endif %}
-{% if site.bing_verify %}<meta name="msvalidate.01" content="{{ site.bing_verify }}">{% endif %}
-
-{% capture canonical %}{{ site.url }}{% if site.permalink contains '.html' %}{{ page.url }}{% else %}{{ page.url | remove:'index.html' | strip_slash }}{% endif %}{% endcapture %}
-<link rel="canonical" href="{{ canonical }}">
-<link href="{{ site.url }}/feed.xml" type="application/atom+xml" rel="alternate" title="{{ site.title }} Feed">
-{% if site.owner.google_plus %}<link rel="author" href="{{ site.owner.google_plus }}?rel=author">{% endif %}
+{% if site.google_verify %}<meta
+  name="google-site-verification"
+  content="{{ site.google_verify }}"
+/>{% endif %} {% if site.bing_verify %}<meta
+  name="msvalidate.01"
+  content="{{ site.bing_verify }}"
+/>{% endif %} {% capture canonical %}{{ site.url }}{% if site.permalink contains
+'.html' %}{{ page.url }}{% else %}{{ page.url | remove:'index.html' |
+strip_slash }}{% endif %}{% endcapture %}
+<link rel="canonical" href="{{ canonical }}" />
+<link
+  href="{{ site.url }}/feed.xml"
+  type="application/atom+xml"
+  rel="alternate"
+  title="{{ site.title }} Feed"
+/>
+{% if site.owner.google_plus %}<link
+  rel="author"
+  href="{{ site.owner.google_plus }}?rel=author"
+/>{% endif %}
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<link rel="icon" type="image/x-icon" href="/images/favicon/favicon.ico">
-<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png">
-<link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png">
-<link rel="manifest" href="/images/favicon/site.webmanifest">
+<link rel="icon" type="image/x-icon" href="/images/favicon/favicon.ico" />
+<link
+  rel="icon"
+  type="image/png"
+  sizes="32x32"
+  href="/images/favicon/favicon-32x32.png"
+/>
+<link
+  rel="icon"
+  type="image/png"
+  sizes="16x16"
+  href="/images/favicon/favicon-16x16.png"
+/>
+<link
+  rel="apple-touch-icon"
+  sizes="180x180"
+  href="/images/favicon/apple-touch-icon.png"
+/>
+<link rel="manifest" href="/images/favicon/site.webmanifest" />
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-141270590-1"></script>
+<script
+  async
+  src="https://www.googletagmanager.com/gtag/js?id=UA-141270590-1"
+></script>
 <script>
   window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
 
-  gtag('config', 'UA-141270590-1');
+  gtag("config", "UA-141270590-1");
 </script>
 
 {% if site.rtl %}
-<link rel="stylesheet" href="{{ '/css/main.min.rtl.css' | relative_url }}" type="text/css" />
+<link
+  rel="stylesheet"
+  href="{{ '/css/base.css' | relative_url }}"
+  type="text/css"
+/>
 <style>
-    .highlight pre {
-        direction: ltr;
-    }
+  .highlight pre {
+    direction: ltr;
+  }
 </style>
 {% else %}
-<link rel="stylesheet" href="{{ '/css/main.min.css' | relative_url }}" type="text/css" />
+<link
+  rel="stylesheet"
+  href="{{ '/css/base.css' | relative_url }}"
+  type="text/css"
+/>
 {% endif %}
 
 <!-- Theme CSS -->
-<link rel="stylesheet" href="{{ '/css/theme.css' | relative_url }}" type="text/css" />
+<link
+  rel="stylesheet"
+  href="{{ '/css/theme.css' | relative_url }}"
+  type="text/css"
+/>
+
+<!-- Code CSS -->
+<link
+  rel="stylesheet"
+  href="{{ '/css/code.css' | relative_url }}"
+  type="text/css"
+/>
 
 <!-- Theme JavaScript -->
 <script src="{{ '/js/theme.js' | relative_url }}" defer></script>
-
