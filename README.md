@@ -1,12 +1,15 @@
 # Run on MacOS:
 
 1. Uninstall Ruby (if installed):
+
 ```
 # If ruby is installed by brew, uninstall:
 brew list ruby
 brew uninstall ruby
 ```
+
 2. Install RVM & latest version of Ruby:
+
 ```
 \curl -sSL https://get.rvm.io
 rvm list known
@@ -17,15 +20,21 @@ rvm install ruby-3
 ruby -v
 gem -v
 ```
+
 3. Install `jekyll` and `bundler` gems
+
 ```
 gem install jekyll bundler
 ```
+
 4. Install dependencies
+
 ```
 bundle install
 ```
+
 5. Run the Jekyll server:
+
 ```
 jekyll serve
 ```
@@ -39,7 +48,6 @@ jekyll serve
 - Home page
 
 ![home](https://cldup.com/FRewyA-EEI-3000x3000.png)
-
 
 - Post Detail View
 
@@ -59,20 +67,27 @@ Also, change this line in head.html [link](https://github.com/vinitkumar/white-p
 
 ```html
 <!-- From this -->
-<link rel="stylesheet" href=" {{ '/css/main.min.css' | relative_url }}" type="text/css" />
+<link
+  rel="stylesheet"
+  href=" {{ '/css/main.min.css' | relative_url }}"
+  type="text/css"
+/>
 <!-- To this -->
-<link rel="stylesheet" href=" {{ '/css/main.min.css' | absolute_url }}" type="text/css" />
-
+<link
+  rel="stylesheet"
+  href=" {{ '/css/main.min.css' | absolute_url }}"
+  type="text/css"
+/>
 ```
-
 
 This will make sure that the path of CSS is correct and the theme loads correctly.
 
 ```yml
 master_repo: false
 url: "<username>.github.io"
-rtl: false  # change to true if posts is in Arabic/other Right to left language.
+rtl: false # change to true if posts is in Arabic/other Right to left language.
 ```
+
 Also, change all other fields in the `_config.yml` file to your choice.
 
 ## Installation
@@ -96,7 +111,8 @@ jekyll serve
 # on running the serve script, the site will be live on
 http://127.0.0.1:4000
 ```
-This theme uses grunt to concat & minify the css for best performance. In order to prepare the css build. Run `grunt`
+
+This theme uses grunt to concat & minify the css for best performance. In order to prepare the css build. Run `npx grunt`
 It will create a main.min.css file in the css folder.
 
 ### Switch Syntax Highlighting.
@@ -129,16 +145,19 @@ concat: {
 ```
 
 ## License
-* see [LICENSE](https://github.com/vinitkumar/white-paper/blob/gh-pages/LICENSE) file
+
+- see [LICENSE](https://github.com/vinitkumar/white-paper/blob/gh-pages/LICENSE) file
 
 ## Version
-* Version 4.0.0
+
+- Version 4.0.0
 
 ## Contact
+
 #### Developer
 
-* Homepage: http://vinitkumar.me
-* e-mail: vinit1414.08@bitmesra.ac.in
+- Homepage: http://vinitkumar.me
+- e-mail: vinit1414.08@bitmesra.ac.in
 
 ## Good Spell checkers:
 

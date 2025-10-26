@@ -60,7 +60,7 @@ If you care about your freedom, start here:
 
 - [Free software, free society: Richard Stallman at TEDxGeneva 2014](https://www.youtube.com/watch?v=Ag1AKIl_2GM) < RMS is goofy, but most of the points he raises are still spot on.
 
-## Be Wary of Trends
+## Be wary of trends
 
 In software, it's extremely rare that something is really "new". That doesn't stop companies
 from marketing their products, frameworks, libraries, APIs etc. as "revolutionary" and "game-changing"!
@@ -329,7 +329,7 @@ definitely not going to work in my teams.
 There's A LOT to write on this topic and these are just the basics, but let's
 move on.
 
-## Focus on Business
+## Focus on business
 
 Most of us programmers don't make a living building **web applications**,
 **mobile applications**, **desktop applications**, **embedded applications**... we
@@ -384,7 +384,7 @@ Start by reading:
 2. [The SCRUM Guide](https://www.scrum.org/resources/scrum-guide)
 3. [Extreme Programming Explained (Kent Beck, Cynthia Andres)](https://www.amazon.com/Extreme-Programming-Explained-Embrace-Change/dp/0321278658)
 
-## Solve Difficult Problems
+## Solve difficult problems!
 
 Be willing to do what other's are not!
 
@@ -407,7 +407,7 @@ takes **just as much effort and time, if not more**. It's the [**ninety-ninety**
 
 Be the one who always pushes the "other" 90% to completion!
 
-## Legacy Projects
+## Legacy projects
 
 Don't shy away from "Legacy" projects. A legacy project likely has **paying users**,
 which usually means it provides some kind of value to people.
@@ -452,7 +452,7 @@ accountability for the project's success.
 This way of thinking builds the proper relationship with both the codebase and the people,
 making it easy to transition into leadership positions.
 
-## English Proficiency
+## English proficiency
 
 Even if it seems trivial, speaking and writing **clear English** makes a big difference.
 People understand you better, and clients and stakeholders **respect you more.**
