@@ -3,6 +3,6 @@ layout: default
 title: About the Author
 ---
 
-<h1 class="owner-name">About Me</h1>
+<!-- <h1 class="owner-name">About me:</h1> -->
 
 {{site.about}}

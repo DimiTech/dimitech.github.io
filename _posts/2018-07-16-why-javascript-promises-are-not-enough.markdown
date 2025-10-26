@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Why JavaScript Promises are not Enough"
+title: "Why JavaScript Promises are not enough"
 tags: [Node.js, JavaScript, Promises, Async, async/await, MicroServices]
 ---
 
