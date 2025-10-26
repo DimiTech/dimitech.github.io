@@ -78,4 +78,6 @@ Pause = Esc
 
 ## ▶ [Cubelets]({{ site.url }}/cubelets-game/)
 
+[Demo]({{ site.url }}/cubelets-game/) / [Source](https://github.com/DimiTech/cubelets-game)
+
 Simple HTML5 canvas demo.

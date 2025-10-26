@@ -42,12 +42,12 @@
   --bg-primary: #121212;
   --bg-secondary: #1e1e1e;
   --bg-tertiary: #2a2a2a;
-  --text-primary: #e8e8e8;
-  --text-secondary: #d8d8d8;
-  --text-muted: #b8b8b8;
-  --text-light: #a0a0a0;
+  --text-primary: #d8d8d8;
+  --text-secondary: #c8c8c8;
+  --text-muted: #a8a8a8;
+  --text-light: #989898;
   --text-lighter: #888888;
-  --text-lightest: #707070;
+  --text-lightest: #686868;
   --border-color: #333333;
   --border-light: #222222;
   --accent-color: #4a9eff;
@@ -77,19 +77,20 @@ body {
   background-color: var(--bg-primary);
   color: var(--text-primary);
   text-shadow: var(--text-shadow);
-  font-size: 17px; /* Slightly bumped from 16px */
+  font-size: 17px;
+  line-height: 1.4;
 }
 
 /* Text colors */
 p {
   color: var(--text-secondary);
-  font-size: 1.05em; /* Slightly bumped from 1em */
+  font-size: 1.15em; /* Bumped by ~10% from 1.05em */
 }
 
 /* Lists */
 ul,
 ol {
-  font-size: 1em;
+  font-size: 1.1em;
 }
 
 h1,
@@ -102,21 +103,21 @@ h6 {
 }
 
 h1 {
-  font-size: 2.1em; /* Reduced by another ~10% from 2.3em */
+  font-size: 2.3em; /* Bumped by ~10% from 2.1em */
   margin-top: 2em; /* Added more space above H1 */
 }
 
 h2 {
-  font-size: 1.7em; /* Reduced by another ~10% from 1.9em */
+  font-size: 1.9em; /* Bumped by ~10% from 1.7em */
 }
 
 h3 {
-  font-size: 1.3em; /* Reduced by another ~10% from 1.45em */
+  font-size: 1.4em; /* Bumped by ~10% from 1.3em */
   color: var(--text-primary);
 }
 
 h4 {
-  font-size: 1.05em; /* Reduced by another ~10% from 1.17em */
+  font-size: 1.2em; /* Bumped by ~10% from 1.05em */
 }
 
 /* Links */
@@ -167,7 +168,7 @@ a.top-logo img:hover {
 .header-social .social-media-icons {
   display: inline-block;
   margin: 0 0.5em;
-  font-size: 1.2em;
+  font-size: 1.3em;
   color: var(--text-primary);
   text-decoration: none;
   transition: color 0.3s ease;
@@ -368,9 +369,9 @@ table {
   color: var(--text-primary);
   border: 2px solid var(--border-color);
   border-radius: 50%;
-  width: 60px;
-  height: 60px;
-  font-size: 24px;
+  width: 66px;
+  height: 66px;
+  font-size: 26px;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
@@ -409,15 +410,15 @@ table {
 /* Responsive adjustments */
 @media only screen and (max-width: 768px) {
   .theme-toggle {
-    font-size: 28px;
-    width: 70px;
-    height: 70px;
+    font-size: 31px;
+    width: 77px;
+    height: 77px;
   }
 
   /* Make navigation more compact on tablets */
   .nav li {
     margin: 0 2px;
-    font-size: 16px;
+    font-size: 18px;
   }
 
   .nav li a {
@@ -430,20 +431,20 @@ table {
   }
 
   .top-logo img {
-    width: 70px;
+    width: 77px;
   }
 
   .header-social .social-media-icons {
-    font-size: 1.1em;
+    font-size: 1.2em;
     margin: 0 0.3em;
   }
 }
 
 @media only screen and (max-width: 520px) {
   .theme-toggle {
-    font-size: 32px;
-    width: 80px;
-    height: 80px;
+    font-size: 35px;
+    width: 88px;
+    height: 88px;
   }
 
   /* Stack navigation vertically on small screens */
@@ -457,7 +458,7 @@ table {
   .nav li {
     display: block;
     margin: 5px 0;
-    font-size: 14px;
+    font-size: 15px;
   }
 
   .nav li a {
@@ -472,7 +473,7 @@ table {
   }
 
   .top-logo img {
-    width: 60px;
+    width: 66px;
   }
 
   .header-social {
@@ -480,7 +481,7 @@ table {
   }
 
   .header-social .social-media-icons {
-    font-size: 1em;
+    font-size: 1.1em;
     margin: 0 0.2em;
   }
 }
@@ -488,20 +489,20 @@ table {
 @media only screen and (max-width: 400px) {
   /* Extra small screens - even more compact */
   .theme-toggle {
-    font-size: 36px;
-    width: 90px;
-    height: 90px;
+    font-size: 40px;
+    width: 99px;
+    height: 99px;
   }
 
   .nav li {
-    font-size: 13px;
+    font-size: 14px;
   }
 
   .top-logo img {
-    width: 50px;
+    width: 55px;
   }
 
   .header-social .social-media-icons {
-    font-size: 0.9em;
+    font-size: 1em;
   }
 }

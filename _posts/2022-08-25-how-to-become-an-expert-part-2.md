@@ -5,13 +5,13 @@ description: "What it Takes to Become an Expert Programmer (Part 2)"
 tags: [Programming, Expert, Best Practices]
 ---
 
-The goal of this blog post is to help **intermediate** programmers level up -
+This article exists to help **intermediate** programmers level up -
 not just in coding, but in productivity, problem-solving, and even in life.
 The goal is to become a Professional Software Developer - an **Expert!**
 
 Ultimately, the aim is to become a Professional Software Developer - an **expert** in your craft!
 
-This post is divided into three equally important sections:
+This post is divided into three equally important sections (and summary):
 
 - [Mindset](#mindset)
 - [Hard Skills](#hard-skills)
@@ -66,7 +66,7 @@ In software, it's extremely rare that something is really "new". That doesn't st
 from marketing their products, frameworks, libraries, APIs etc. as "revolutionary" and "game-changing"!
 
 Don't fall prey to this. **Focus on fundamentals and principles** that almost never change
-(for example, SQL is in use since the 70s).
+(for example, SQL has been in use since the 70s").
 Otherwise you risk investing a lot of time in something that might not stay around for long.
 
 Don't mindlessly let others (especially giant corporations) dictate how you use
@@ -87,7 +87,7 @@ actually **rare!**
 Learn at least 90% of your programming language features, tools, the runtime
 (how it executes), the ecosystem and the philosophy. Read **lots of books** in order
 to find those which are the most valuable. If your language has **source code**
-avialable - study it, get to know it really well. If it doesn't - **then why
+available - study it, get to know it really well. If it doesn't - **then why
 are you using it !?**
 
 Keep up to date with latest updates, news, books, conferences, podcasts, blogs,
@@ -109,7 +109,7 @@ have focused on design & best practices for over 20 years, but they are not
 exposed to the beauty and writing efficiency of dynamically & weakly typed
 programming languages for example. **Ruby** programmers have put extreme emphasis
 on software testing and more efficient ways to write code (for example using Vim
-|| Emacs). **Functional** programming paradigm and languages have their own
+or Emacs). **Functional** programming paradigm and languages have their own
 valuable perspectives to offer.
 
 Of course, over the years, different ecosystems become influenced by each other
@@ -167,7 +167,7 @@ terminal emulators and so on, means that you probably don't really know how
 computers work.
 
 Graphical Operating Systems like Windows do very well in protecting the users
-from the intricacies of the underlying operating system and it's mechanisms.
+from the intricacies of the underlying operating system and its mechanisms.
 This is not where we want to be as programming professionals, we need to know
 how things REALLY work.
 
@@ -314,17 +314,16 @@ Learn to work with your **tech team**. You must face the external world as a
 unified entity. If one member of the team fails - everyone fails. Nobody cares
 if one of your team members screwed up and that's the reason you couldn't
 deliver - you all failed. If some of your team members are not pulling their
-weight - let them go, terminate their contracts. There's no need for the rest of
-the team to pull other peoples weight and earn their salaries - it just creates
-resentment & inefficiency. It's best to cut this out immediately - you can't be
-afraid to hurt people's feelings.
+weight - let them go. There's no need for the rest of the team to pull other
+peoples weight and earn their salaries - it just creates resentment & inefficiency.
+It's best to cut this out immediately - you can't be afraid to hurt people's feelings.
 
 Remember - the goal is (hopefully) to bring value to Humanity through the product that
 you're creating. Everything else is a distraction.
 
 If it's in your interest to slack off and be sloppy - please change industries.
-Better spend your time doing something that you really want to do. You're
-definitely not going to work in my teams.
+Better spend your time doing something that you really want to do.
+You're definitely not going to work in my teams :)
 
 There's A LOT to write on this topic and these are just the basics, but let's
 move on.
@@ -386,7 +385,7 @@ Start by reading:
 
 ## Solve difficult problems!
 
-Be willing to do what other's are not!
+Be willing to do what others are not!
 
 Be a **problem solver**: volunteer to solve the **toughest** and **most frustrating** problems
 that everyone else avoids. This will make you an indispensable member
