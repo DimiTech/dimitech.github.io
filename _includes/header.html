@@ -3,8 +3,28 @@
     <a href="{{ site.url }}" class="top-link">{{ site.name }}</a>
 
     <a href="{{ site.url }}" class="top-logo">
-      <img src="/images/avatar-160x160.jpg" alt="{{ site.name }} Logo" title="{{ site.name }} Logo">
+      <img
+        src="/images/avatar-160x160.jpg"
+        alt="{{ site.name }} Logo"
+        title="{{ site.name }} Logo"
+      />
     </a>
+
+    <div class="header-social">
+      {% if site.owner.github %}
+      <a href="{{ site.owner.github }}" class="social-media-icons">
+        <i class="fa fa-github"></i>
+      </a>
+      {% endif %} {% if site.owner.email %}
+      <a href="mailto:{{ site.owner.email }}" class="social-media-icons">
+        <i class="fa fa-envelope"></i>
+      </a>
+      {% endif %} {% if site.owner.linkedin %}
+      <a href="{{ site.owner.linkedin }}" class="social-media-icons">
+        <i class="fa fa-linkedin"></i>
+      </a>
+      {% endif %}
+    </div>
 
     <ul class="nav">
       <!--Change the  URL here if working on an absolute domain-->

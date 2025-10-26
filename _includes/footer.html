@@ -1,42 +1,42 @@
 <div class="social">
-  {% if site.owner.github %}  
-    <a href="{{ site.owner.github }}" class="social-media-icons">GitHub</a>
-  {% endif %}
-  {% if site.owner.email %}
-    <a href="mailto:{{ site.owner.email }}" class="social-media-icons">E-Mail</a>
-  {% endif %}
-  {% if site.owner.linkedin %}
-    <a href="{{ site.owner.linkedin }}" class="social-media-icons">LinkedIn</a>
+  {% if site.owner.github %}
+  <a href="{{ site.owner.github }}" class="social-media-icons">
+    <i class="fa fa-github"></i> GitHub
+  </a>
+  {% endif %} {% if site.owner.email %}
+  <a href="mailto:{{ site.owner.email }}" class="social-media-icons">
+    <i class="fa fa-envelope"></i> E-Mail
+  </a>
+  {% endif %} {% if site.owner.linkedin %}
+  <a href="{{ site.owner.linkedin }}" class="social-media-icons">
+    <i class="fa fa-linkedin"></i> LinkedIn
+  </a>
   {% endif %}
 </div>
 
 {% if paginator %}
 <!-- Pagination links -->
 <div class="pagination">
-  {% if paginator.previous_page %}
-    {% if paginator.page == 2 %}
-      <a href="{{site.url}}/" class="newer">
-        <i class="fa fa-backward"></i>
-      </a>
-    {% else %}
-      <a href="{{site.url}}/page{{paginator.previous_page}}" class="newer">
-        <i class="fa fa-backward"></i>
-      </a>
-    {% endif %}
+  {% if paginator.previous_page %} {% if paginator.page == 2 %}
+  <a href="{{site.url}}/" class="newer">
+    <i class="fa fa-backward"></i>
+  </a>
   {% else %}
-    <span class="previous five">
-      <i class="fa fa-backward"></i>
-    </span>
+  <a href="{{site.url}}/page{{paginator.previous_page}}" class="newer">
+    <i class="fa fa-backward"></i>
+  </a>
+  {% endif %} {% else %}
+  <span class="previous five">
+    <i class="fa fa-backward"></i>
+  </span>
+  {% endif %} {% if paginator.next_page %}
+  <a href="{{site.url}}/page{{paginator.next_page}}" class="older one">
+    <i class="fa fa-forward"></i>
+  </a>
+  {% else %}
+  <span class="next two">
+    <i class="fa fa-forward"></i>
+  </span>
   {% endif %}
-
-  {% if paginator.next_page %}
-    <a href="{{site.url}}/page{{paginator.next_page}}" class="older one">
-      <i class="fa fa-forward"></i>
-    </a>
-  {% else %}
-    <span class="next two">
-      <i class="fa fa-forward"></i>
-    </span>
-  {% endif %} 
 </div>
-{%  endif %}
+{% endif %}

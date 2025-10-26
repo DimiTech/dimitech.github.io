@@ -158,6 +158,25 @@ a.top-logo img {
 a.top-logo img:hover {
 }
 
+/* Header social links */
+.header-social {
+  text-align: center;
+  margin: 1em 0;
+}
+
+.header-social .social-media-icons {
+  display: inline-block;
+  margin: 0 0.5em;
+  font-size: 1.2em;
+  color: var(--text-primary);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.header-social .social-media-icons:hover {
+  color: var(--accent-color);
+}
+
 /* HR */
 hr {
   color: var(--border-color);
@@ -303,41 +322,156 @@ table {
   color: var(--text-primary);
 }
 
+/* Theme toggle container */
+.theme-toggle-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  text-align: center;
+  margin: 0;
+}
+
 /* Theme toggle button */
 .theme-toggle {
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: 18px;
+  background: var(--bg-primary);
   color: var(--text-primary);
-  margin-left: 10px;
-  padding: 5px;
+  border: 2px solid var(--border-color);
   border-radius: 50%;
-  transition: all 0.3s ease;
+  width: 60px;
+  height: 60px;
+  font-size: 24px;
+  cursor: pointer;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 32px;
-  height: 32px;
+  transition: all 0.3s ease;
+  outline: none;
+  box-shadow: 0 2px 8px var(--shadow-color);
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 .theme-toggle:hover {
-  background: var(--bg-secondary);
-  color: var(--accent-hover);
+  background: var(--accent-color);
+  color: white;
+  border-color: var(--accent-color);
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px var(--shadow-color);
 }
 
 .theme-toggle:focus {
-  outline: 2px solid var(--accent-color);
-  outline-offset: 2px;
+  outline: none;
+}
+
+.theme-toggle:active {
+  transform: scale(0.95);
 }
 
 /* Syntax highlighting is now in code.css */
 
 /* Responsive adjustments */
+@media only screen and (max-width: 768px) {
+  .theme-toggle {
+    font-size: 28px;
+    width: 70px;
+    height: 70px;
+  }
+
+  /* Make navigation more compact on tablets */
+  .nav li {
+    margin: 0 2px;
+    font-size: 16px;
+  }
+
+  .nav li a {
+    margin-right: 6px;
+  }
+
+  /* Adjust header elements for mobile */
+  .top-link {
+    font-size: 1.2em;
+  }
+
+  .top-logo img {
+    width: 70px;
+  }
+
+  .header-social .social-media-icons {
+    font-size: 1.1em;
+    margin: 0 0.3em;
+  }
+}
+
 @media only screen and (max-width: 520px) {
   .theme-toggle {
-    font-size: 16px;
-    width: 28px;
-    height: 28px;
+    font-size: 32px;
+    width: 80px;
+    height: 80px;
+  }
+
+  /* Stack navigation vertically on small screens */
+  .nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 0;
+  }
+
+  .nav li {
+    display: block;
+    margin: 5px 0;
+    font-size: 14px;
+  }
+
+  .nav li a {
+    margin-right: 0;
+    padding: 5px 10px;
+    display: block;
+  }
+
+  /* Make header more compact */
+  .top-link {
+    font-size: 1.1em;
+  }
+
+  .top-logo img {
+    width: 60px;
+  }
+
+  .header-social {
+    margin: 0.5em 0;
+  }
+
+  .header-social .social-media-icons {
+    font-size: 1em;
+    margin: 0 0.2em;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  /* Extra small screens - even more compact */
+  .theme-toggle {
+    font-size: 36px;
+    width: 90px;
+    height: 90px;
+  }
+
+  .nav li {
+    font-size: 13px;
+  }
+
+  .top-logo img {
+    width: 50px;
+  }
+
+  .header-social .social-media-icons {
+    font-size: 0.9em;
   }
 }
