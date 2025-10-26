@@ -1,12 +1,11 @@
 ---
 layout: post
-title:  "How to Become an Expert (Part 1)"
-description: "What it Takes to Become an Expert Programmer (Part 1)"
-tags: [Programming, Expert, Best Practices]
-
+title: "Leveling up: Beginner to Intermediate"
+description: "What it takes to become an Expert Programmer (Part 1)"
+tags: [Programming, Beginner, Intermediate, Best Practices]
 ---
 
-The purpose of this blog post is to help **beginner/intermediate** programmers
+The purpose of this article is to help **beginner** programmers
 get to the next level in terms of their programming skill and hopefully in life.
 Also I answer some questions that beginners often ask.
 
@@ -78,7 +77,7 @@ not sip it through a straw. A 1000+ page book is nothing! Go through dozens of
 these! **GULP KNOWLEDGE!**
 
 > Don't restrain from reading books twice, three times or even more. I would
-  even recommend it, especially to beginners.
+> even recommend it, especially to beginners.
 
 ## Power through the fundamentals!
 
@@ -101,9 +100,9 @@ feelings and just **POWER THROUGH**. Know that the painstaking process of
 learning the fundamentals is going to pay off dividends very soon.
 
 > Keep in mind that the first 100 hours of learning something new are the most
-  uncomfortable.
-  After you've spent 100 hours or more learning something, only then you can
-  make a judgement if that vocation is for you or not.
+> uncomfortable.
+> After you've spent 100 hours or more learning something, only then you can
+> make a judgement if that vocation is for you or not.
 
 ## Pay attention to every single detail
 
@@ -122,7 +121,7 @@ Apart for being great for learning, being extremely precise and pedantic at all
 times is going to prepare you to do your best work once the time comes.
 
 > TIP: When going through learning materials, type every example program and
-  run it yourself on your computer! This will greatly reinforce learning.
+> run it yourself on your computer! This will greatly reinforce learning.
 
 ## Be comfortable with not knowing everything
 
@@ -154,7 +153,7 @@ something about sports, the stock market, fashion, video games, art, music,
 history, whatever...
 
 Building a project might feel intimidating and hard from a beginner perspective,
-so feel free to make small toy programs at first, and lots of them. 
+so feel free to make small toy programs at first, and lots of them.
 You might go ahead and start building a project just to find out that it
 actually is too hard for you at that point. That is fine as well. Failure is
 not important, you're just practicing.
@@ -163,7 +162,7 @@ When I was first learning to program, I started building a graphing calculator
 in Java, so that I can visualize different mathematical functions (similar to
 how MatLab does it). Here is how that turned out:
 
-![Function Graphs](/images/2019-07-20-how-to-become-an-expert-part-1/graph.png "Function Graphs")
+![Function Graphs](/images/2019-07-20-leveling-up-beginner-to-intermediate/graph.png "Function Graphs")
 
 Needless to say that I failed to create a complete program. **But I made
 SOMETHING and applied what I've previously learned.** That is the only thing
@@ -172,16 +171,16 @@ that matters when learning.
 So go ahead and write a program!
 
 > Even though these practice projects are small and seemingly insignificant,
-  treat them as VERY IMPORTANT. Try to do your best on each and every one of
-  them!
-  This will prepare you to do serious work in the future. When the time comes
-  to create something important, you will be well-prepared to create quality work,
-  since you've been doing it all along!
+> treat them as VERY IMPORTANT. Try to do your best on each and every one of
+> them!
+> This will prepare you to do serious work in the future. When the time comes
+> to create something important, you will be well-prepared to create quality work,
+> since you've been doing it all along!
 
 ## Learn how to find answers on the internet
 
 Today (in 2019) the internet is full of answers to both general and super-specific
-questions when it comes to programming. 
+questions when it comes to programming.
 As a beginner, you can find everything that you need online.
 So learn how to use your search engine(s) well!
 
@@ -264,10 +263,10 @@ If you're passionate about programming you're going to spend way more than 40
 hours per week on it anyways, which may allow you to grow faster.
 
 > It took me around 2 years to get proficient, but **you can go faster by working
-  with mentors**. A great mentor will give you the largest possible boost in
-  understanding a topic such as programming. I don't really offer mentorship
-  these days, but if you're crazy passionate and driven, shoot me an email and
-  I will consider it.
+> with mentors**. A great mentor will give you the largest possible boost in
+> understanding a topic such as programming. I don't really offer mentorship
+> these days, but if you're crazy passionate and driven, shoot me an email and
+> I will consider it.
 
 ## Do I have to know math?
 
@@ -286,7 +285,6 @@ are true for most programmers.
 
 Basic math is really not that hard, just go ahead and learn it if you feel the
 need to.
-
 
 ## Moving on...
 

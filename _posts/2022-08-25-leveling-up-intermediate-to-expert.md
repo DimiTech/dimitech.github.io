@@ -1,17 +1,14 @@
 ---
 layout: post
-title: "How to Become an Expert (Part 2)"
-description: "What it Takes to Become an Expert Programmer (Part 2)"
+title: "Leveling up: Intermediate to Expert"
+description: "What it takes to become an Expert Programmer (Part 2)"
 tags: [Programming, Expert, Best Practices]
 ---
 
-This article exists to help **intermediate** programmers level up -
-not just in coding, but in productivity, problem-solving, and even in life.
-The goal is to become a Professional Software Developer - an **Expert!**
+This article outlines what it takes to become a Professional Software
+Developer - an **Expert** in every sense! If you're an intermediate programmer and you're ready to level up not only your coding, but productivity, problem-solving, and life in general, read this!
 
-Ultimately, the aim is to become a Professional Software Developer - an **expert** in your craft!
-
-This post is divided into three equally important sections (and summary):
+This writing is divided into three equally important sections (and summary):
 
 - [Mindset](#mindset)
 - [Hard Skills](#hard-skills)
@@ -274,7 +271,7 @@ good at the others.
 > can't control every part of the map at all times, you can maintain control over
 > your main areas and stay well-informed about the rest.
 
-![Starcraft Mini Map](/images/2022-08-25-how-to-become-an-expert-part-2/SCminimap.png)
+![Starcraft Mini Map](/images/2022-08-25-leveling-up-intermediate-to-expert/SCminimap.png)
 
 You must be able to **juggle** with different technical areas: focus on one while
 neglecting the other, then move to the next one etc...
