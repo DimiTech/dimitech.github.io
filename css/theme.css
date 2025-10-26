@@ -105,6 +105,12 @@ h6 {
 h1 {
   font-size: 2.3em; /* Bumped by ~10% from 2.1em */
   margin-top: 2em; /* Added more space above H1 */
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  -ms-hyphens: auto;
 }
 
 h2 {
