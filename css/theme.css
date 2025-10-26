@@ -77,7 +77,7 @@ body {
   background-color: var(--bg-primary);
   color: var(--text-primary);
   text-shadow: var(--text-shadow);
-  font-size: 17px;
+  font-size: 16px;
   line-height: 1.4;
 }
 
