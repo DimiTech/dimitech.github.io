@@ -3,23 +3,23 @@
 <div class="pagination">
   {% if paginator.previous_page %} {% if paginator.page == 2 %}
   <a href="{{site.url}}/" class="newer">
-    <i class="fa fa-backward"></i>
+    <i class="fas fa-backward"></i>
   </a>
   {% else %}
   <a href="{{site.url}}/page{{paginator.previous_page}}" class="newer">
-    <i class="fa fa-backward"></i>
+    <i class="fas fa-backward"></i>
   </a>
   {% endif %} {% else %}
   <span class="previous five">
-    <i class="fa fa-backward"></i>
+    <i class="fas fa-backward"></i>
   </span>
   {% endif %} {% if paginator.next_page %}
   <a href="{{site.url}}/page{{paginator.next_page}}" class="older one">
-    <i class="fa fa-forward"></i>
+    <i class="fas fa-forward"></i>
   </a>
   {% else %}
   <span class="next two">
-    <i class="fa fa-forward"></i>
+    <i class="fas fa-forward"></i>
   </span>
   {% endif %}
 </div>
@@ -28,19 +28,19 @@
 <div class="social">
   {% if site.owner.youtube %}
   <a href="{{ site.owner.youtube }}" class="social-media-icons">
-    <i class="fa fa-youtube"></i> YouTube
+    <i class="fab fa-youtube"></i> YouTube
   </a>
   {% endif %} {% if site.owner.github %}
   <a href="{{ site.owner.github }}" class="social-media-icons">
-    <i class="fa fa-github"></i> GitHub
+    <i class="fab fa-github"></i> GitHub
   </a>
   {% endif %} {% if site.owner.email %}
   <a href="mailto:{{ site.owner.email }}" class="social-media-icons">
-    <i class="fa fa-envelope"></i> E-Mail
+    <i class="fas fa-envelope"></i> E-Mail
   </a>
   {% endif %} {% if site.owner.linkedin %}
   <a href="{{ site.owner.linkedin }}" class="social-media-icons">
-    <i class="fa fa-linkedin"></i> LinkedIn
+    <i class="fab fa-linkedin"></i> LinkedIn
   </a>
   {% endif %}
 </div>
