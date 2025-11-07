@@ -11,7 +11,11 @@
     </a>
 
     <div class="header-social">
-      {% if site.owner.github %}
+      {% if site.owner.youtube %}
+      <a href="{{ site.owner.youtube }}" class="social-media-icons">
+        <i class="fa fa-youtube"></i>
+      </a>
+      {% endif %} {% if site.owner.github %}
       <a href="{{ site.owner.github }}" class="social-media-icons">
         <i class="fa fa-github"></i>
       </a>
